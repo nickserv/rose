@@ -32,3 +32,32 @@ Rose is meant to bring the best of both worlds. With Rose, you can describe how
 to use a feature once in all ten languages (like with a Rosetta Stone table),
 except that anyone could visit Rose and easily search between the translations
 you provided without having to visit your specific table first.
+
+## Goals
+- Translate methods, functions, commands, concepts, etc. across programming
+  languages, command line tools, libraries, and frameworks.
+- Store many different kinds of technologies, user stories, and features in a
+  very generalized and searchable way.
+- Fast searches for looking up information by the name of a concept or with
+  source code examples.
+- Only provide detailed information about how features differ in different
+  technologies. The technologies themselves already document how their features
+  work, and Rose should link to third-party documentation where appropriate.
+
+## What Rose is not
+- A tutorial.
+- A language-specific reference.
+- A [programming chrestomathy](http://en.wikipedia.org/wiki/Chrestomathy) site.
+  Rose should provide consice technical information on how to use specific
+  features across different languages instead of providing ports of example
+  programs across different languages.
+- A place for learning about concepts that you don't already understand in at
+  least one known technology. Rose should link to you at least one good resource
+  for understanding a feature in at least one technology, however.
+
+## Inspirations
+- Rosetta Stone tables. Here are some good examples:
+  - http://mercurial.selenic.com/wiki/GitConcepts
+  - https://wiki.archlinux.org/index.php/Pacman_Rosetta
+- [Rosetta Code](http://rosettacode.org/)
+- [Hyperpolyglot](http://hyperpolyglot.org/)
