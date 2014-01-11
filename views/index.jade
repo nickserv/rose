@@ -1,5 +1,21 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  .container
+
+    // navbar
+    nav.navbar.navbar-default(role='navigation')
+      a.navbar-brand(href='#') Rose
+
+    // search form
+    form.input-group.input-group-lg(role='search')
+      input.form-control(type='text', name='query', placeholder='Search for a method, function, or command', autofocus='')
+      .input-group-btn
+        button.btn.btn-primary(type='submit')
+          span.glyphicon.glyphicon-search
+    hr
+
+    // footer
+    footer
+      | &copy; 2014 
+      a(href='http://thenickperson.com') Nicolas McCurdy
