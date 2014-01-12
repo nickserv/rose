@@ -3,34 +3,34 @@
  * GET home page.
  */
 
-var featuresJSON = require("../data.json");
+var examplesJSON = require("../data.json");
 
-function getFeatures() {
-  return Object.keys(featuresJSON).reduce(function (memo, technology) {
-    featuresJSON[technology].forEach(function (data) {
+function getExamples() {
+  return Object.keys(examplesJSON).reduce(function (memo, technology) {
+    examplesJSON[technology].forEach(function (data) {
       memo.push({
         technology: technology,
-        name: data
+        code: data
       });
     });
     return memo;
   }, []);
 }
 
-function findFeatures(query) {
+function findExamples(query) {
   if(query) {
-    return getFeatures().filter(function (data) {
-      return data.name.indexOf(query) > -1;
+    return getExamples().filter(function (example) {
+      return example.code.indexOf(query) > -1;
     });
     //return new Array(_.findWhere(exports.getLibraries(), { name: names }));
   } else {
-    return getFeatures();
+    return getExamples();
   }
 }
 
 exports.index = function(req, res){
   res.render('index', {
     title: 'Rose',
-    results: findFeatures(req.query.query)
+    examples: findExamples(req.query.query)
   });
 };

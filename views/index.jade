@@ -1,11 +1,11 @@
 extends layout
 
-mixin displayResult(result)
-  b #{result.technology}: 
-  if typeof result.name === 'string'
-    code= result.name
+mixin displayExample(example)
+  b #{example.technology}: 
+  if typeof example.code === 'string'
+    code= example.code
   else
-    each str in result.name
+    each str in example.code
       code= str
 
 block content
@@ -23,9 +23,9 @@ block content
           span.glyphicon.glyphicon-search
     // results
     h2 Results
-    ul: each result in results
+    ol: each example in examples
       li
-        +displayResult(result)
+        +displayExample(example)
 
     // footer
     hr
