@@ -2,17 +2,17 @@ extends layout
 
 mixin displayFeature(feature)
   = feature.name
-  ul: each key in Object.keys(feature.examples)
-    li
-      +displayExample({ technology: key, code: feature.examples[key]})
+  dl: each key in Object.keys(feature.examples)
+    +displayExample({ technology: key, code: feature.examples[key]})
 
 mixin displayExample(example)
-  b #{example.technology}: 
-  if typeof example.code === 'string'
-    code= example.code
-  else
-    each str in example.code
-      code= str
+  dt #{example.technology}: 
+  dd
+    if typeof example.code === 'string'
+      code= example.code
+    else
+      each str in example.code
+        code= str
 
 block content
   .container
