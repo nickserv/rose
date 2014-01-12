@@ -1,26 +1,45 @@
-{
-  "Git": [
-    "git add",
-    "git blame",
-    "git branch",
-    "git checkout",
-    "git clone",
-    "git commit"
-  ],
-  "Mercurial": [
-    "hg add",
-    "hg annotate",
-    ["hg branch", "hg branches"],
-    ["hg update", "hg up"],
-    "hg clone",
-    ["hg commit", "hg ci"]
-  ],
-  "Subversion": [
-    "svn add",
-    ["svn blame", "svn ann"],
-    ["svn copy", "svn cp"],
-    ["svn update", "svn up"],
-    ["svn checkout", "svn co"],
-    ["svn commit", "svn ci"]
-  ]
-}
+[
+  {
+    "name": "add files",
+    "examples": {
+      "Git": "git add",
+      "Mercurial": "hg add",
+      "Subversion": "svn add"
+    }
+  }, {
+    "name": "show revision information line by line",
+    "examples": {
+      "Git": "git blame",
+      "Mercurial": "hg annotate",
+      "Subversion": ["svn blame", "svn ann"]
+    }
+  }, {
+    "name": "manage branches",
+    "examples": {
+      "Git": "git branch",
+      "Mercurial": ["hg branch", "hg branches"],
+      "Subversion": ["svn copy", "svn cp"]
+    }
+  }, {
+    "name": "switch revisions",
+    "examples": {
+      "Git": "git checkout",
+      "Mercurial": ["hg update", "hg up"],
+      "Subversion": ["svn update", "svn up"]
+    }
+  }, {
+    "name": "download a repository/checkout",
+    "examples": {
+      "Git": "git clone",
+      "Mercurial": "hg clone",
+      "Subversion": ["svn checkout", "svn co"]
+    }
+  }, {
+    "name": "make a commit",
+    "examples": {
+      "Git": "git commit",
+      "Mercurial": ["hg commit", "hg ci"],
+      "Subversion": ["svn commit", "svn ci"]
+    }
+  }
+]

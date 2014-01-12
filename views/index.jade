@@ -1,5 +1,11 @@
 extends layout
 
+mixin displayFeature(feature)
+  = feature.name
+  ul: each key in Object.keys(feature.examples)
+    li
+      +displayExample({ technology: key, code: feature.examples[key]})
+
 mixin displayExample(example)
   b #{example.technology}: 
   if typeof example.code === 'string'
@@ -23,9 +29,9 @@ block content
           span.glyphicon.glyphicon-search
     // results
     h2 Results
-    ol: each example in examples
+    ol: each feature in features
       li
-        +displayExample(example)
+        +displayFeature(feature)
 
     // footer
     hr
