@@ -3,7 +3,7 @@
  * GET home page.
  */
 
-var features = require("../data.json");
+var features = require("../features.json");
 
 function findFeatures(query) {
   if(query) {
