@@ -1,5 +1,13 @@
 extends layout
 
+mixin displayResult(result)
+  b #{result.technology}: 
+  if typeof result.name === 'string'
+    code= result.name
+  else
+    each str in result.name
+      code= str
+
 block content
   .container
 
@@ -13,9 +21,14 @@ block content
       .input-group-btn
         button.btn.btn-primary(type='submit')
           span.glyphicon.glyphicon-search
-    hr
+    // results
+    h2 Results
+    ul: each result in results
+      li
+        +displayResult(result)
 
     // footer
+    hr
     footer
       | &copy; 2014 
       a(href='http://thenickperson.com') Nicolas McCurdy

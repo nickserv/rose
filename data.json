@@ -1,0 +1,26 @@
+{
+  "Git": [
+    "git add",
+    "git blame",
+    "git branch",
+    "git checkout",
+    "git clone",
+    "git commit"
+  ],
+  "Mercurial": [
+    "hg add",
+    "hg annotate",
+    ["hg branch", "hg branches"],
+    ["hg update", "hg up"],
+    "hg clone",
+    ["hg commit", "hg ci"]
+  ],
+  "Subversion": [
+    "svn add",
+    ["svn blame", "svn ann"],
+    ["svn copy", "svn cp"],
+    ["svn update", "svn up"],
+    ["svn checkout", "svn co"],
+    ["svn commit", "svn ci"]
+  ]
+}
