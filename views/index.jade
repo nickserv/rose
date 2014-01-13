@@ -35,9 +35,12 @@ block content
           span.glyphicon.glyphicon-search
     // results
     h2 Results
-    ol: each feature in features
-      li
-        +displayFeature(feature)
+    if features.length > 0
+      ol: each feature in features
+        li
+          +displayFeature(feature)
+    else
+      h3.text-muted No results
 
     // footer
     hr
