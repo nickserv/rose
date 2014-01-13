@@ -29,16 +29,16 @@ block content
 
     // search form
     form.input-group.input-group-lg(role='search')
-      input.form-control(type='search', name='query', placeholder='Search for a method, function, or command', autofocus='')
+      input.form-control(type='search', name='query', placeholder='Search for a method, function, or command', autofocus)
       .input-group-btn
         button.btn.btn-primary(type='submit')
           span.glyphicon.glyphicon-search
+
     // results
     h2 Results
     if features.length > 0
       ol: each feature in features
-        li
-          +displayFeature(feature)
+        li: +displayFeature(feature)
     else
       h3.text-muted No results
 
