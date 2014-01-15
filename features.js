@@ -20,7 +20,7 @@ function toArray (item) {
   return (item instanceof Array) ? item : [item];
 }
 
-function find (query) {
+function find(features, query) {
   if(!query) {
     return features;
   }
