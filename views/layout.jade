@@ -8,7 +8,23 @@ html(lang='en')
     link(rel='stylesheet', href='http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css')
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
-    block content
+    .container
+      // navbar
+      nav.navbar.navbar-default(role='navigation')
+        .navbar-header
+          a.navbar-brand(href='#') Rose
+        .collapse.navbar-collapse
+          ul.nav.navbar-nav.navbar-right
+            li: a(href='https://github.com/nicolasmccurdy/rose' target='_blank').
+              GitHub Repository
+
+      block content
+
+      // footer
+      hr
+      footer
+        | &copy; 2014 
+        a(href='http://thenickperson.com') Nicolas McCurdy
     // scripts
     script(src='http://code.jquery.com/jquery-2.0.3.min.js')
     script(src='http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js')

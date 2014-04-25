@@ -16,34 +16,17 @@ mixin displayExample(example)
         br
 
 block content
-  .container
+  // search form
+  form.input-group.input-group-lg(role='search')
+    input.form-control(type='search', name='query', placeholder='Search for a method, function, or command', autofocus)
+    .input-group-btn
+      button.btn.btn-primary(type='submit')
+        span.glyphicon.glyphicon-search
 
-    // navbar
-    nav.navbar.navbar-default(role='navigation')
-      .navbar-header
-        a.navbar-brand(href='#') Rose
-      .collapse.navbar-collapse
-        ul.nav.navbar-nav.navbar-right
-          li: a(href='https://github.com/nicolasmccurdy/rose' target='_blank').
-            GitHub Repository
-
-    // search form
-    form.input-group.input-group-lg(role='search')
-      input.form-control(type='search', name='query', placeholder='Search for a method, function, or command', autofocus)
-      .input-group-btn
-        button.btn.btn-primary(type='submit')
-          span.glyphicon.glyphicon-search
-
-    // results
-    h2 Results
-    if features.length > 0
-      ol: each feature in features
-        li: +displayFeature(feature)
-    else
-      h3.text-muted No results
-
-    // footer
-    hr
-    footer
-      | &copy; 2014 
-      a(href='http://thenickperson.com') Nicolas McCurdy
+  // results
+  h2 Results
+  if features.length > 0
+    ol: each feature in features
+      li: +displayFeature(feature)
+  else
+    h3.text-muted No results
