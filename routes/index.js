@@ -21,7 +21,8 @@ function findFeatures(query) {
 router.get('/', function(req, res) {
   res.render('index', {
     title: 'Rose',
-    features: findFeatures(req.query.query)
+    features: findFeatures(req.query.query),
+    query: req.query.query
   });
 });
 
