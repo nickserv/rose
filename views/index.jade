@@ -10,11 +10,12 @@ mixin displayExample(technology, code)
   li.list-group-item.active
     .list-group-item-heading= technology
     p.list-group-item-text
-      if typeof code === 'string'
-        code= code
-      else
-        each str in code
-          div: code= str
+      ul.list-inline
+        if typeof code === 'string'
+          li: code= code
+        else
+          each str in code
+            li: code= str
 
 block content
   // results
