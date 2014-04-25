@@ -2,7 +2,7 @@ extends layout
 
 mixin displayFeature(feature)
   h3= feature.name
-  dl: each key in Object.keys(feature.examples)
+  dl.dl-horizontal: each key in Object.keys(feature.examples)
     +displayExample(key, feature.examples[key])
 
 mixin displayExample(technology, code)
