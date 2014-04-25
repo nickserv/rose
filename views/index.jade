@@ -1,18 +1,20 @@
 extends layout
 
 mixin displayFeature(feature)
-  h3= feature.name
-  dl.dl-horizontal: each key in Object.keys(feature.examples)
-    +displayExample(key, feature.examples[key])
+  .panel.panel-default
+    .panel-heading: h3.panel-title= feature.name
+    ul.list-group: each key in Object.keys(feature.examples)
+      +displayExample(key, feature.examples[key])
 
 mixin displayExample(technology, code)
-  dt= technology
-  dd
-    if typeof code === 'string'
-      code= code
-    else
-      each str in code
-        div: code= str
+  li.list-group-item.active
+    .list-group-item-heading= technology
+    p.list-group-item-text
+      if typeof code === 'string'
+        code= code
+      else
+        each str in code
+          div: code= str
 
 block content
   // results
