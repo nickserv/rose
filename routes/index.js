@@ -1,7 +1,5 @@
-
-/*
- * GET home page.
- */
+var express = require('express');
+var router = express.Router();
 
 var features = require("../features.json");
 
@@ -19,9 +17,12 @@ function findFeatures(query) {
   }
 }
 
-exports.index = function(req, res){
+/* GET home page. */
+router.get('/', function(req, res) {
   res.render('index', {
     title: 'Rose',
     features: findFeatures(req.query.query)
   });
-};
+});
+
+module.exports = router;
