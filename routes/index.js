@@ -6,7 +6,7 @@ var features = require('../features');
 
 /* GET home page. */
 router.get('/', function(req, res) {
-  db.getFeatures.then(function (featureData) {
+  db.seed.then(function (featureData) {
     res.render('index', {
       title: 'Rose',
       features: features.find(featureData, req.query.query),
