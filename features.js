@@ -26,14 +26,12 @@ function find (query) {
   }
 
   return features.filter(function (feature) {
-    //return example.code.indexOf(query) > -1;
     return Object.keys(feature.examples).some(function (technology) {
       var snippets = toArray(feature.examples[technology]);
 
       return someContain(snippets, query);
     });
   });
-  //return new Array(_.findWhere(exports.getLibraries(), { name: names }));
 }
 
 module.exports = { toArray: toArray, find: find };
