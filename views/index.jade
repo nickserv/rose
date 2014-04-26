@@ -8,8 +8,8 @@ mixin displayFeature(feature)
 
 mixin displayExample(technology, code)
   li.list-group-item: .row
-    .col-md-1.technology= technology
-    ul.col-md-11.list-inline
+    .col-md-2.technology= technology
+    ul.col-md-10.list-inline
       if typeof code === 'string'
         li: code= code
       else
@@ -18,9 +18,10 @@ mixin displayExample(technology, code)
 
 block content
   // results
-  h1 Results
-  if features.length > 0
-    ol: each feature in features
-      li: +displayFeature(feature)
-  else
-    h2.text-muted No results
+  .row: .col-md-8.col-md-offset-2
+    h1 Results
+    if features.length > 0
+      ol: each feature in features
+        li: +displayFeature(feature)
+    else
+      h2.text-muted No results
