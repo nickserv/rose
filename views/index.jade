@@ -7,15 +7,14 @@ mixin displayFeature(feature)
       +displayExample(key, feature.examples[key])
 
 mixin displayExample(technology, code)
-  li.list-group-item.active
-    .list-group-item-heading= technology
-    p.list-group-item-text
-      ul.list-inline
-        if typeof code === 'string'
-          li: code= code
-        else
-          each str in code
-            li: code= str
+  li.list-group-item: .row
+    .col-md-1.technology= technology
+    ul.col-md-11.list-inline
+      if typeof code === 'string'
+        li: code= code
+      else
+        each str in code
+          li: code= str
 
 block content
   // results
