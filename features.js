@@ -9,6 +9,13 @@ function contains(string, query, ignoreCase) {
   return string.indexOf(query) !== -1;
 }
 
+// ignoreCase default to true
+function someContain(strings, query, ignoreCase) {
+  return strings.some(function (string) {
+    return contains(string, query, ignoreCase);
+  });
+}
+
 function toArray (item) {
   return (item instanceof Array) ? item : [item];
 }
@@ -23,9 +30,7 @@ function find (query) {
     return Object.keys(feature.examples).some(function (technology) {
       var snippets = toArray(feature.examples[technology]);
 
-      return snippets.some(function (snippet) {
-        return contains(snippet, query);
-      });
+      return someContain(snippets, query);
     });
   });
   //return new Array(_.findWhere(exports.getLibraries(), { name: names }));
