@@ -1,6 +1,11 @@
 var features = require("./features.json");
 
-function contains(string, query) {
+// ignoreCase default to true
+function contains(string, query, ignoreCase) {
+  if (ignoreCase !== false) {
+    string = string.toLowerCase();
+    query = query.toLowerCase();
+  }
   return string.indexOf(query) !== -1;
 }
 
