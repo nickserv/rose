@@ -9,28 +9,26 @@ function contains(string, query, ignoreCase) {
   return string.indexOf(query) !== -1;
 }
 
-exports.toArray = function (item) {
+function toArray (item) {
   return (item instanceof Array) ? item : [item];
-};
+}
 
-exports.find = function (query) {
+function find (query) {
   if(query) {
     return features.filter(function (feature) {
       //return example.code.indexOf(query) > -1;
       return Object.keys(feature.examples).some(function (key) {
         var snippets = feature.examples[key];
 
-        if (typeof snippets === 'string') {
-          return contains(snippets, query);
-        } else {
-          return snippets.some(function (snippet) {
-            return contains(snippet, query);
-          });
-        }
+        return toArray(snippets).some(function (snippet) {
+          return contains(snippet, query);
+        });
       });
     });
     //return new Array(_.findWhere(exports.getLibraries(), { name: names }));
   } else {
     return features;
   }
-};
+}
+
+module.exports = { toArray: toArray, find: find };
