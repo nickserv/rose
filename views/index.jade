@@ -6,15 +6,12 @@ mixin displayFeature(feature)
     ul.list-group: each key in Object.keys(feature.examples)
       +displayExample(key, feature.examples[key])
 
-mixin displayExample(technology, code)
+mixin displayExample(technology, snippets)
   li.list-group-item: .row
     .col-md-2.technology= technology
     ul.col-md-10.list-inline
-      if typeof code === 'string'
-        li: code= code
-      else
-        each str in code
-          li: code= str
+      each snippet in toArray(snippets)
+        li: code= snippet
 
 block content
   // results

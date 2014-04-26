@@ -22,7 +22,10 @@ router.get('/', function(req, res) {
   res.render('index', {
     title: 'Rose',
     features: findFeatures(req.query.query),
-    query: req.query.query
+    query: req.query.query,
+    toArray: function (item) {
+      return (item instanceof Array) ? item : [item];
+    }
   });
 });
 
