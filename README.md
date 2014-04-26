@@ -1,4 +1,6 @@
 # Rose
+[![Dependency Status](https://gemnasium.com/nicolasmccurdy/rose.svg)](https://gemnasium.com/nicolasmccurdy/rose)
+
 An interactive, technical, and openly editable [Rosetta
 Stone](http://en.wikipedia.org/wiki/Rosetta_Stone) for developers.
 
