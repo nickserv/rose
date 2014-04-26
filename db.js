@@ -7,27 +7,13 @@ var Feature = mongoose.model('Feature', {
   examples: Object
 });
 
-function handle(err) {
-  if (err) {
-    throw err;
-  }
-}
-
 // Drop the collection (in case it was already seeded)
-Feature.remove(function (err) {
-  handle(err);
-
-  // Seed the collection
-  Feature.create(seeds, function (err) {
-    handle(err);
-
+module.exports.getFeatures = Feature.remove().exec()
+  .then(function () {
+    // Seed the collection
+    return Feature.create(seeds);
+  })
+  .then(function () {
     // Set up a public interface for accessing features with a callback
-    module.exports.getFeatures = function (callback) {
-      Feature.find({}, function (err, docs) {
-        handle(err);
-
-        callback(docs);
-      });
-    };
+    return Feature.find({}).exec();
   });
-});
