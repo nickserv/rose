@@ -41,5 +41,16 @@
       "Mercurial": ["hg commit", "hg ci"],
       "Subversion": ["svn commit", "svn ci"]
     }
+  },
+
+  {
+    "name": "map over elements",
+    "examples": {
+      "Common Lisp": "map",
+      "Haskell": "map",
+      "JavaScript": "Array#map",
+      "Python": "map",
+      "Ruby": ["Enumerable#map", "Enumerable#collect"]
+    }
   }
 ]
