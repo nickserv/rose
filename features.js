@@ -14,21 +14,21 @@ function toArray (item) {
 }
 
 function find (query) {
-  if(query) {
-    return features.filter(function (feature) {
-      //return example.code.indexOf(query) > -1;
-      return Object.keys(feature.examples).some(function (key) {
-        var snippets = feature.examples[key];
-
-        return toArray(snippets).some(function (snippet) {
-          return contains(snippet, query);
-        });
-      });
-    });
-    //return new Array(_.findWhere(exports.getLibraries(), { name: names }));
-  } else {
+  if(!query) {
     return features;
   }
+
+  return features.filter(function (feature) {
+    //return example.code.indexOf(query) > -1;
+    return Object.keys(feature.examples).some(function (technology) {
+      var snippets = toArray(feature.examples[technology]);
+
+      return snippets.some(function (snippet) {
+        return contains(snippet, query);
+      });
+    });
+  });
+  //return new Array(_.findWhere(exports.getLibraries(), { name: names }));
 }
 
 module.exports = { toArray: toArray, find: find };
