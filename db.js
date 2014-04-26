@@ -14,7 +14,7 @@ function handle(err) {
 }
 
 // Drop the collection (in case it was already seeded)
-mongoose.connection.collections.features.drop(function (err) {
+Feature.remove(function (err) {
   handle(err);
 
   // Seed the collection
