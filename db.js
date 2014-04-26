@@ -1,21 +1,23 @@
-var client = require('mongodb').MongoClient;
 var seeds = require('./features.json');
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/rose');
 
-client.connect('mongodb://localhost:27017/rose', function (err, db) {
+var Feature = mongoose.model('Feature', {
+  name: String,
+  examples: Object
+});
+
+// Drop the collection (in case it was already seeded)
+mongoose.connection.collections.features.drop(function (err) {
   if (err) { throw err; }
 
-  var collection = db.collection('features');
-
-  // Drop the collection (in case it was already seeded)
-  collection.drop();
-  
   // Seed the collection
-  collection.insert(seeds, function (err, docs) {
+  Feature.create(seeds, function (err) {
     if (err) { throw err; }
 
     // Set up a public interface for accessing features with a callback
     module.exports.getFeatures = function (callback) {
-      collection.find().toArray(function (err, docs) {
+      Feature.find({}, function (err, docs) {
         if (err) { throw err; }
 
         callback(docs);
