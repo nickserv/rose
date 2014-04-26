@@ -13,7 +13,15 @@ exports.find = function (query) {
     return features.filter(function (feature) {
       //return example.code.indexOf(query) > -1;
       return Object.keys(feature.examples).some(function (key) {
-        return contains(feature.examples[key], query);
+        var snippets = feature.examples[key];
+
+        if (typeof snippets === 'string') {
+          return contains(snippets, query);
+        } else {
+          return snippets.some(function (snippet) {
+            return contains(snippet, query);
+          });
+        }
       });
     });
     //return new Array(_.findWhere(exports.getLibraries(), { name: names }));
