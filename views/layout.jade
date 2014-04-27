@@ -16,23 +16,7 @@ html(lang='en')
         ul.nav.navbar-nav.navbar-right
           li: a(href='https://github.com/nicolasmccurdy/rose' target='_blank').
             GitHub Repository
-
-    .well: .container.search-bar
-      // search form
-      form.input-group.input-group-lg(role='search')
-        input.form-control(type='search', name='query', placeholder='Search for code snippets', value=query, autofocus)
-        .input-group-btn
-          button.btn.btn-primary(type='submit')
-            span.glyphicon.glyphicon-search
-
-    .container
-      block content
-
-      // footer
-      hr
-      footer
-        | &copy; 2014 
-        a(href='http://thenickperson.com') Nicolas McCurdy
+    block content
     // scripts
     script(src='http://code.jquery.com/jquery-2.0.3.min.js')
     script(src='http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js')
