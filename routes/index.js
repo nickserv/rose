@@ -5,15 +5,13 @@ var features = require('../features');
 
 /* GET home page. */
 router.get('/', function(req, res) {
-  features.seed.then(function (featureData) {
+  features.find(req.query.query, function (docs) {
     res.render('index', {
       title: 'Rose',
-      features: features.find(featureData, req.query.query),
+      features: docs,
       query: req.query.query,
       toArray: features.toArray
     });
-  }, function (err) {
-    throw err;
   });
 });
 

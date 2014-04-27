@@ -1,4 +1,3 @@
-var seeds = require('./features.json');
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/rose');
 
@@ -6,16 +5,6 @@ var Feature = mongoose.model('Feature', {
   name: String,
   examples: Object
 });
-
-// seed drops the features collection, seeds it, and returns a promise with all
-// features.
-var seed = Feature.remove().exec()
-  .then(function () {
-    return Feature.create(seeds);
-  })
-  .then(function () {
-    return Feature.find({}).exec();
-  });
 
 // ignoreCase default to true
 function contains(string, query, ignoreCase) {
@@ -37,18 +26,20 @@ function toArray (item) {
   return (item instanceof Array) ? item : [item];
 }
 
-function find(features, query) {
-  if(!query) {
-    return features;
-  }
+function find(query, callback) {
+  Feature.find({}, function (err, docs) {
+    if(query) {
+      docs = docs.filter(function (feature) {
+        return Object.keys(feature.examples).some(function (technology) {
+          var snippets = toArray(feature.examples[technology]);
 
-  return features.filter(function (feature) {
-    return Object.keys(feature.examples).some(function (technology) {
-      var snippets = toArray(feature.examples[technology]);
+          return someContain(snippets, query);
+        });
+      });
+    }
 
-      return someContain(snippets, query);
-    });
+    callback(docs);
   });
 }
 
-module.exports = { seed: seed, toArray: toArray, find: find };
+module.exports = { toArray: toArray, find: find };
