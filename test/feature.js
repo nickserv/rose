@@ -22,7 +22,16 @@ describe('Feature', function () {
 
     it('performs a case-insensitive search for a command', function (done) {
       Feature.search('git ADD', function (docs) {
-        assert.equal(1, docs.length)
+        assert.equal(1, docs.length);
+
+        var doc = docs[0];
+        assert.equal('add files', doc.name);
+        assert.deepEqual({
+          Git: 'git add',
+          Mercurial: 'hg add',
+          Subversion: 'svn add'
+        }, doc.examples);
+
         done();
       });
     });
