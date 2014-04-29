@@ -9,7 +9,7 @@ var featureSchema = new mongoose.Schema({
 });
 
 featureSchema.statics.search = function (query, callback) {
-  this.find({}, function (err, docs) {
+  this.find({}, '-__v -_id', function (err, docs) {
     if(query) {
       docs = docs.filter(function (feature) {
         return Object.keys(feature.examples).some(function (technology) {
