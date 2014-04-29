@@ -1,7 +1,12 @@
 var assert = require('assert');
+var seeds = require('../seeds');
 var Feature = require('../feature');
 
 describe('Feature', function () {
+  before(function (done) {
+    seeds(done);
+  });
+
   describe('schema', function () {
     it('successfully creates a valid document');
     it('fails at creating an invalid document');
