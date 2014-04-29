@@ -1,4 +1,5 @@
 # Rose
+[![Build Status](https://travis-ci.org/nicolasmccurdy/rose.svg?branch=master)](https://travis-ci.org/nicolasmccurdy/rose)
 [![Dependency Status](https://gemnasium.com/nicolasmccurdy/rose.svg)](https://gemnasium.com/nicolasmccurdy/rose)
 
 An interactive, technical, and openly editable [Rosetta
