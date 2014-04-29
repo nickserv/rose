@@ -1,6 +1,8 @@
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/rose');
 
+var helpers = require('./helpers');
+
 var featureSchema = new mongoose.Schema({
   name: String,
   examples: Object
@@ -19,7 +21,7 @@ featureSchema.statics.search = function (query, callback) {
         return Object.keys(feature.examples).some(function (technology) {
           var snippets = thisFeature.toArray(feature.examples[technology]);
 
-          return someContain(snippets, query);
+          return helpers.someContain(snippets, query);
         });
       });
     }
@@ -28,22 +30,4 @@ featureSchema.statics.search = function (query, callback) {
   });
 };
 
-var Feature = mongoose.model('Feature', featureSchema);
-
-// ignoreCase default to true
-function contains(string, query, ignoreCase) {
-  if (ignoreCase !== false) {
-    string = string.toLowerCase();
-    query = query.toLowerCase();
-  }
-  return string.indexOf(query) !== -1;
-}
-
-// ignoreCase default to true
-function someContain(strings, query, ignoreCase) {
-  return strings.some(function (string) {
-    return contains(string, query, ignoreCase);
-  });
-}
-
-module.exports = Feature;
+module.exports = mongoose.model('Feature', featureSchema);
