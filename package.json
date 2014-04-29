@@ -6,6 +6,9 @@
     "start": "node ./bin/www",
     "postinstall": "migrate"
   },
+  "engines": {
+    "node": "0.10.x"
+  },
   "dependencies": {
     "body-parser": "~1.0.0",
     "cookie-parser": "~1.0.1",
