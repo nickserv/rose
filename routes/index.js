@@ -5,7 +5,7 @@ var feature = require('../feature');
 
 /* GET home page. */
 router.get('/', function(req, res) {
-  feature.find(req.query.query, function (docs) {
+  feature.search(req.query.query, function (docs) {
     res.render('index', {
       title: 'Rose',
       features: docs,

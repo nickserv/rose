@@ -26,7 +26,7 @@ function toArray (item) {
   return (item instanceof Array) ? item : [item];
 }
 
-function find(query, callback) {
+function search(query, callback) {
   Feature.find({}, function (err, docs) {
     if(query) {
       docs = docs.filter(function (feature) {
@@ -42,4 +42,4 @@ function find(query, callback) {
   });
 }
 
-module.exports = { toArray: toArray, find: find };
+module.exports = { toArray: toArray, search: search };
