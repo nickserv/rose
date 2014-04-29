@@ -16,4 +16,11 @@ router.get('/', function(req, res) {
   });
 });
 
+/* GET JSON API. */
+router.get('/index.json', function(req, res) {
+  Feature.search(req.query.query, function (docs) {
+    res.json(docs);
+  });
+});
+
 module.exports = router;
