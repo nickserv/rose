@@ -8,18 +8,12 @@ var featureSchema = new mongoose.Schema({
   examples: Object
 });
 
-featureSchema.statics.toArray = function (item) {
-  return (item instanceof Array) ? item : [item];
-};
-
 featureSchema.statics.search = function (query, callback) {
-  var thisFeature = this;
-
-  thisFeature.find({}, function (err, docs) {
+  this.find({}, function (err, docs) {
     if(query) {
       docs = docs.filter(function (feature) {
         return Object.keys(feature.examples).some(function (technology) {
-          var snippets = thisFeature.toArray(feature.examples[technology]);
+          var snippets = helpers.toArray(feature.examples[technology]);
 
           return helpers.someContain(snippets, query);
         });

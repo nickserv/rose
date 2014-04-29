@@ -14,4 +14,8 @@ function someContain(strings, query, ignoreCase) {
   });
 }
 
-module.exports = { contains: contains, someContain: someContain };
+function toArray(item) {
+  return (item instanceof Array) ? item : [item];
+}
+
+module.exports = { contains: contains, someContain: someContain, toArray: toArray };

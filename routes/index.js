@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
+var helpers = require('../helpers');
 var Feature = require('../feature');
 
 /* GET home page. */
@@ -10,7 +11,7 @@ router.get('/', function(req, res) {
       title: 'Rose',
       features: docs,
       query: req.query.query,
-      toArray: Feature.toArray
+      toArray: helpers.toArray
     });
   });
 });
