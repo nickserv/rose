@@ -1,4 +1,4 @@
-var seeds = require('./features.json');
+var seeds = require('./seedData');
 var Feature = require('./feature');
 
 module.exports = function (callback) {
