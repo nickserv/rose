@@ -3,8 +3,8 @@ extends layout
 mixin displayFeature(feature)
   .panel.panel-default
     .panel-heading: h2.panel-title= feature.name
-    ul.list-group: each key in Object.keys(feature.examples)
-      +displayExample(key, feature.examples[key])
+    ul.list-group: each example in feature.examples
+      +displayExample(example.technology, example.snippets)
 
 mixin displayExample(technology, snippets)
   li.list-group-item: .row
