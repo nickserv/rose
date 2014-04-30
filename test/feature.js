@@ -3,9 +3,7 @@ var seeds = require('../seeds');
 var Feature = require('../feature');
 
 describe('Feature', function () {
-  before(function (done) {
-    seeds(done);
-  });
+  before(seeds);
 
   describe('schema', function () {
     it('successfully creates a valid document');
