@@ -1,56 +1,56 @@
 [
   {
     "name": "add files",
-    "examples": {
-      "Git": "git add",
-      "Mercurial": "hg add",
-      "Subversion": "svn add"
-    }
+    "examples": [
+      { "technology": "Git", "snippets": "git add" },
+      { "technology": "Mercurial", "snippets": "hg add" },
+      { "technology": "Subversion", "snippets": "svn add" }
+    ]
   }, {
     "name": "show revision information line by line",
-    "examples": {
-      "Git": "git blame",
-      "Mercurial": "hg annotate",
-      "Subversion": ["svn blame", "svn ann"]
-    }
+    "examples": [
+      { "technology": "Git", "snippets": "git blame" },
+      { "technology": "Mercurial", "snippets": "hg annotate" },
+      { "technology": "Subversion", "snippets": ["svn blame", "svn ann"] }
+    ]
   }, {
     "name": "manage branches",
-    "examples": {
-      "Git": "git branch",
-      "Mercurial": ["hg branch", "hg branches"],
-      "Subversion": ["svn copy", "svn cp"]
-    }
+    "examples": [
+      { "technology": "Git", "snippets": "git branch" },
+      { "technology": "Mercurial", "snippets": ["hg branch", "hg branches"] },
+      { "technology": "Subversion", "snippets": ["svn copy", "svn cp"] }
+    ]
   }, {
     "name": "switch revisions",
-    "examples": {
-      "Git": "git checkout",
-      "Mercurial": ["hg update", "hg up"],
-      "Subversion": ["svn update", "svn up"]
-    }
+    "examples": [
+      { "technology": "Git", "snippets": "git checkout" },
+      { "technology": "Mercurial", "snippets": ["hg update", "hg up"] },
+      { "technology": "Subversion", "snippets": ["svn update", "svn up"] }
+    ]
   }, {
     "name": "download a repository/checkout",
-    "examples": {
-      "Git": "git clone",
-      "Mercurial": "hg clone",
-      "Subversion": ["svn checkout", "svn co"]
-    }
+    "examples": [
+      { "technology": "Git", "snippets": "git clone" },
+      { "technology": "Mercurial", "snippets": "hg clone" },
+      { "technology": "Subversion", "snippets": ["svn checkout", "svn co"] }
+    ]
   }, {
     "name": "make a commit",
-    "examples": {
-      "Git": "git commit",
-      "Mercurial": ["hg commit", "hg ci"],
-      "Subversion": ["svn commit", "svn ci"]
-    }
+    "examples": [
+      { "technology": "Git", "snippets": "git commit" },
+      { "technology": "Mercurial", "snippets": ["hg commit", "hg ci"] },
+      { "technology": "Subversion", "snippets": ["svn commit", "svn ci"] }
+    ]
   },
 
   {
     "name": "map over elements",
-    "examples": {
-      "Common Lisp": "map",
-      "Haskell": "map",
-      "JavaScript": "Array#map",
-      "Python": "map",
-      "Ruby": ["Enumerable#map", "Enumerable#collect"]
-    }
+    "examples": [
+      { "technology": "Common Lisp", "snippets": "map" },
+      { "technology": "Haskell", "snippets": "map" },
+      { "technology": "JavaScript", "snippets": "Array#map" },
+      { "technology": "Python", "snippets": "map" },
+      { "technology": "Ruby", "snippets": ["Enumerable#map", "Enumerable#collect"] }
+    ]
   }
 ]

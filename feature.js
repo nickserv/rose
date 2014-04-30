@@ -5,7 +5,10 @@ var helpers = require('./helpers');
 
 var featureSchema = new mongoose.Schema({
   name: String,
-  examples: Object
+  examples: [{
+    technology: String,
+    snippets: [String]
+  }]
 });
 
 featureSchema.statics.search = function (query, callback) {
