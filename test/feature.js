@@ -26,11 +26,11 @@ describe('Feature', function () {
 
         var doc = docs[0];
         expect(doc.name).to.be('add files');
-        expect(doc.examples).to.eql({
-          Git: 'git add',
-          Mercurial: 'hg add',
-          Subversion: 'svn add'
-        });
+        expect(doc.examples).to.eql([
+          { technology: 'Git', snippets: ['git add'] },
+          { technology: 'Mercurial', snippets: ['hg add'] },
+          { technology: 'Subversion', snippets: ['svn add'] }
+        ]);
 
         done();
       });
