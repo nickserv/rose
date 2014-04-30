@@ -10,16 +10,12 @@ var featureSchema = new mongoose.Schema({
 });
 
 featureSchema.statics.search = function (query, callback) {
-  var findResults;
-  if (query) {
-     findResults = this.find({ examples: { $elemMatch: { snippets: new RegExp(query, 'i') }}});
-  } else {
-     findResults = this.find({});
-  }
-
-  findResults.lean().select('-__v -_id -examples._id').exec(function (err, docs) {
-    callback(docs);
-  });
+   this.find({ examples: { $elemMatch: { snippets: new RegExp(query, 'i') }}})
+       .lean()
+       .select('-__v -_id -examples._id')
+       .exec(function (err, docs) {
+         callback(docs);
+       });
 };
 
 module.exports = mongoose.model('Feature', featureSchema);
