@@ -1,5 +1,9 @@
+var debug = require('debug')('rose');
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/rose');
+
+var mongoURI = process.env.MONGOLAB_URI || 'mongodb://localhost/mydb';
+debug('Connecting to MongoDB at ' + mongoURI + '...');
+mongoose.connect(mongoURI);
 
 var featureSchema = new mongoose.Schema({
   name: String,
