@@ -10,7 +10,7 @@ mixin displayExample(technology, snippets)
   li.list-group-item: .row
     .col-md-2.technology= technology
     ul.col-md-10.list-inline
-      each snippet in toArray(snippets)
+      each snippet in snippets
         li: code= snippet
 
 block content

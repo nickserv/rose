@@ -1,8 +1,6 @@
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/rose');
 
-var helpers = require('./helpers');
-
 var featureSchema = new mongoose.Schema({
   name: String,
   examples: [{
