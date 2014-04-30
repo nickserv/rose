@@ -15,22 +15,22 @@ describe('Feature', function () {
   describe('.search()', function () {
     it('performs an empty search, returning all commands', function (done) {
       Feature.search('', function (docs) {
-        assert.equal(7, docs.length);
+        assert.equal(docs.length, 7);
         done();
       });
     });
 
     it('performs a case-insensitive search for a command', function (done) {
       Feature.search('git ADD', function (docs) {
-        assert.equal(1, docs.length);
+        assert.equal(docs.length, 1);
 
         var doc = docs[0];
-        assert.equal('add files', doc.name);
-        assert.deepEqual({
+        assert.equal(doc.name, 'add files');
+        assert.deepEqual(doc.examples, {
           Git: 'git add',
           Mercurial: 'hg add',
           Subversion: 'svn add'
-        }, doc.examples);
+        });
 
         done();
       });
@@ -40,7 +40,7 @@ describe('Feature', function () {
 
     it('performs a search for a command that does not exist', function (done) {
       Feature.search('git yolo', function (docs) {
-        assert.equal(0, docs.length);
+        assert.equal(docs.length, 0);
         done();
       });
     });
