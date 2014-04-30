@@ -22,15 +22,14 @@ describe('Feature', function () {
 
     it('performs a case-insensitive search for a command', function (done) {
       Feature.search('git ADD', function (docs) {
-        expect(docs.length).to.be(1);
-
-        var doc = docs[0];
-        expect(doc.name).to.be('add files');
-        expect(doc.examples).to.eql([
-          { technology: 'Git', snippets: ['git add'] },
-          { technology: 'Mercurial', snippets: ['hg add'] },
-          { technology: 'Subversion', snippets: ['svn add'] }
-        ]);
+        expect(docs).to.eql([{
+          name: 'add files',
+          examples: [
+            { technology: 'Git', snippets: ['git add'] },
+            { technology: 'Mercurial', snippets: ['hg add'] },
+            { technology: 'Subversion', snippets: ['svn add'] }
+          ]
+        }]);
 
         done();
       });

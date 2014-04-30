@@ -19,7 +19,7 @@ featureSchema.statics.search = function (query, callback) {
      findResults = this.find({});
   }
 
-  findResults.lean().select('-examples._id').exec(function (err, docs) {
+  findResults.lean().select('-__v -_id -examples._id').exec(function (err, docs) {
     callback(docs);
   });
 };
