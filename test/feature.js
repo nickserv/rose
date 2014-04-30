@@ -1,4 +1,4 @@
-var assert = require('assert');
+var expect = require('expect.js');
 var seeds = require('../seeds');
 var Feature = require('../feature');
 
@@ -15,18 +15,18 @@ describe('Feature', function () {
   describe('.search()', function () {
     it('performs an empty search, returning all commands', function (done) {
       Feature.search('', function (docs) {
-        assert.equal(docs.length, 7);
+        expect(docs.length).to.be(7);
         done();
       });
     });
 
     it('performs a case-insensitive search for a command', function (done) {
       Feature.search('git ADD', function (docs) {
-        assert.equal(docs.length, 1);
+        expect(docs.length).to.be(1);
 
         var doc = docs[0];
-        assert.equal(doc.name, 'add files');
-        assert.deepEqual(doc.examples, {
+        expect(doc.name).to.be('add files');
+        expect(doc.examples).to.eql({
           Git: 'git add',
           Mercurial: 'hg add',
           Subversion: 'svn add'
@@ -40,7 +40,7 @@ describe('Feature', function () {
 
     it('performs a search for a command that does not exist', function (done) {
       Feature.search('git yolo', function (docs) {
-        assert.equal(docs.length, 0);
+        expect(docs.length).to.be(0);
         done();
       });
     });
