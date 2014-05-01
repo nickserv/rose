@@ -1,7 +1,7 @@
 var cheerio = require('cheerio');
 var request = require('request');
 
-function scrape(callback) {
+module.exports = function (callback) {
   request('http://hyperpolyglot.org/version-control', function (error, response, body) {
     if (!error && response.statusCode === 200) {
       var features = [];
@@ -35,8 +35,4 @@ function scrape(callback) {
       callback(features);
     }
   });
-}
-
-scrape(function (features) {
-  console.log(features);
-});
+};
