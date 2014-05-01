@@ -6,7 +6,7 @@ describe('Feature', function () {
   beforeEach(seeds);
 
   describe('schema', function () {
-    it('successfully creates a valid document', function (done) {
+    it('creates a valid Feature', function (done) {
       Feature.create({
         name: 'map over elements',
         examples: [
@@ -22,7 +22,7 @@ describe('Feature', function () {
       });
     });
 
-    it('fails at creating an invalid document', function (done) {
+    it('does not create an invalid Feature', function (done) {
       Feature.create({
         name: 'no examples here'
       }, function (err) {
@@ -42,38 +42,48 @@ describe('Feature', function () {
       ]
     }];
 
-    it('performs an empty search, returning all commands', function (done) {
-      Feature.search('').then(function (docs) {
-        expect(docs.length).to.be(7);
-        done();
+    context('with an empty query', function () {
+      it('finds all features', function (done) {
+        Feature.search('').then(function (docs) {
+          expect(docs.length).to.be(7);
+          done();
+        });
       });
     });
 
-    it('performs a case-insensitive search for a feature', function (done) {
-      Feature.search('add files').then(function (docs) {
-        expect(docs).to.eql(gitAddFeature);
-        done();
+    context('with a feature query', function () {
+      it('finds all matching features', function (done) {
+        Feature.search('add files').then(function (docs) {
+          expect(docs).to.eql(gitAddFeature);
+          done();
+        });
       });
     });
 
-    it('performs a case-insensitive search for a technology', function (done) {
-      Feature.search('git').then(function (docs) {
-        expect(docs.length).to.be(6);
-        done();
+    context('with a technology query', function () {
+      it('finds all matching features', function (done) {
+        Feature.search('git').then(function (docs) {
+          expect(docs.length).to.be(6);
+          done();
+        });
       });
     });
 
-    it('performs a case-insensitive search for a command', function (done) {
-      Feature.search('git ADD').then(function (docs) {
-        expect(docs).to.eql(gitAddFeature);
-        done();
+    context('with a command query', function () {
+      it('finds all matching features', function (done) {
+        Feature.search('git ADD').then(function (docs) {
+          expect(docs).to.eql(gitAddFeature);
+          done();
+        });
       });
     });
 
-    it('performs a search for a command that does not exist', function (done) {
-      Feature.search('git yolo').then(function (docs) {
-        expect(docs.length).to.be(0);
-        done();
+    context('with a command query for a command that does not exist', function () {
+      it('finds no features', function (done) {
+        Feature.search('git yolo').then(function (docs) {
+          expect(docs.length).to.be(0);
+          done();
+        });
       });
     });
   });
