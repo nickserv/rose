@@ -5,7 +5,7 @@ var Feature = require('../feature');
 
 /* GET home page. */
 router.get('/', function(req, res) {
-  Feature.search(req.query.query, function (docs) {
+  Feature.search(req.query.query).then(function (docs) {
     res.render('index', {
       title: 'Rose',
       features: docs,
@@ -16,7 +16,7 @@ router.get('/', function(req, res) {
 
 /* GET JSON API. */
 router.get('/index.json', function(req, res) {
-  Feature.search(req.query.query, function (docs) {
+  Feature.search(req.query.query).then(function (docs) {
     res.json(docs);
   });
 });
