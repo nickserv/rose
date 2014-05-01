@@ -48,8 +48,6 @@ describe('Feature', function () {
       });
     });
 
-    it('discards extra hidden fields created by MongoDB');
-
     it('performs a search for a command that does not exist', function (done) {
       Feature.search('git yolo').then(function (docs) {
         expect(docs.length).to.be(0);
