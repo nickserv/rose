@@ -6,11 +6,17 @@ debug('Connecting to MongoDB at ' + mongoURI + '...');
 mongoose.connect(mongoURI);
 
 var featureSchema = new mongoose.Schema({
-  name: String,
-  examples: [{
-    technology: String,
-    snippets: [String]
-  }]
+  name: {
+    type: String,
+    required: true
+  },
+  examples: {
+    type: [{
+      technology: { type: String, required: true },
+      snippets: { type: [String], required: true }
+    }],
+    required: true
+  }
 });
 
 featureSchema.statics.search = function (query) {

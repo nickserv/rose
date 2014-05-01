@@ -3,11 +3,33 @@ var seeds = require('../seeds');
 var Feature = require('../feature');
 
 describe('Feature', function () {
-  before(seeds);
+  beforeEach(seeds);
 
   describe('schema', function () {
-    it('successfully creates a valid document');
-    it('fails at creating an invalid document');
+    it('successfully creates a valid document', function (done) {
+      Feature.create({
+        name: 'map over elements',
+        examples: [
+          { technology: 'Common Lisp', snippets: 'map' },
+          { technology: 'Haskell', snippets: 'map' },
+          { technology: 'JavaScript', snippets: 'Array#map' },
+          { technology: 'Python', snippets: 'map' },
+          { technology: 'Ruby', snippets: ['Enumerable#map', 'Enumerable#collect'] }
+        ]
+      }, function (err) {
+        expect(err).to.not.be.ok();
+        done();
+      });
+    });
+
+    it('fails at creating an invalid document', function (done) {
+      Feature.create({
+        name: 'no examples here'
+      }, function (err) {
+        expect(err).to.be.ok();
+        done();
+      });
+    });
   });
 
   describe('.search()', function () {
