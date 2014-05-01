@@ -16,8 +16,12 @@ var featureSchema = new mongoose.Schema({
 featureSchema.statics.search = function (query, callback) {
    this.find({ $or: [
                { name: new RegExp(query, 'i') },
-               { examples: { $elemMatch: { technology: new RegExp(query, 'i') }}},
-               { examples: { $elemMatch: { snippets: new RegExp(query, 'i') }}}
+               { examples: { $elemMatch: {
+                 $or: [
+                   { technology: new RegExp(query, 'i') },
+                   { snippets: new RegExp(query, 'i') }
+                 ]
+               }}},
             ]})
        .lean()
        .select('-__v -_id -examples._id')
