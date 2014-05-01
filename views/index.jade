@@ -3,13 +3,18 @@ extends layout
 mixin displayFeature(feature)
   .panel.panel-default
     .panel-heading: h2.panel-title= feature.name
-    ul.list-group: each example in feature.examples
-      +displayExample(example.technology, example.snippets)
+    table.table
+      thead
+        tr
+          th Technology
+          th Snippets
+      tbody: each example in feature.examples
+        +displayExample(example.technology, example.snippets)
 
 mixin displayExample(technology, snippets)
-  li.list-group-item: .row
-    .col-md-2.technology= technology
-    ul.col-md-10.list-inline
+  tr
+    td= technology
+    td: .list-inline
       each snippet in snippets
         li: code= snippet
 
