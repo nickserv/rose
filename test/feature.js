@@ -21,28 +21,28 @@ describe('Feature', function () {
     }];
 
     it('performs an empty search, returning all commands', function (done) {
-      Feature.search('', function (docs) {
+      Feature.search('').then(function (docs) {
         expect(docs.length).to.be(7);
         done();
       });
     });
 
     it('performs a case-insensitive search for a feature', function (done) {
-      Feature.search('add files', function (docs) {
+      Feature.search('add files').then(function (docs) {
         expect(docs).to.eql(gitAddFeature);
         done();
       });
     });
 
     it('performs a case-insensitive search for a technology', function (done) {
-      Feature.search('git', function (docs) {
+      Feature.search('git').then(function (docs) {
         expect(docs.length).to.be(6);
         done();
       });
     });
 
     it('performs a case-insensitive search for a command', function (done) {
-      Feature.search('git ADD', function (docs) {
+      Feature.search('git ADD').then(function (docs) {
         expect(docs).to.eql(gitAddFeature);
         done();
       });
@@ -51,7 +51,7 @@ describe('Feature', function () {
     it('discards extra hidden fields created by MongoDB');
 
     it('performs a search for a command that does not exist', function (done) {
-      Feature.search('git yolo', function (docs) {
+      Feature.search('git yolo').then(function (docs) {
         expect(docs.length).to.be(0);
         done();
       });

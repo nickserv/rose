@@ -13,21 +13,19 @@ var featureSchema = new mongoose.Schema({
   }]
 });
 
-featureSchema.statics.search = function (query, callback) {
-   this.find({ $or: [
-               { name: new RegExp(query, 'i') },
-               { examples: { $elemMatch: {
-                 $or: [
-                   { technology: new RegExp(query, 'i') },
-                   { snippets: new RegExp(query, 'i') }
-                 ]
-               }}},
-            ]})
-       .lean()
-       .select('-__v -_id -examples._id')
-       .exec(function (err, docs) {
-         callback(docs);
-       });
+featureSchema.statics.search = function (query) {
+  return this.find({ $or: [
+                     { name: new RegExp(query, 'i') },
+                     { examples: { $elemMatch: {
+                       $or: [
+                         { technology: new RegExp(query, 'i') },
+                         { snippets: new RegExp(query, 'i') }
+                       ]
+                     }}},
+                  ]})
+             .lean()
+             .select('-__v -_id -examples._id')
+             .exec();
 };
 
 module.exports = mongoose.model('Feature', featureSchema);
