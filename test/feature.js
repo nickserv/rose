@@ -11,6 +11,15 @@ describe('Feature', function () {
   });
 
   describe('.search()', function () {
+    var gitAddFeature = [{
+      name: 'add files',
+      examples: [
+        { technology: 'Git', snippets: ['git add'] },
+        { technology: 'Mercurial', snippets: ['hg add'] },
+        { technology: 'Subversion', snippets: ['svn add'] }
+      ]
+    }];
+
     it('performs an empty search, returning all commands', function (done) {
       Feature.search('', function (docs) {
         expect(docs.length).to.be(7);
@@ -18,17 +27,23 @@ describe('Feature', function () {
       });
     });
 
+    it('performs a case-insensitive search for a feature', function (done) {
+      Feature.search('add files', function (docs) {
+        expect(docs).to.eql(gitAddFeature);
+        done();
+      });
+    });
+
+    it('performs a case-insensitive search for a technology', function (done) {
+      Feature.search('git', function (docs) {
+        expect(docs.length).to.be(6);
+        done();
+      });
+    });
+
     it('performs a case-insensitive search for a command', function (done) {
       Feature.search('git ADD', function (docs) {
-        expect(docs).to.eql([{
-          name: 'add files',
-          examples: [
-            { technology: 'Git', snippets: ['git add'] },
-            { technology: 'Mercurial', snippets: ['hg add'] },
-            { technology: 'Subversion', snippets: ['svn add'] }
-          ]
-        }]);
-
+        expect(docs).to.eql(gitAddFeature);
         done();
       });
     });
