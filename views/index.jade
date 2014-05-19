@@ -32,8 +32,8 @@ block content
     .search-results
       h1 Results
       if features.length > 0
-        ol: each feature in features
-          li: +displayFeature(feature)
+        each feature in features
+          +displayFeature(feature)
       else
         h2.text-muted No results
 
