@@ -18,17 +18,16 @@ block content
       GitHub Repository
     h1: a(href='/') Rose
 
-  .search-bar
-    // search form
-    form.input-group.input-group-lg(role='search')
-      input.form-control(type='search', name='query', placeholder='Search for features, technologies, or code snippets', value=query, autofocus)
-      .input-group-btn
-        button.btn.btn-primary(type='submit')
-          span.glyphicon.glyphicon-search
+    .search-bar
+      // search form
+      form.input-group.input-group-lg(role='search')
+        input.form-control(type='search', name='query', placeholder='Search for features, technologies, or code snippets', value=query, autofocus)
+        .input-group-btn
+          button.btn.btn-primary(type='submit')
+            span.glyphicon.glyphicon-search
 
   // results
   .search-results
-    h1 Results
     if features.length > 0
       each feature in features
         +displayFeature(feature)
