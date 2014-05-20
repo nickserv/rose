@@ -9,3 +9,7 @@
 .search-results {
   margin: 0 auto;
 }
+
+.search-results dl {
+  margin-bottom: 0;
+}
