@@ -18,12 +18,12 @@ block content
       a(href='/') Rose 
       small An interactive, technical, and openly editable Rosetta Stone for developers.
 
-    // search form
-    form.input-group(role='search')
-      input.form-control(type='search', name='query', placeholder='Search for features, technologies, or code snippets', value=query, autofocus)
-      .input-group-btn
-        button.btn.btn-primary(type='submit')
-          span.glyphicon.glyphicon-search
+  // search form
+  form.search-form.input-group(role='search')
+    input.form-control(type='search', name='query', placeholder='Search for features, technologies, or code snippets', value=query, autofocus)
+    .input-group-btn
+      button.btn.btn-primary(type='submit')
+        span.glyphicon.glyphicon-search
 
   // results
   .search-results
