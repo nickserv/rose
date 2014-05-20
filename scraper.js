@@ -18,14 +18,17 @@ module.exports = function (callback) {
             }
           });
         } else if (index > 1) {
-          var feature = {};
+          var feature = { examples: [] };
           $(this).find('td').each(function (index) {
             if (index === 0) {
               feature.name = $(this).html();
             } else if ($(this).text()) {
               feature.examples = feature.examples || {};
               var technology = technologies[index - 1];
-              feature.examples[technology] = $(this).text();
+              feature.examples.push({
+                technology: technology,
+                snippets: $(this).text()
+              });
             }
           });
           features.push(feature);
