@@ -7,7 +7,7 @@ mixin displayFeature(feature)
       +displayExample(example.technology, example.snippets)
 
 mixin displayExample(technology, snippets)
-  dt= technology
+  dt: h4= technology
   each snippet in snippets
     dd: code= snippet
 
