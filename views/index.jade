@@ -12,6 +12,12 @@ mixin displayExample(technology, snippets)
     dd: code= snippet
 
 block content
+  // header
+  .page-header
+    a.btn.btn-default.pull-right(href='https://github.com/nicolasmccurdy/rose' target='_blank').
+      GitHub Repository
+    h1: a(href='/') Rose
+
   .search-bar
     // search form
     form.input-group.input-group-lg(role='search')
