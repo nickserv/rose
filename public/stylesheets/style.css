@@ -5,3 +5,7 @@
 .search-results dl {
   margin-bottom: 0;
 }
+
+code {
+  color: #333;
+}
