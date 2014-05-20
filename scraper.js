@@ -21,12 +21,10 @@ module.exports = function (callback) {
           var feature = { examples: [] };
           $(this).find('td').each(function (index) {
             if (index === 0) {
-              feature.name = $(this).html();
+              feature.name = $(this).text();
             } else if ($(this).text()) {
-              feature.examples = feature.examples || {};
-              var technology = technologies[index - 1];
               feature.examples.push({
-                technology: technology,
+                technology: technologies[index - 1],
                 snippets: $(this).text()
               });
             }
