@@ -14,11 +14,9 @@ mixin displayExample(technology, snippets)
 block content
   // header
   .page-header
-    a.btn.btn-default.pull-right(href='https://github.com/nicolasmccurdy/rose' target='_blank').
-      GitHub Repository
     h1
       a(href='/') Rose 
-      p: small An interactive, technical, and openly editable Rosetta Stone for developers.
+      small An interactive, technical, and openly editable Rosetta Stone for developers.
 
     // search form
     form.input-group.input-group-lg(role='search')
@@ -40,3 +38,5 @@ block content
   footer
     | &copy; 2014 
     a(href='http://thenickperson.com') Nicolas McCurdy
+    a.pull-right(href='https://github.com/nicolasmccurdy/rose' target='_blank').
+      GitHub Repository
