@@ -2,14 +2,14 @@ extends layout
 
 mixin displayFeature(feature)
   .panel.panel-default
-    .panel-heading: h2.panel-title= feature.name
+    .panel-heading: h2.panel-title!= helpers.highlightQuery(feature.name, query)
     dl.panel-body: each example in feature.examples
       +displayExample(example.technology, example.snippets)
 
 mixin displayExample(technology, snippets)
-  dt: h4= technology
+  dt: h4!= helpers.highlightQuery(technology, query)
   each snippet in snippets
-    dd: code= snippet
+    dd: code!= helpers.highlightQuery(snippet, query)
 
 block content
   // header
