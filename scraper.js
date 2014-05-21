@@ -1,7 +1,10 @@
+var Promise = require('mpromise');
 var cheerio = require('cheerio');
 var request = require('request');
 
-module.exports = function (callback) {
+module.exports = function () {
+  var promise = new Promise;
+
   request('http://hyperpolyglot.org/version-control', function (error, response, body) {
     if (!error && response.statusCode === 200) {
       var features = [];
@@ -33,7 +36,9 @@ module.exports = function (callback) {
         }
       });
 
-      callback(features);
+      promise.fulfill(features);
     }
   });
+
+  return promise;
 };

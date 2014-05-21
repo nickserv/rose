@@ -3,7 +3,7 @@ var Feature = require('../feature');
 
 describe('scraper', function () {
   it('generates JSON for valid Features', function (done) {
-    scraper(function (seeds) {
+    scraper().then(function (seeds) {
       seeds.forEach(function (seed, index, array) {
         (new Feature(seed)).validate(function (err) {
           if (err) {
