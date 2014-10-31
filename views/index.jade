@@ -4,12 +4,9 @@ mixin displayFeature(feature)
   .panel.panel-default
     .panel-heading: h2.panel-title!= helpers.highlightQuery(feature.name, query)
     dl.dl-horizontal.panel-body: each example in feature.examples
-      +displayExample(example.technology, example.snippets)
-
-mixin displayExample(technology, snippets)
-  dt!= helpers.highlightQuery(technology, query)
-  each snippet in snippets
-    dd: code!= helpers.highlightQuery(snippet, query)
+      dt!= helpers.highlightQuery(example.technology, query)
+      each snippet in example.snippets
+        dd: code!= helpers.highlightQuery(snippet, query)
 
 block content
   // header
