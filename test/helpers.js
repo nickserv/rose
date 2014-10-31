@@ -11,6 +11,12 @@ describe('helpers', function () {
       });
     });
 
+    context('when the query is empty', function () {
+      it('leaves the string alone', function () {
+        expect(helpers.highlightQuery(string, '')).to.be(string);
+      });
+    });
+
     context('when the query exists once', function () {
       it('surrounds the query once', function () {
         expect(helpers.highlightQuery(string, 'git'))
