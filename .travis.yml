@@ -1,2 +1,9 @@
 language: node_js
 services: mongodb
+addons:
+  code_climate:
+    repo_token: 1251f2891d75a12f4529fd596ba0f99aec3e7858cb3db486ecc3e2bc0721367c
+script:
+  - npm test --coverage
+after_script:
+  - node_modules/.bin/codeclimate < coverage/lcov.info

@@ -20,6 +20,7 @@
     "static-favicon": "~1.0.0"
   },
   "devDependencies": {
+    "codeclimate-test-reporter": "0.0.4",
     "expect.js": "^0.3.1",
     "istanbul": "^0.3.2",
     "mocha": "^1.18.2"
