@@ -1,6 +1,8 @@
 # Rose
 [![Build Status](https://travis-ci.org/nicolasmccurdy/rose.svg?branch=master)](https://travis-ci.org/nicolasmccurdy/rose)
+[![Test Coverage](https://codeclimate.com/github/nicolasmccurdy/rose/badges/coverage.svg)](https://codeclimate.com/github/nicolasmccurdy/rose)
 [![Dependency Status](https://gemnasium.com/nicolasmccurdy/rose.svg)](https://gemnasium.com/nicolasmccurdy/rose)
+[![Code Climate](https://codeclimate.com/github/nicolasmccurdy/rose/badges/gpa.svg)](https://codeclimate.com/github/nicolasmccurdy/rose)
 
 An interactive, technical, and openly editable [Rosetta
 Stone](http://en.wikipedia.org/wiki/Rosetta_Stone) for developers.
