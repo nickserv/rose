@@ -1,4 +1,4 @@
-var Promise = require('mpromise');
+var Promise = require('es6-promise').Promise;
 var cheerio = require('cheerio');
 var request = require('request');
 
@@ -40,19 +40,17 @@ function scrapeTable($table, $) {
 }
 
 module.exports = function () {
-  var promise = new Promise;
+  return new Promise(function (resolve) {
+    request('http://hyperpolyglot.org/version-control', function (error, response, body) {
+      if (!error) {
+        var $ = cheerio.load(body);
 
-  request('http://hyperpolyglot.org/version-control', function (error, response, body) {
-    if (!error) {
-      var $ = cheerio.load(body);
+        // Find the first table.
+        var features = scrapeTable($('.wiki-content-table').first(), $);
 
-      // Find the first table.
-      var features = scrapeTable($('.wiki-content-table').first(), $);
-
-      // Fulfill the promise.
-      promise.fulfill(features);
-    }
-  });
-
-  return promise;
+        // Fulfill the promise.
+        resolve(features);
+      }
+    });
+  })
 };
