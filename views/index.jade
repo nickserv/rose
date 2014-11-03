@@ -4,12 +4,9 @@ mixin displayFeature(feature)
   .panel.panel-default
     .panel-heading: h2.panel-title!= helpers.highlightQuery(feature.name, query)
     dl.dl-horizontal.panel-body: each example in feature.examples
-      +displayExample(example.technology, example.snippets)
-
-mixin displayExample(technology, snippets)
-  dt!= helpers.highlightQuery(technology, query)
-  each snippet in snippets
-    dd: code!= helpers.highlightQuery(snippet, query)
+      dt!= helpers.highlightQuery(example.technology, query)
+      each snippet in example.snippets
+        dd: code!= helpers.highlightQuery(snippet, query)
 
 block content
   // header
@@ -37,6 +34,6 @@ block content
   hr
   footer
     | &copy; 2014 
-    a(href='http://thenickperson.com') Nicolas McCurdy
+    a(href='http://nicolasmccurdy.com/') Nicolas McCurdy
     a.pull-right(href='https://github.com/nicolasmccurdy/rose' target='_blank').
       GitHub Repository

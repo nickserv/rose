@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "test": "node_modules/.bin/mocha --reporter spec"
+    "test": "node_modules/.bin/istanbul test node_modules/.bin/_mocha -- --reporter spec"
   },
   "engines": {
     "node": "0.10.x"
@@ -23,7 +23,9 @@
     "static-favicon": "~1.0.0"
   },
   "devDependencies": {
+    "codeclimate-test-reporter": "0.0.4",
     "expect.js": "^0.3.1",
+    "istanbul": "^0.3.2",
     "mocha": "^1.18.2"
   }
 }
