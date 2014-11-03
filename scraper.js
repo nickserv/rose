@@ -1,4 +1,4 @@
-var Promise = require('es6-promise').Promise;
+require('es6-promise').polyfill();
 var cheerio = require('cheerio');
 var request = require('request');
 
