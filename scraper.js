@@ -52,19 +52,27 @@ function scrapeTable($table, $) {
   return features;
 }
 
-// Scrape features from the Hyperpolyglot website.
-module.exports = function () {
-  return new Promise(function (resolve) {
-    request('http://hyperpolyglot.org/version-control', function (error, response, body) {
-      if (!error) {
-        var $ = cheerio.load(body);
-
-        // Find the first table.
-        var features = scrapeTable($('.wiki-content-table').first(), $);
-
-        // Fulfill the promise.
-        resolve(features);
+// A wrapper for request() that returns a Promise instead of using callbacks.
+function requestPromise(link) {
+  return new Promise(function (resolve, reject) {
+    request(link, function (error, response, body) {
+      if (error) {
+        reject(error);
+      } else {
+        resolve(body);
       }
     });
-  })
+  });
+}
+
+// Scrape features from the Hyperpolyglot website.
+module.exports = function () {
+  return requestPromise('http://hyperpolyglot.org/version-control').then(function (body) {
+    var $ = cheerio.load(body);
+
+    // Find the first table.
+    return scrapeTable($('.wiki-content-table').first(), $);
+  }).catch(function (e) {
+    console.error(e);
+  });
 };
