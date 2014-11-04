@@ -7,7 +7,7 @@ var SECOND = 1000;
 
 describe('scraper', function () {
   before(function () {
-    var tableHTML = fs.readFileSync(__dirname + '/table.html', 'utf8');
+    var tableHTML = fs.readFileSync(__dirname + '/pages/table.html', 'utf8');
     this.$ = cheerio.load(tableHTML);
 
     this.expectedTechnologies = ['git', 'mercurial'];
