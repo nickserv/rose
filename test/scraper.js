@@ -39,8 +39,21 @@ describe('scraper', function () {
   });
 
   context('.scrapeTable()', function () {
-    it('scrapes all features from a table', function () {
-      expect(scraper.scrapeTable(this.$('table'), this.$)).to.eql(this.expectedFeatures);
+    context('with a table with no extra data', function () {
+      it('scrapes all features from the table', function () {
+        expect(scraper.scrapeTable(this.$('table'), this.$)).to.eql(this.expectedFeatures);
+      });
+    });
+
+    context('with a table with extra data', function () {
+      before(function () {
+        var tableHTML = fs.readFileSync(__dirname + '/pages/table_extra.html', 'utf8');
+        this.$ = cheerio.load(tableHTML);
+      });
+
+      it('scrapes all features from the table, ignoring extra data', function () {
+        expect(scraper.scrapeTable(this.$('table'), this.$)).to.eql(this.expectedFeatures);
+      });
     });
   });
 
