@@ -28,13 +28,13 @@ describe('scraper', function () {
 
   context('.scrapeTechnologies()', function () {
     it('scrapes all technology names from a table header row', function () {
-      expect(scraper.scrapeTechnologies(this.$('tr').eq(1), this.$)).to.eql(this.expectedTechnologies);
+      expect(scraper.scrapeTechnologies(this.$('tr').eq(0), this.$)).to.eql(this.expectedTechnologies);
     });
   });
 
   context('.scrapeFeature()', function () {
     it('scrapes a feature from a table row', function () {
-      expect(scraper.scrapeFeature(this.$('tr').eq(2), this.$, this.expectedTechnologies)).to.eql(this.expectedFeatures[0]);
+      expect(scraper.scrapeFeature(this.$('tr').eq(1), this.$, this.expectedTechnologies)).to.eql(this.expectedFeatures[0]);
     });
   });
 

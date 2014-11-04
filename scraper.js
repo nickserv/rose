@@ -43,9 +43,9 @@ module.exports = {
     var technologies = [];
 
     $table.find('tr').each(function (index) {
-      if (index === 1) {
+      if ($(this).find('th').length) {
         technologies = module.exports.scrapeTechnologies($(this), $);
-      } else if (index > 1) {
+      } else if ($(this).find('td').first().text()) {
         features.push(module.exports.scrapeFeature($(this), $, technologies));
       }
     });
