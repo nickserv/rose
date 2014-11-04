@@ -73,7 +73,7 @@ module.exports = {
 
       // Find the first table.
       return module.exports.scrapeTable($('.wiki-content-table').first(), $);
-    }).catch(function (e) {
+    }, function (e) {
       console.error(e);
     });
   }
