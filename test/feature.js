@@ -3,8 +3,6 @@ var seeds = require('../seeds');
 var Feature = require('../feature');
 
 describe('Feature', function () {
-  beforeEach(seeds);
-
   describe('schema', function () {
     it('creates a valid Feature', function (done) {
       Feature.create({
@@ -41,6 +39,12 @@ describe('Feature', function () {
         { technology: 'Subversion', snippets: ['svn add'] }
       ]
     }];
+
+    before(function (done) {
+      seeds().then(function () {
+        done();
+      });
+    });
 
     context('with an empty query', function () {
       it('finds all features', function (done) {
