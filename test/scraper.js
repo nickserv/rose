@@ -46,11 +46,23 @@ describe('scraper', function () {
 
   context('.requestPromise()', function () {
     context('after a successful request', function () {
-      xit('wraps request() and returns a Promise that will be resolved');
+      it('wraps request() and returns a Promise that will be resolved', function (done) {
+        scraper.requestPromise('http://www.google.com/').then(function () {
+          done();
+        }, function () {
+          done(new Error('The response should resolve'));
+        });
+      });
     });
 
     context('after a failed request', function () {
-      xit('wraps request() and returns a Promise that will be rejected');
+      it('wraps request() and returns a Promise that will be rejected', function (done) {
+        scraper.requestPromise('http://www.google.com/404').then(function () {
+          done(new Error('The response should not resolve'));
+        }, function () {
+          done();
+        });
+      });
     });
   });
 

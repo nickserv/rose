@@ -57,7 +57,7 @@ module.exports = {
   requestPromise: function (link) {
     return new Promise(function (resolve, reject) {
       request(link, function (error, response, body) {
-        if (error) {
+        if (error || response.statusCode != 200) {
           reject(error);
         } else {
           resolve(body);
