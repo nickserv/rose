@@ -90,7 +90,7 @@ module.exports = {
 
       // Find the first table.
       return module.exports.scrapeTable($('.wiki-content-table').first(), $);
-    }, function (e) {
+    }).catch(function (e) {
       console.error(e);
     });
   }

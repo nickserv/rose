@@ -79,7 +79,7 @@ describe('scraper', function () {
       it('wraps request() and returns a Promise that will be resolved', function (done) {
         scraper.requestPromise('http://www.google.com/').then(function () {
           done();
-        }, function () {
+        }).catch(function () {
           done(new Error('The response should resolve'));
         });
       });
@@ -89,7 +89,7 @@ describe('scraper', function () {
       it('wraps request() and returns a Promise that will be rejected', function (done) {
         scraper.requestPromise('http://www.google.com/404').then(function () {
           done(new Error('The response should not resolve'));
-        }, function () {
+        }).catch(function () {
           done();
         });
       });
