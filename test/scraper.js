@@ -1,6 +1,6 @@
 var fs = require('fs');
 var cheerio = require('cheerio');
-var expect = require('expect.js');
+var expect = require('chai').expect;
 var scraper = require('../scraper');
 var Feature = require('../feature');
 var SECOND = 1000;

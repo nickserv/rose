@@ -1,4 +1,4 @@
-var expect = require('expect.js');
+var expect = require('chai').expect;
 var seeds = require('../seeds');
 var Feature = require('../feature');
 
@@ -15,7 +15,7 @@ describe('Feature', function () {
           { technology: 'Ruby', snippets: ['Enumerable#map', 'Enumerable#collect'] }
         ]
       }, function (err) {
-        expect(err).to.not.be.ok();
+        expect(err).to.not.exist;
         done();
       });
     });
@@ -24,7 +24,7 @@ describe('Feature', function () {
       Feature.create({
         name: 'no examples here'
       }, function (err) {
-        expect(err).to.be.ok();
+        expect(err).to.exist;
         done();
       });
     });
@@ -49,7 +49,7 @@ describe('Feature', function () {
     context('with an empty query', function () {
       it('finds all features', function (done) {
         Feature.search('').then(function (docs) {
-          expect(docs.length).to.be(7);
+          expect(docs.length).to.equal(7);
           done();
         });
       });
@@ -67,7 +67,7 @@ describe('Feature', function () {
     context('with a technology query', function () {
       it('finds all matching features', function (done) {
         Feature.search('git').then(function (docs) {
-          expect(docs.length).to.be(6);
+          expect(docs.length).to.equal(6);
           done();
         });
       });
@@ -85,7 +85,7 @@ describe('Feature', function () {
     context('with a command query for a command that does not exist', function () {
       it('finds no features', function (done) {
         Feature.search('git yolo').then(function (docs) {
-          expect(docs.length).to.be(0);
+          expect(docs.length).to.equal(0);
           done();
         });
       });
