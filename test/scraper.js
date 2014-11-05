@@ -1,6 +1,7 @@
 var fs = require('fs');
 var cheerio = require('cheerio');
 var expect = require('chai').expect;
+var url = require('url');
 var scraper = require('../scraper');
 var Feature = require('../feature');
 var SECOND = 1000;
@@ -56,6 +57,22 @@ describe('scraper', function () {
       });
     });
   });
+
+  context('.getPages()', function () {
+    it('gets a list of all Rosetta Stone pages from http://hyperpolyglot.org/', function (done) {
+      scraper.getPages().then(function (pages) {
+        expect(pages.length).to.be.above(0);
+        pages.forEach(function (page) {
+          var pageURL = url.parse(page);
+          expect(pageURL.host).to.equal('hyperpolyglot.org');
+          expect(pageURL.pathname).to.match(/[a-z-]+/);
+        });
+        done();
+      }).catch(function (err) {
+        done(err);
+      });
+    });
+  })
 
   context('.requestPromise()', function () {
     context('after a successful request', function () {

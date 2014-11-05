@@ -1,6 +1,7 @@
 require('es6-promise').polyfill();
 var cheerio = require('cheerio');
 var request = require('request');
+var url     = require('url');
 
 module.exports = {
   // Scrape all technology names from a table header row.
@@ -53,6 +54,22 @@ module.exports = {
     return features;
   },
 
+  // Gets a list of all Rosetta Stone pages from http://hyperpolyglot.org/.
+  getPages: function () {
+    return module.exports.requestPromise('http://hyperpolyglot.org/').then(function (body) {
+      var links = [];
+      var $ = cheerio.load(body);
+      $('a').each(function () {
+        var currentHREF = $(this).attr('href');
+        var currentURL = url.parse(currentHREF);
+        if (!currentURL.host && currentURL.path !== '/') {
+          links.push(url.resolve('http://hyperpolyglot.org/', currentHREF));
+        }
+      });
+      return links;
+    });
+  },
+
   // A wrapper for request() that returns a Promise instead of using callbacks.
   requestPromise: function (link) {
     return new Promise(function (resolve, reject) {
@@ -77,4 +94,4 @@ module.exports = {
       console.error(e);
     });
   }
-}
+};
