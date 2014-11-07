@@ -99,15 +99,14 @@ describe('scraper', function () {
     it('scrapes features from the Hyperpolyglot website', function (done) {
       this.timeout(10 * SECOND);
       scraper.scrape().then(function (seeds) {
-        seeds.forEach(function (seed, index, array) {
+        seeds.forEach(function (seed) {
           (new Feature(seed)).validate(function (err) {
             if (err) {
               done(err);
-            } else if (index === array.length - 1) {
-              done();
             }
           });
         });
+        done();
       });
     });
   });
