@@ -1,4 +1,4 @@
-var seeds = require('../seeds');
+require('./test_helper');
 
 describe('seeds', function () {
   it('clears the database');

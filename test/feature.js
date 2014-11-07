@@ -1,6 +1,4 @@
-var expect = require('chai').expect;
-var seeds = require('../seeds');
-var Feature = require('../feature');
+require('./test_helper');
 
 describe('Feature', function () {
   describe('schema', function () {

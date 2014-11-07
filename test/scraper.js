@@ -1,9 +1,8 @@
-var fs = require('fs');
+require('./test_helper');
 var cheerio = require('cheerio');
-var expect = require('chai').expect;
+var fs = require('fs');
 var url = require('url');
-var scraper = require('../scraper');
-var Feature = require('../feature');
+
 var SECOND = 1000;
 
 describe('scraper', function () {

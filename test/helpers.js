@@ -1,5 +1,4 @@
-var expect = require('chai').expect;
-var helpers = require('../helpers');
+require('./test_helper');
 
 describe('helpers', function () {
   describe('.highlightQuery()', function () {
