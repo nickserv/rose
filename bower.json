@@ -1,0 +1,7 @@
+{
+  "name": "rose",
+  "private": true,
+  "dependencies": {
+    "bootswatch": "~3.3.0"
+  }
+}
