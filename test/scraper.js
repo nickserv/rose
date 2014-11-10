@@ -98,7 +98,7 @@ describe('scraper', function () {
 
   context('.scrape()', function () {
     it('scrapes features from the Hyperpolyglot website', function (done) {
-      this.timeout(10 * SECOND);
+      this.timeout(60 * SECOND);
       scraper.scrape().then(function (seeds) {
         seeds.forEach(function (seed) {
           (new Feature(seed)).validate(function (err) {

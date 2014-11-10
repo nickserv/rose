@@ -90,15 +90,26 @@ module.exports = {
     });
   },
 
-  // Scrape features from the Hyperpolyglot website.
-  scrape: function () {
-    return module.exports.requestPromise('http://hyperpolyglot.org/version-control').then(function (body) {
+  scrapePage: function (link) {
+    return module.exports.requestPromise(link).then(function (body) {
       var $ = cheerio.load(body);
 
       // Find the first table.
       return module.exports.scrapeTable($('.wiki-content-table').first(), $);
-    }).catch(function (e) {
-      console.error(e);
     });
+  },
+
+  // Scrape features from the Hyperpolyglot website.
+  scrape: function () {
+    return module.exports.getPages().then(function (links) {
+      // TODO: Don't blacklist the text module editors page
+      links = links.filter(function (link) {
+        return link.indexOf('/text-mode-editors') == -1;
+      });
+
+      return Promise.all(links.map(module.exports.scrapePage));
+    }).then(function (featureSets) {
+      return Array.prototype.concat.apply([], featureSets);
+    }).catch(console.error);
   }
 };
