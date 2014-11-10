@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
+    "install": "node_modules/.bin/bower install",
     "start": "node ./bin/www",
     "test": "node_modules/.bin/istanbul test node_modules/.bin/_mocha -- --reporter spec"
   },
@@ -11,6 +12,7 @@
   },
   "dependencies": {
     "body-parser": "~1.0.0",
+    "bower": "^1.3.12",
     "cheerio": "^0.15.0",
     "cookie-parser": "~1.0.1",
     "debug": "~0.8.0",
