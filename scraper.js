@@ -45,7 +45,12 @@ module.exports = {
 
     $table.find('tr').each(function (index) {
       if ($(this).find('th').length > 1) {
-        technologies = module.exports.scrapeTechnologies($(this), $);
+        var newTechnologies = module.exports.scrapeTechnologies($(this), $);
+
+        // Hard coded fix for an issue with Hyperpolyglot's page on MATLAB
+        if (technologies.indexOf('matlab') == -1) {
+          technologies = newTechnologies
+        }
       } else {
         if ($(this).find('td').first().text()) {
           var feature = module.exports.scrapeFeature($(this), $, technologies);
@@ -102,8 +107,7 @@ module.exports = {
     return module.exports.getPages().then(function (links) {
       // TODO: Don't blacklist these pages
       links = links.filter(function (link) {
-        return link.indexOf('/text-mode-editors') == -1 &&
-               link.indexOf('/numerical-analysis') == -1;
+        return link.indexOf('/text-mode-editors') == -1;
       });
 
       return Promise.all(links.map(module.exports.scrapePage));
