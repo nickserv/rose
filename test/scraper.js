@@ -50,6 +50,21 @@ describe('scraper', function () {
       before(function () {
         var tableHTML = fs.readFileSync(__dirname + '/pages/table_extra.html', 'utf8');
         this.$ = cheerio.load(tableHTML);
+
+        this.expectedFeatures = [{
+          name: 'add files',
+          examples: [
+            { technology: 'git', snippets: 'git add' },
+            { technology: 'mercurial', snippets: 'hg add' }
+          ]
+        }, {
+          name: 'show revision information line by line',
+          examples: [
+            { technology: 'git', snippets: 'git blame' },
+            { technology: 'mercurial', snippets: 'hg annotate' },
+            { technology: 'svn', snippets: 'svn blame' }
+          ]
+        }];
       });
 
       it('scrapes all features from the table, ignoring extra data', function () {
@@ -103,7 +118,6 @@ describe('scraper', function () {
         seeds.forEach(function (seed) {
           (new Feature(seed)).validate(function (err) {
             if (err) {
-              debug(error);
               done(err);
             }
           });

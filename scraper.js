@@ -42,13 +42,11 @@ module.exports = {
   scrapeTable: function ($table, $) {
     var features = [];
     var technologies = [];
-    var inHeaders = true;
 
     $table.find('tr').each(function (index) {
-      if ($(this).find('th').length && inHeaders) {
+      if ($(this).find('th').length > 1) {
         technologies = module.exports.scrapeTechnologies($(this), $);
       } else {
-        inHeaders = false;
         if ($(this).find('td').first().text()) {
           var feature = module.exports.scrapeFeature($(this), $, technologies);
           if (feature) {
@@ -102,9 +100,10 @@ module.exports = {
   // Scrape features from the Hyperpolyglot website.
   scrape: function () {
     return module.exports.getPages().then(function (links) {
-      // TODO: Don't blacklist the text module editors page
+      // TODO: Don't blacklist these pages
       links = links.filter(function (link) {
-        return link.indexOf('/text-mode-editors') == -1;
+        return link.indexOf('/text-mode-editors') == -1 &&
+               link.indexOf('/numerical-analysis') == -1;
       });
 
       return Promise.all(links.map(module.exports.scrapePage));
