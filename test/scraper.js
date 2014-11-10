@@ -1,5 +1,6 @@
 require('./test_helper');
 var cheerio = require('cheerio');
+var debug = require('debug')('rose');
 var fs = require('fs');
 var url = require('url');
 
@@ -102,6 +103,7 @@ describe('scraper', function () {
         seeds.forEach(function (seed) {
           (new Feature(seed)).validate(function (err) {
             if (err) {
+              debug(error);
               done(err);
             }
           });

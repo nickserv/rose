@@ -35,19 +35,26 @@ module.exports = {
         });
       }
     });
-    return feature;
+    return feature.examples.length ? feature : undefined;
   },
 
   // Scrape all features from a table.
   scrapeTable: function ($table, $) {
     var features = [];
     var technologies = [];
+    var inHeaders = true;
 
     $table.find('tr').each(function (index) {
-      if ($(this).find('th').length) {
+      if ($(this).find('th').length && inHeaders) {
         technologies = module.exports.scrapeTechnologies($(this), $);
-      } else if ($(this).find('td').first().text()) {
-        features.push(module.exports.scrapeFeature($(this), $, technologies));
+      } else {
+        inHeaders = false;
+        if ($(this).find('td').first().text()) {
+          var feature = module.exports.scrapeFeature($(this), $, technologies);
+          if (feature) {
+            features.push(feature);
+          }
+        }
       }
     });
 
