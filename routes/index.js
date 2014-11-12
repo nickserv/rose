@@ -2,7 +2,6 @@ var express = require('express');
 var router = express.Router();
 
 var Feature = require('../feature');
-var helpers = require('../helpers');
 
 /* GET home page. */
 router.get('/', function(req, res) {
@@ -10,8 +9,7 @@ router.get('/', function(req, res) {
     res.render('index', {
       title: 'Rose',
       features: docs,
-      query: req.query.query,
-      helpers: helpers
+      query: req.query.query
     });
   });
 });
