@@ -17,14 +17,11 @@ block content
   // results
   .search-results
     .panel.panel-default(ng-repeat='feature in features')
-      // TODO: Highlight query
-      .panel-heading: h2.panel-title(ng-bind='feature.name')
+      .panel-heading: h2.panel-title(ng-bind-html='feature.name | highlight:query')
       dl.dl-horizontal.panel-body
-        // TODO: Highlight query
-        dt(ng-bind='example.technology', ng-repeat-start='example in feature.examples')
+        dt(ng-bind-html='example.technology | highlight:query', ng-repeat-start='example in feature.examples')
         dd(ng-repeat='snippet in listify(example.snippets)', ng-repeat-end)
-          // TODO: Highlight query
-          pre: code(ng-bind='snippet')
+          pre: code(ng-bind-html='snippet | highlight:query')
     h2.text-muted(ng-if='!features') No results
 
   // footer

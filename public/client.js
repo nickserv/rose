@@ -1,4 +1,11 @@
 angular.module('rose', [])
+  .filter('highlight', function ($sce) {
+    return function (string, query) {
+      var matchString = '<span class="text-primary">$&</span>';
+      var result = query ? string.replace(new RegExp(query, 'gi'), matchString) : string;
+      return $sce.trustAsHtml(result);
+    };
+  })
   .controller('SearchController', function ($scope, $http) {
     $scope.updateResults = function () {
       $http.get('/index.json', {
