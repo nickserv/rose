@@ -24,7 +24,7 @@ block content
         dt(ng-bind='example.technology', ng-repeat-start='example in feature.examples')
         dd(ng-repeat='snippet in listify(example.snippets)', ng-repeat-end)
           // TODO: Highlight query
-          code(ng-bind='snippet')
+          pre: code(ng-bind='snippet')
     h2.text-muted(ng-if='!features') No results
 
   // footer
