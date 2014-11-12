@@ -18,10 +18,12 @@ block content
   .search-results
     .panel.panel-default(ng-repeat='feature in features')
       .panel-heading: h2.panel-title(ng-bind-html='feature.name | highlight:query')
-      dl.dl-horizontal.panel-body
-        dt(ng-bind-html='example.technology | highlight:query', ng-repeat-start='example in feature.examples')
-        dd(ng-repeat='snippet in listify(example.snippets)', ng-repeat-end)
-          pre: code(ng-bind-html='snippet | highlight:query')
+      table.table.table-striped
+        tr(ng-repeat='example in feature.examples')
+          td(ng-bind-html='example.technology | highlight:query')
+          td
+            div(ng-repeat='snippet in listify(example.snippets)')
+              pre: code(ng-bind-html='snippet | highlight:query')
     h2.text-muted(ng-if='!features') No results
 
   // footer
