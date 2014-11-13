@@ -5,7 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var routes = require('./routes/index');
+var Feature = require('./models/feature');
 
 var app = express();
 
@@ -22,7 +22,17 @@ app.use(cookieParser());
 app.use(require('less-middleware')(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', routes);
+/* GET home page. */
+app.get('/', function(req, res) {
+  res.render('index');
+});
+
+/* GET JSON API. */
+app.get('/index.json', function(req, res) {
+  Feature.search(req.query.query).then(function (docs) {
+    res.json(docs);
+  });
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

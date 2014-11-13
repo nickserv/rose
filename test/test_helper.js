@@ -1,6 +1,8 @@
 // Testing libraries
 global.expect = require('chai').expect;
+global.request = require('supertest');
 
 // Rose modules
-global.Feature = require('../feature');
-global.seeds = require('../seeds');
+global.app = require('../app');
+global.Feature = require('../models/feature');
+global.seeds = require('../models/seeds');

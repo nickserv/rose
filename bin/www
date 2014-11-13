@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 var debug = require('debug')('rose');
 var app = require('../app');
-var seeds = require('../seeds');
+var seeds = require('../models/seeds');
 
 app.set('port', process.env.PORT || 3000);
 
