@@ -1,6 +1,12 @@
 require('./test_helper');
 
 describe('app', function () {
+  before(function (done) {
+    seeds().then(function () {
+      done();
+    });
+  });
+
   describe('GET /', function () {
     it('responds with success', function (done) {
       request(app)
