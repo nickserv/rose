@@ -1,11 +1,14 @@
 doctype html
-html(lang='en')
+html(lang='en', ng-app='rose', ng-controller='SearchController')
   head
     meta(charset='utf-8')
-    title= title
+    title Rose
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
     // styles
     link(rel='stylesheet', href='/bower_components/bootswatch/simplex/bootstrap.min.css')
-    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/client.css')
   body.container
     block content
+    // scripts
+    script(src='/bower_components/angular/angular.js')
+    script(src='/client.js')

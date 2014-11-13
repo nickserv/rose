@@ -1,13 +1,5 @@
 extends layout
 
-mixin displayFeature(feature)
-  .panel.panel-default
-    .panel-heading: h2.panel-title!= helpers.highlightQuery(feature.name, query)
-    dl.dl-horizontal.panel-body: each example in feature.examples
-      dt!= helpers.highlightQuery(example.technology, query)
-      each snippet in example.snippets
-        dd: code!= helpers.highlightQuery(snippet, query)
-
 block content
   // header
   .page-header
@@ -16,19 +8,22 @@ block content
       small An interactive, technical, and openly editable Rosetta Stone for developers.
 
   // search form
-  form.search-form.input-group(role='search')
-    input.form-control(type='search', name='query', placeholder='Search for features, technologies, or code snippets', value=query, autofocus)
+  form.search-form.input-group(role='search', ng-submit='updateResults()')
+    input.form-control(type='search', ng-model='query', placeholder='Search for features, technologies, or code snippets', ng-change='updateResults()', autofocus)
     .input-group-btn
       button.btn.btn-primary(type='submit')
         span.glyphicon.glyphicon-search
 
   // results
   .search-results
-    if features.length > 0
-      each feature in features
-        +displayFeature(feature)
-    else
-      h2.text-muted No results
+    .panel.panel-default(ng-repeat='feature in features')
+      .panel-heading: h2.panel-title(ng-bind-html='feature.name | highlight:query')
+      table.table.table-striped
+        tr(ng-repeat='example in feature.examples')
+          td(ng-bind-html='example.technology | highlight:query')
+          td: pre(ng-repeat='snippet in listify(example.snippets)')
+            code(ng-bind-html='snippet | highlight:query')
+    h2.text-muted(ng-if='!features') No results
 
   // footer
   hr

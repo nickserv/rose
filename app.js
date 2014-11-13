@@ -1,10 +1,8 @@
 var express = require('express');
 var path = require('path');
 var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
 
-var routes = require('./routes/index');
+var Feature = require('./models/feature');
 
 var app = express();
 
@@ -13,12 +11,19 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
 app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded());
-app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', routes);
+/* GET home page. */
+app.get('/', function(req, res) {
+  res.render('index');
+});
+
+/* GET JSON API. */
+app.get('/index.json', function(req, res) {
+  Feature.search(req.query.query).then(function (docs) {
+    res.json(docs);
+  });
+});
 
 /// catch 404 and forwarding to error handler
 app.use(function(req, res, next) {
