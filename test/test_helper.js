@@ -2,5 +2,5 @@
 global.expect = require('chai').expect;
 
 // Rose modules
-global.Feature = require('../feature');
-global.seeds = require('../seeds');
+global.Feature = require('../models/feature');
+global.seeds = require('../models/seeds');

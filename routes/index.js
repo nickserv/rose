@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-var Feature = require('../feature');
+var Feature = require('../models/feature');
 
 /* GET home page. */
 router.get('/', function(req, res) {
