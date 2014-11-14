@@ -19,7 +19,7 @@ block content
           td(ng-bind-html='example.technology | highlight:query')
           td: pre(ng-repeat='snippet in listify(example.snippets)')
             code(ng-bind-html='snippet | highlight:query')
-    h2.text-muted(ng-if='!features') No results
+    h2.text-muted(ng-if='!features || features.length === 0') No results
 
   // footer
   hr
