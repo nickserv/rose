@@ -1,15 +1,48 @@
+body {
+  font-family: "Source Sans Pro", sans-serif;
+  background-color: #eee;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #ff4136;
+}
+
 .container {
+  margin: 0 auto;
   max-width: 600px;
 }
 
-.search-results dl {
-  margin-bottom: 0;
+.card {
+  margin: 20px 0;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #fff;
+
+  pre {
+    margin: 0;
+  }
+
+  table {
+    width: 100%;
+
+    tr td:nth-child(1) {
+      width: 25%;
+    }
+
+    tr td:nth-child(2) {
+      width: 75%;
+    }
+  }
+}
+
+.panel-title {
+  margin-top: 0;
 }
 
 code {
-  color: #333;
+  font-family: "Source Code Pro", monospace;
 }
 
-.search-form {
-  margin: 20px 0;
+mark {
+  background-color: yellow;
 }
