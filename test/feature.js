@@ -38,54 +38,35 @@ describe('Feature', function () {
       ]
     }];
 
-    before(function (done) {
-      seeds().then(function () {
-        done();
-      });
-    });
+    before(seeds);
 
     context('with an empty query', function () {
-      it('finds all features', function (done) {
-        Feature.search('').then(function (docs) {
-          expect(docs.length).to.equal(7);
-          done();
-        });
+      it('finds all features', function () {
+        return expect(Feature.search('')).to.eventually.have.length(7);
       });
     });
 
     context('with a feature query', function () {
-      it('finds all matching features', function (done) {
-        Feature.search('add files').then(function (docs) {
-          expect(docs).to.eql(gitAddFeature);
-          done();
-        });
+      it('finds all matching features', function () {
+        return expect(Feature.search('add files')).to.eventually.eql(gitAddFeature);
       });
     });
 
     context('with a technology query', function () {
-      it('finds all matching features', function (done) {
-        Feature.search('git').then(function (docs) {
-          expect(docs.length).to.equal(6);
-          done();
-        });
+      it('finds all matching features', function () {
+        return expect(Feature.search('git')).to.eventually.have.length(6);
       });
     });
 
     context('with a command query', function () {
-      it('finds all matching features', function (done) {
-        Feature.search('git ADD').then(function (docs) {
-          expect(docs).to.eql(gitAddFeature);
-          done();
-        });
+      it('finds all matching features', function () {
+        return expect(Feature.search('git ADD')).to.eventually.eql(gitAddFeature);
       });
     });
 
     context('with a command query for a command that does not exist', function () {
-      it('finds no features', function (done) {
-        Feature.search('git yolo').then(function (docs) {
-          expect(docs.length).to.equal(0);
-          done();
-        });
+      it('finds no features', function () {
+        return expect(Feature.search('git yolo')).to.eventually.have.length(0);
       });
     });
   });
