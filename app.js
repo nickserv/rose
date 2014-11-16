@@ -17,11 +17,6 @@ app.use(logger('dev'));
 app.use(require('less-middleware')(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 
-/* GET home page. */
-app.get('/', function (req, res) {
-  res.render('index');
-});
-
 /* GET JSON API. */
 app.get('/index.json', function (req, res) {
   Feature.search(req.query.query).then(function (docs) {
