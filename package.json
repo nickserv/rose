@@ -3,9 +3,9 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "install": "node_modules/.bin/bower install",
+    "install": "bower install",
     "start": "node ./bin/www",
-    "test": "node_modules/.bin/istanbul test node_modules/.bin/_mocha -- --reporter spec"
+    "test": "istanbul test node_modules/.bin/_mocha -- --reporter spec"
   },
   "engines": {
     "node": "0.10.x"
