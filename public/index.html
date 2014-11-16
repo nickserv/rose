@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>Rose</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <!-- styles-->
     <link rel="stylesheet" href="/bower_components/pure/pure-min.css">
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro|Source+Serif+Pro">
@@ -13,31 +14,40 @@
     <!-- header-->
     <h1>Rose</h1>
     <p>An interactive, technical, and openly editable Rosetta Stone for developers.</p>
+
     <!-- search form-->
-    <form role="search" ng-submit="updateResults()" class="pure-form">
-      <input type="search" ng-model="query" placeholder="Search for features, technologies, or code snippets" ng-change="updateResults()" autofocus class="pure-input-rounded">
+    <form class="pure-form" role="search" ng-submit="updateResults()">
+      <input type="search" class="pure-input-rounded" ng-model="query" placeholder="Search for features, technologies, or code snippets" ng-change="updateResults()" autofocus>
       <button type="submit" class="pure-button pure-button-primary">Search</button>
     </form>
+
     <!-- results-->
     <div class="search-results">
-      <div ng-repeat="feature in features" class="card">
-        <h2 ng-bind-html="feature.name | highlight:query" class="panel-title"></h2>
+      <div class="card" ng-repeat="feature in features">
+        <h2 class="panel-title" ng-bind-html="feature.name | highlight:query"></h2>
+
         <table class="pure-table pure-table-striped">
           <tr ng-repeat="example in feature.examples">
             <td ng-bind-html="example.technology | highlight:query"></td>
             <td>
-              <pre ng-repeat="snippet in listify(example.snippets)"><code ng-bind-html="snippet | highlight:query"></code></pre>
+              <pre ng-repeat="snippet in listify(example.snippets)">
+                <code ng-bind-html="snippet | highlight:query"></code>
+              </pre>
             </td>
           </tr>
         </table>
       </div>
-      <h2 ng-if="!features || features.length === 0" class="text-muted">No results</h2>
+
+      <h2 class="text-muted" ng-if="!features || features.length === 0">No results</h2>
     </div>
+
     <!-- footer-->
     <hr>
-    <footer>&copy; 2014 <a href="http://nicolasmccurdy.com/">Nicolas McCurdy</a><a href="https://github.com/nicolasmccurdy/rose" target="_blank" class="pull-right">
-        GitHub Repository
-        </a></footer>
+    <footer>
+      &copy; 2014 <a href="http://nicolasmccurdy.com/">Nicolas McCurdy</a>
+      <a class="pull-right" href="https://github.com/nicolasmccurdy/rose" target="_blank">GitHub Repository</a>
+    </footer>
+
     <!-- scripts-->
     <script src="/bower_components/angular/angular.js"></script>
     <script src="/client.js"></script>
