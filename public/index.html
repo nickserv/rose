@@ -12,8 +12,10 @@
   </head>
   <body class="container">
     <!-- header-->
-    <h1>Rose</h1>
-    <p>An interactive, technical, and openly editable Rosetta Stone for developers.</p>
+    <header>
+      <h1>Rose</h1>
+      <p>An interactive, technical, and openly editable Rosetta Stone for developers.</p>
+    </header>
 
     <!-- search form-->
     <form class="pure-form" role="search" ng-submit="updateResults()">
@@ -22,8 +24,8 @@
     </form>
 
     <!-- results-->
-    <div class="search-results">
-      <div class="card" ng-repeat="feature in features">
+    <ol class="search-results">
+      <li class="card" ng-repeat="feature in features">
         <h2 class="panel-title" ng-bind-html="feature.name | highlight:query"></h2>
 
         <table class="pure-table pure-table-striped">
@@ -34,15 +36,14 @@
             </td>
           </tr>
         </table>
-      </div>
-
-      <h2 class="text-muted" ng-if="!features || features.length === 0">No results</h2>
-    </div>
+      </li>
+    </ol>
+    <h2 ng-if="!features || features.length === 0">No results</h2>
 
     <!-- footer-->
     <hr>
     <footer>
-      &copy; 2014 <a href="http://nicolasmccurdy.com/">Nicolas McCurdy</a>
+      &copy; 2014 <a href="http://nicolasmccurdy.com/">Nicolas McCurdy</a><br>
       <a class="pull-right" href="https://github.com/nicolasmccurdy/rose" target="_blank">GitHub Repository</a>
     </footer>
 
