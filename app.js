@@ -3,7 +3,7 @@ var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 
-var Feature = require('./models/feature');
+var Feature = require('./lib/feature');
 
 var app = express();
 
