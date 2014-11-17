@@ -6,6 +6,6 @@ global.request = require('supertest');
 
 // Rose modules
 global.app = require('../app');
-global.Feature = require('../models/feature');
+global.Feature = require('../lib/feature');
 global.scraper = require('../scraper');
-global.seeds = require('../models/seeds');
+global.seeds = require('../lib/seeds');
