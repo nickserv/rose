@@ -18,9 +18,8 @@
     </header>
 
     <!-- search form-->
-    <form class="pure-form" role="search" ng-submit="updateResults()">
-      <input type="search" class="pure-input-rounded" ng-model="query" placeholder="Search for features, technologies, or code snippets" ng-change="updateResults()" autofocus>
-      <button type="submit" class="pure-button pure-button-primary">Search</button>
+    <form class="pure-form" role="search">
+      <input type="search" class="pure-input-rounded search-input" ng-model="query" placeholder="Search for features, technologies, or code snippets" ng-change="updateResults()" autofocus>
     </form>
 
     <!-- results-->
@@ -46,7 +45,7 @@
     <hr>
     <footer>
       &copy; 2014 <a href="http://nicolasmccurdy.com/">Nicolas McCurdy</a><br>
-      <a class="pull-right" href="https://github.com/nicolasmccurdy/rose" target="_blank">GitHub Repository</a>
+      <a href="https://github.com/nicolasmccurdy/rose" target="_blank">GitHub Repository</a>
     </footer>
 
     <!-- scripts-->
