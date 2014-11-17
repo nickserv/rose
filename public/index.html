@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="rose" ng-controller="SearchController">
+  <head>
+    <meta charset="utf-8">
+    <title>Rose</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- styles-->
+    <link rel="stylesheet" href="/bower_components/pure/pure-min.css">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro|Source+Serif+Pro">
+    <link rel="stylesheet" href="/client.css">
+  </head>
+  <body class="container">
+    <!-- header-->
+    <header>
+      <h1>Rose</h1>
+      <p>An interactive, technical, and openly editable Rosetta Stone for developers.</p>
+    </header>
+
+    <!-- search form-->
+    <form class="pure-form" role="search">
+      <input type="search" class="pure-input-rounded search-input" ng-model="query" placeholder="Search for features, technologies, or code snippets" ng-change="updateResults()" autofocus>
+    </form>
+
+    <!-- results-->
+    <ol class="search-results">
+      <li class="card" ng-repeat="feature in features">
+        <h2 class="panel-title" ng-bind-html="feature.name | highlight:query"></h2>
+
+        <div class="table-responsive">
+          <table class="pure-table pure-table-striped">
+            <tr ng-repeat="example in feature.examples">
+              <td ng-bind-html="example.technology | highlight:query"></td>
+              <td>
+                <pre ng-repeat="snippet in listify(example.snippets)"><code ng-bind-html="snippet | highlight:query"></code></pre>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </li>
+    </ol>
+    <h2 ng-if="!features || features.length === 0">No results</h2>
+
+    <!-- footer-->
+    <hr>
+    <footer>
+      &copy; 2014 <a href="http://nicolasmccurdy.com/">Nicolas McCurdy</a><br>
+      <a href="https://github.com/nicolasmccurdy/rose" target="_blank">GitHub Repository</a>
+    </footer>
+
+    <!-- scripts-->
+    <script src="/bower_components/angular/angular.js"></script>
+    <script src="/client.js"></script>
+  </body>
+</html>

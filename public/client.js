@@ -1,7 +1,7 @@
 angular.module('rose', [])
   .filter('highlight', function ($sce) {
     return function (string, query) {
-      var matchString = '<span class="text-primary">$&</span>';
+      var matchString = '<mark>$&</mark>';
       var result = query ? string.replace(new RegExp(query, 'gi'), matchString) : string;
       return $sce.trustAsHtml(result);
     };

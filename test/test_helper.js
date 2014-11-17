@@ -1,5 +1,7 @@
 // Testing libraries
-global.expect = require('chai').expect;
+var chai = require('chai');
+chai.use(require('chai-as-promised'));
+global.expect = chai.expect;
 global.request = require('supertest');
 
 // Rose modules
