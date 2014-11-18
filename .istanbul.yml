@@ -1,0 +1,4 @@
+instrumentation:
+  excludes:
+    - public/bower_components/angular/*
+  preload-sources: true
