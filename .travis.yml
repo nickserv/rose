@@ -4,6 +4,13 @@ addons:
   code_climate:
     repo_token: 1251f2891d75a12f4529fd596ba0f99aec3e7858cb3db486ecc3e2bc0721367c
 script:
-  - npm test --coverage
+- npm test --coverage
 after_script:
-  - node_modules/.bin/codeclimate < coverage/lcov.info
+- node_modules/.bin/codeclimate < coverage/lcov.info
+deploy:
+  provider: heroku
+  api_key:
+    secure: EX20Q4NpewGpN/2DC036d2VrnF+ANMy0Hti9GTb1LQZuPFSIgbSAccxrj/ubo0lRWCRVUxcTucjaJfWnihggExrMPVowUBzDClmLgkZhWoaMd+D+qHI5MgIC6f4+kyyOB3NfH9oZy2K/Ih3hWOf8sLfrKTAINffJ+QmluH3XxEw=
+  app: rosesearch
+  on:
+    repo: nicolasmccurdy/rose
