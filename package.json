@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "install": "bower install",
+    "prepublish": "bower install",
     "start": "node ./bin/www",
     "test": "istanbul test node_modules/.bin/_mocha -- --reporter spec"
   },
