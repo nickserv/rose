@@ -1,8 +1,4 @@
 require('./test_helper');
-var cheerio = require('cheerio');
-var debug = require('debug')('rose');
-var fs = require('fs');
-var url = require('url');
 
 var SECOND = 1000;
 
@@ -91,22 +87,14 @@ describe('scraper', function () {
 
   context('.requestPromise()', function () {
     context('after a successful request', function () {
-      it('wraps request() and returns a Promise that will be resolved', function (done) {
-        scraper.requestPromise('http://www.google.com/').then(function () {
-          done();
-        }).catch(function () {
-          done(new Error('The response should resolve'));
-        });
+      it('wraps request() and returns a Promise that will be resolved', function () {
+        expect(scraper.requestPromise('http://www.google.com/')).to.be.fulfilled;
       });
     });
 
     context('after a failed request', function () {
-      it('wraps request() and returns a Promise that will be rejected', function (done) {
-        scraper.requestPromise('http://www.google.com/404').then(function () {
-          done(new Error('The response should not resolve'));
-        }).catch(function () {
-          done();
-        });
+      it('wraps request() and returns a Promise that will be rejected', function () {
+        expect(scraper.requestPromise('http://www.google.com/404')).to.be.rejected;
       });
     });
   });
