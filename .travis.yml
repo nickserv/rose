@@ -1,4 +1,9 @@
 language: node_js
+sudo: false
+node_js:
+  - 4
+  - 0.12
+  - 0.10
 services: mongodb
 addons:
   code_climate:
@@ -10,7 +15,7 @@ after_script:
 deploy:
   provider: heroku
   api_key:
-    secure: EX20Q4NpewGpN/2DC036d2VrnF+ANMy0Hti9GTb1LQZuPFSIgbSAccxrj/ubo0lRWCRVUxcTucjaJfWnihggExrMPVowUBzDClmLgkZhWoaMd+D+qHI5MgIC6f4+kyyOB3NfH9oZy2K/Ih3hWOf8sLfrKTAINffJ+QmluH3XxEw=
+    secure: xRofDBoZpKyQbBfhhLWBWTWT9ocY4cFMnHmWDyDnnJtFfO6cplD8iIsK/wzfb4K/qvZcm7Ethf19J2t8kvOWzIcLQAPrViQBFpatC2xfv4wjA+ic8YIAzihakNRsMokbXhFnbbiwMwjG9SpTJKLuYpN/yoSp+3qAU5QAvpXlU9Q=
   app: rosesearch
   on:
     repo: nicolasmccurdy/rose
