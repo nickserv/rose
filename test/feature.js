@@ -38,7 +38,7 @@ describe('Feature', function () {
       ]
     }];
 
-    before(seeds);
+    before(mockedSeeds);
 
     context('with an empty query', function () {
       it('finds all features', function () {
