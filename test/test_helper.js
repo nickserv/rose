@@ -1,4 +1,5 @@
 // Testing libraries
+require('es6-promise').polyfill();
 var chai = require('chai');
 chai.use(require('chai-as-promised'));
 global.cheerio = require('cheerio');
@@ -11,4 +12,10 @@ global.url = require('url');
 global.app = require('../app');
 global.Feature = require('../lib/feature');
 global.scraper = require('../lib/scraper');
+global.seedData = require('./seedData');
 global.seeds = require('../lib/seeds');
+
+// Rose helpers
+global.mockedSeeds = function () {
+	return seeds(Promise.resolve(seedData));
+};
