@@ -1,4 +1,20 @@
 angular.module('rose', [])
+  .controller('SearchController', function ($scope, featureFactory) {
+    featureFactory.get(function (data) {
+      $scope.features = data;
+    });
+  })
+  .factory('featureFactory', function ($http, $rootScope) {
+    return {
+      get: function(success) {
+        $http.get('/index.json', { params: {
+          query: $rootScope.query
+        }}).then(function (response) {
+          success(response.data);
+        });
+      }
+    };
+  })
   .filter('highlight', function ($sce) {
     return function (string, query) {
       var matchString = '<mark>$&</mark>';
@@ -6,18 +22,8 @@ angular.module('rose', [])
       return $sce.trustAsHtml(result);
     };
   })
-  .controller('SearchController', function ($scope, $http) {
-    $scope.updateResults = function () {
-      $http.get('/index.json', {
-        params: { query: $scope.query }
-      }).then(function (response) {
-        $scope.features = response.data;
-      });
-    };
-
-    $scope.listify = function (value) {
+  .filter('listify', function () {
+    return function (value) {
       return Array.isArray(value) ? value : [value];
     };
-
-    $scope.updateResults();
   });
