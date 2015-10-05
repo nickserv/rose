@@ -28,4 +28,5 @@ deploy:
     secure: xRofDBoZpKyQbBfhhLWBWTWT9ocY4cFMnHmWDyDnnJtFfO6cplD8iIsK/wzfb4K/qvZcm7Ethf19J2t8kvOWzIcLQAPrViQBFpatC2xfv4wjA+ic8YIAzihakNRsMokbXhFnbbiwMwjG9SpTJKLuYpN/yoSp+3qAU5QAvpXlU9Q=
   app: rosesearch
   on:
+    node: 4.1
     repo: nicolasmccurdy/rose
