@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "postinstall": "bower install",
+    "prestart": "node ./bin/seed",
     "start": "node ./bin/www",
     "test": "istanbul test node_modules/.bin/_mocha -- --reporter spec"
   },

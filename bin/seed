@@ -1,0 +1,7 @@
+#!/usr/bin/env node
+var mongoose = require('mongoose');
+var seeds = require('../lib/seeds');
+
+seeds().then(function () {
+  mongoose.disconnect();
+});
