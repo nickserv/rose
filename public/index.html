@@ -24,7 +24,7 @@
 
     <!-- results-->
     <ol class="search-results">
-      <li class="card" ng-repeat="feature in features">
+      <li class="card" ui-scroll="feature in features">
         <h2 class="panel-title" ng-bind-html="feature.name | highlight:query"></h2>
 
         <div class="table-responsive">
@@ -50,6 +50,8 @@
 
     <!-- scripts-->
     <script src="/bower_components/angular/angular.js"></script>
+    <script src="/bower_components/angular-ui-scroll/dist/ui-scroll-jqlite.js"></script>
+    <script src="/bower_components/angular-ui-scroll/dist/ui-scroll.js"></script>
     <script src="/client.js"></script>
   </body>
 </html>

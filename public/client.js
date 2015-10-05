@@ -1,15 +1,16 @@
-angular.module('rose', [])
-  .controller('SearchController', function ($scope, featureFactory) {
-    featureFactory.get(function (data) {
-      $scope.features = data;
-    });
+angular.module('rose', ['ui.scroll', 'ui.scroll.jqlite'])
+  .controller('SearchController', function ($scope, features) {
   })
-  .factory('featureFactory', function ($http, $rootScope) {
+  .factory('features', function ($http, $rootScope) {
     return {
-      get: function(success) {
-        $http.get('/index.json', { params: {
-          query: $rootScope.query
-        }}).then(function (response) {
+      get: function(index, count, success) {
+        $http.get('/index.json', {
+          params: {
+            query: $rootScope.query,
+            index: index,
+            count: count
+          }
+        }).then(function (response) {
           success(response.data);
         });
       }

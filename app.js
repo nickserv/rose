@@ -19,7 +19,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 /* GET JSON API. */
 app.get('/index.json', function (req, res) {
-  Feature.search(req.query.query).then(function (docs) {
+  Feature.search(req.query.query)
+         .skip(req.query.index - 1)
+         .limit(req.query.count)
+         .then(function (docs) {
     res.json(docs);
   });
 });
