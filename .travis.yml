@@ -4,6 +4,10 @@ node_js:
   - 4
   - 0.12
   - "0.10"
+cache:
+  directories:
+    - node_modules
+    - public/bower_components
 services: mongodb
 addons:
   code_climate:
