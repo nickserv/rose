@@ -1,21 +1,27 @@
 language: node_js
 sudo: false
+
+# Installation
 node_js:
-  - 4
+  - 4.1
   - 0.12
   - "0.10"
+services: mongodb
 cache:
   directories:
     - node_modules
     - public/bower_components
-services: mongodb
+
+# Testing
+script: npm test --coverage
+
+# Analysis
 addons:
   code_climate:
     repo_token: 1251f2891d75a12f4529fd596ba0f99aec3e7858cb3db486ecc3e2bc0721367c
-script:
-- npm test --coverage
-after_script:
-- node_modules/.bin/codeclimate-test-reporter < coverage/lcov.info
+after_script: node_modules/.bin/codeclimate-test-reporter < coverage/lcov.info
+
+# Deploying
 deploy:
   provider: heroku
   api_key:
