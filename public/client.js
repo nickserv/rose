@@ -1,6 +1,4 @@
 angular.module('rose', ['ui.scroll', 'ui.scroll.jqlite'])
-  .controller('SearchController', function ($scope, features) {
-  })
   .factory('features', function ($http, $rootScope) {
     return {
       get: function(index, count, success) {
