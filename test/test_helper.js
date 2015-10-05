@@ -1,5 +1,4 @@
 // Testing libraries
-require('es6-promise').polyfill();
 var chai = require('chai');
 chai.use(require('chai-as-promised'));
 global.cheerio = require('cheerio');
