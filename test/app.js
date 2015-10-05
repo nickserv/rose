@@ -24,4 +24,13 @@ describe('app', function () {
         .end(done);
     });
   });
+
+  describe('GET /404', function () {
+    it('responds with a 404 error', function (done) {
+      request(app)
+        .get('/404')
+        .expect(404)
+        .end(done);
+    });
+  });
 });
