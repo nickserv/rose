@@ -1,11 +1,4 @@
 angular.module('rose', [])
-  .filter('highlight', function ($sce) {
-    return function (string, query) {
-      var matchString = '<mark>$&</mark>';
-      var result = query ? string.replace(new RegExp(query, 'gi'), matchString) : string;
-      return $sce.trustAsHtml(result);
-    };
-  })
   .controller('SearchController', function ($scope, $http) {
     $scope.updateResults = function () {
       $http.get('/index.json', {
@@ -15,9 +8,17 @@ angular.module('rose', [])
       });
     };
 
-    $scope.listify = function (value) {
+    $scope.updateResults();
+  })
+  .filter('highlight', function ($sce) {
+    return function (string, query) {
+      var matchString = '<mark>$&</mark>';
+      var result = query ? string.replace(new RegExp(query, 'gi'), matchString) : string;
+      return $sce.trustAsHtml(result);
+    };
+  })
+  .filter('listify', function () {
+    return function (value) {
       return Array.isArray(value) ? value : [value];
     };
-
-    $scope.updateResults();
   });
