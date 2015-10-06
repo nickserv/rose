@@ -14,7 +14,7 @@ global.scraper = require('../lib/scraper');
 global.seedData = require('./seedData');
 global.seeds = require('../lib/seeds');
 
-// Rose helpers
+// Mocks
 global.mockedSeeds = function () {
-	return seeds(Promise.resolve(seedData));
+	seeds(seedData);
 };
