@@ -27,7 +27,6 @@ h1, h2, h3, h4, h5, h6 {
 .card {
   border: @border;
   margin: @padding 0;
-  padding: @padding;
   border-radius: @border-radius;
   background-color: @card-background-color;
 
@@ -42,6 +41,8 @@ h1, h2, h3, h4, h5, h6 {
 
 .panel-title {
   margin-top: 0;
+  padding: @padding;
+  padding-bottom: 0;
 }
 
 code {
@@ -76,13 +77,25 @@ footer {
 
 table {
   border-collapse: collapse;
-}
+  width: 100%;
 
-table, tr, td, th {
-  border: @border;
-}
+  tr {
+    td {
+      border: @border;
+      padding: 8px 16px;
+      vertical-align: top;
 
-td, th {
-  padding: 8px 16px;
-  vertical-align: top;
+      &:first-child {
+        border-left: 0;
+      }
+
+      &:last-child {
+        border-right: 0;
+      }
+    }
+
+    &:last-child td {
+      border-bottom: 0;
+    }
+  }
 }
