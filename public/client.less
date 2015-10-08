@@ -55,7 +55,17 @@ mark {
 }
 
 .search-input {
+  border-radius: 2em;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  font: inherit;
+  padding: .5em 1em;
   width: 100%;
+
+  &:focus {
+    border-color: #129FEA;
+    outline: none;
+  }
 }
 
 footer {
@@ -64,4 +74,16 @@ footer {
   display: block;
   position: fixed;
   width: 100%;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+table, tr, td, th {
+  border: 1px solid #cbcbcb;
+}
+
+td, th {
+  padding: 8px 16px;
 }

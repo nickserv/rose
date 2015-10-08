@@ -3,7 +3,6 @@
   "private": true,
   "dependencies": {
     "angular": "~1.4.7",
-    "pure": "~0.6.0",
     "ngInfiniteScroll": "~1.2.1"
   }
 }
