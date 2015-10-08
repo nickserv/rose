@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro|Source+Serif+Pro">
     <link rel="stylesheet" href="/client.css">
   </head>
-  <body class="container">
+  <body>
     <!-- header-->
     <header>
       <h1>Rose</h1>
@@ -17,9 +17,7 @@
     </header>
 
     <!-- search form-->
-    <form role="search">
-      <input type="search" class="search-input" ng-model="query" placeholder="Search for features, technologies, or code snippets" ng-change="resetFeatures()" autofocus>
-    </form>
+    <input type="search" class="search-input" ng-model="query" placeholder="Search for features, technologies, or code snippets" ng-change="resetFeatures()" autofocus>
 
     <!-- results-->
     <ol class="search-results" infinite-scroll="fetchFeatures()">
