@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="rose">
+<html lang="en" ng-app="rose" ng-controller="SearchController">
   <head>
     <meta charset="utf-8">
     <title>Rose</title>
@@ -19,12 +19,12 @@
 
     <!-- search form-->
     <form class="pure-form" role="search">
-      <input type="search" class="pure-input-rounded search-input" ng-model="query" placeholder="Search for features, technologies, or code snippets" ng-change="updateResults()" autofocus>
+      <input type="search" class="pure-input-rounded search-input" ng-model="query" placeholder="Search for features, technologies, or code snippets" ng-change="resetFeatures()" autofocus>
     </form>
 
     <!-- results-->
-    <ol class="search-results">
-      <li class="card" ui-scroll="feature in features">
+    <ol class="search-results" infinite-scroll="fetchFeatures()">
+      <li class="card" ng-repeat="feature in features">
         <h2 class="panel-title" ng-bind-html="feature.name | highlight:query"></h2>
 
         <div class="table-responsive">
@@ -49,9 +49,9 @@
     </footer>
 
     <!-- scripts-->
+    <script src="/bower_components/jquery/dist/jquery.js"></script>
     <script src="/bower_components/angular/angular.js"></script>
-    <script src="/bower_components/angular-ui-scroll/dist/ui-scroll-jqlite.js"></script>
-    <script src="/bower_components/angular-ui-scroll/dist/ui-scroll.js"></script>
+    <script src="/bower_components/ngInfiniteScroll/build/ng-infinite-scroll.js"></script>
     <script src="/client.js"></script>
   </body>
 </html>

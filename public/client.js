@@ -1,11 +1,33 @@
-angular.module('rose', ['ui.scroll', 'ui.scroll.jqlite'])
-  .factory('features', function ($http, $rootScope) {
+angular.module('rose', ['infinite-scroll'])
+  .value('count', 10)
+  .controller('SearchController', function ($scope, features) {
+    $scope.features = [];
+    $scope.page = 0;
+
+    $scope.fetchFeatures = function () {
+      features.get($scope.query, $scope.page, function (newFeatures) {
+        newFeatures.forEach(function (feature) {
+          $scope.features.push(feature);
+        });
+        $scope.page += 1;
+      });
+    };
+
+    $scope.resetFeatures = function () {
+      $scope.features = [];
+      $scope.page = 0;
+      $scope.fetchFeatures();
+    };
+
+    $scope.fetchFeatures();
+  })
+  .factory('features', function ($http, count) {
     return {
-      get: function(index, count, success) {
+      get: function(query, page, success) {
         $http.get('/index.json', {
           params: {
-            query: $rootScope.query,
-            index: index,
+            query: query,
+            index: page * count,
             count: count
           }
         }).then(function (response) {
