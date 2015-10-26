@@ -42,9 +42,4 @@ angular.module('rose', ['infinite-scroll'])
       var result = query ? string.replace(new RegExp(query, 'gi'), matchString) : string;
       return $sce.trustAsHtml(result);
     };
-  })
-  .filter('listify', function () {
-    return function (value) {
-      return Array.isArray(value) ? value : [value];
-    };
   });
