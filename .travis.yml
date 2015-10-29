@@ -2,7 +2,7 @@ language: node_js
 sudo: false
 
 # Installation
-node_js: 4.1.1
+node_js: 5.0.0
 services: mongodb
 cache:
   directories:

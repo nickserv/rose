@@ -9,7 +9,7 @@
     "test": "istanbul test node_modules/.bin/_mocha -- --reporter spec"
   },
   "engines": {
-    "node": "4.1.1"
+    "node": "5.0.0"
   },
   "dependencies": {
     "bower": "^1.3.12",
