@@ -38,7 +38,7 @@ describe('Feature', function () {
       ]
     }];
 
-    before(mockedSeeds);
+    before(helpers.mockedSeeds);
 
     context('with an empty query', function () {
       it('finds all features', function () {
@@ -48,7 +48,11 @@ describe('Feature', function () {
 
     context('with a feature query', function () {
       it('finds all matching features', function () {
-        return expect(Feature.search('add files')).to.eventually.eql(gitAddFeature);
+        return Feature.search('add files').then(function (features) {
+          helpers.removeIds(features);
+          expect(features).to.have.length(1);
+          expect(features).to.eql(gitAddFeature);
+        })
       });
     });
 
@@ -60,7 +64,11 @@ describe('Feature', function () {
 
     context('with a command query', function () {
       it('finds all matching features', function () {
-        return expect(Feature.search('git ADD')).to.eventually.eql(gitAddFeature);
+        return Feature.search('git ADD').then(function (features) {
+          helpers.removeIds(features);
+          expect(features).to.have.length(1);
+          expect(features).to.eql(gitAddFeature);
+        });
       });
     });
 
