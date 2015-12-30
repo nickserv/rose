@@ -1,13 +1,22 @@
+@background-color: #ddd;
+@border-radius: 10px;
+@border: 1px solid #cbcbcb;
+@card-background-color: #fff;
+@focus-color: #129fea;
+@heading-color: #ff4136;
+@highlight-color: yellow;
+@padding: 20px;
+
 body {
   font-family: "Source Sans Pro", sans-serif;
-  background-color: #ddd;
+  background-color: @background-color;
   margin: 0 auto;
-  padding: 20px;
+  padding: @padding;
   max-width: 600px;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  color: #ff4136;
+  color: @heading-color;
 }
 
 .search-results {
@@ -16,10 +25,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .card {
-  margin: 20px 0;
-  padding: 20px;
-  border-radius: 10px;
-  background-color: #fff;
+  border: @border;
+  margin: @padding 0;
+  border-radius: @border-radius;
+  background-color: @card-background-color;
 
   pre {
     margin: 0;
@@ -28,22 +37,12 @@ h1, h2, h3, h4, h5, h6 {
   .table-responsive {
     overflow-x: auto;
   }
-
-  table {
-    width: 100%;
-
-    tr td:nth-child(1) {
-      width: 25%;
-    }
-
-    tr td:nth-child(2) {
-      width: 75%;
-    }
-  }
 }
 
 .panel-title {
   margin-top: 0;
+  padding: @padding;
+  padding-bottom: 0;
 }
 
 code {
@@ -51,9 +50,52 @@ code {
 }
 
 mark {
-  background-color: yellow;
+  background-color: @highlight-color;
 }
 
 .search-input {
+  border: @border;
+  border-radius: @border-radius;
+  box-sizing: border-box;
+  font: inherit;
+  padding: .5em 1em;
   width: 100%;
+
+  &:focus {
+    border-color: @focus-color;
+    outline: none;
+  }
+}
+
+footer {
+  background: @background-color;
+  bottom: 0;
+  display: block;
+  position: fixed;
+  width: 100%;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+
+  tr {
+    td {
+      border: @border;
+      padding: 8px 16px;
+      vertical-align: top;
+
+      &:first-child {
+        border-left: 0;
+      }
+
+      &:last-child {
+        border-right: 0;
+      }
+    }
+
+    &:last-child td {
+      border-bottom: 0;
+    }
+  }
 }

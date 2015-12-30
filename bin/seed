@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 var mongoose = require('mongoose');
+var scraper = require('../lib/scraper');
 var seeds = require('../lib/seeds');
 
-seeds().then(() => mongoose.disconnect());
+seeds(scraper.scrape()).then(() => mongoose.disconnect());

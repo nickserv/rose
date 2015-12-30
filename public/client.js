@@ -1,24 +1,45 @@
-angular.module('rose', [])
-  .controller('SearchController', function ($scope, $http) {
-    $scope.updateResults = function () {
-      $http.get('/index.json', {
-        params: { query: $scope.query }
-      }).then(function (response) {
-        $scope.features = response.data;
+angular.module('rose', ['infinite-scroll'])
+  .value('count', 10)
+  .controller('SearchController', function ($scope, features) {
+    $scope.features = [];
+    $scope.page = 0;
+
+    $scope.fetchFeatures = function () {
+      features.get($scope.query, $scope.page, function (newFeatures) {
+        newFeatures.forEach(function (feature) {
+          $scope.features.push(feature);
+        });
+        $scope.page += 1;
       });
     };
 
-    $scope.updateResults();
+    $scope.resetFeatures = function () {
+      $scope.features = [];
+      $scope.page = 0;
+      $scope.fetchFeatures();
+    };
+
+    $scope.fetchFeatures();
+  })
+  .factory('features', function ($http, count) {
+    return {
+      get: function(query, page, success) {
+        $http.get('/index.json', {
+          params: {
+            query: query,
+            index: page * count,
+            count: count
+          }
+        }).then(function (response) {
+          success(response.data);
+        });
+      }
+    };
   })
   .filter('highlight', function ($sce) {
     return function (string, query) {
       var matchString = '<mark>$&</mark>';
       var result = query ? string.replace(new RegExp(query, 'gi'), matchString) : string;
       return $sce.trustAsHtml(result);
-    };
-  })
-  .filter('listify', function () {
-    return function (value) {
-      return Array.isArray(value) ? value : [value];
     };
   });
