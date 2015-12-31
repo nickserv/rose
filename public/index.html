@@ -7,6 +7,7 @@
 
     <!-- styles-->
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro|Source+Serif+Pro">
+    <link rel="stylesheet" href="/bower_components/highlightjs/styles/github.css">
     <link rel="stylesheet" href="/client.css">
   </head>
   <body>
@@ -29,7 +30,8 @@
             <tr ng-repeat="example in feature.examples">
               <td ng-bind-html="example.technology | highlight:query"></td>
               <td>
-                <pre ng-repeat="snippet in example.snippets"><code ng-bind-html="snippet | highlight:query"></code></pre>
+                <pre ng-if="query" ng-repeat="snippet in example.snippets"><code ng-bind-html="snippet | highlight:query"></code></pre>
+                <pre ng-if="!query" ng-repeat="snippet in example.snippets"><code hljs hljs-source="snippet"></code></pre>
               </td>
             </tr>
           </table>
@@ -46,8 +48,10 @@
 
     <!-- scripts-->
     <script src="/bower_components/jquery/dist/jquery.js"></script>
+    <script src="/bower_components/highlightjs/highlight.pack.js"></script>
     <script src="/bower_components/angular/angular.js"></script>
     <script src="/bower_components/ngInfiniteScroll/build/ng-infinite-scroll.js"></script>
+    <script src="/bower_components/angular-highlightjs/angular-highlightjs.js"></script>
     <script src="/client.js"></script>
   </body>
 </html>

@@ -1,4 +1,4 @@
-angular.module('rose', ['infinite-scroll'])
+angular.module('rose', ['hljs', 'infinite-scroll'])
   .value('count', 10)
   .controller('SearchController', function ($scope, features) {
     $scope.features = [];
