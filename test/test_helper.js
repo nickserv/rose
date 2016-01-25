@@ -15,16 +15,16 @@ global.seedData = require('./seedData');
 global.seeds = require('../lib/seeds');
 
 // Helpers
-global.helpers = {
-	mockedSeeds: function () {
-		seeds(seedData);
-	},
-	removeIds: function (features) {
-		features.forEach(function (feature) {
-			delete feature._id;
-			feature.examples.forEach(function (example) {
-				delete example._id;
-			});
+
+global.mockedSeeds = function () {
+	seeds(seedData);
+};
+
+global.removeIds = function (features) {
+	features.forEach(function (feature) {
+		delete feature._id;
+		feature.examples.forEach(function (example) {
+			delete example._id;
 		});
-	}
+	});
 };

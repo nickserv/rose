@@ -38,7 +38,7 @@ describe('Feature', function () {
       ]
     }];
 
-    before(helpers.mockedSeeds);
+    before(mockedSeeds);
 
     context('with an empty query', function () {
       it('finds all features', function () {
@@ -49,7 +49,7 @@ describe('Feature', function () {
     context('with a feature query', function () {
       it('finds all matching features', function () {
         return Feature.search('add files').then(function (features) {
-          helpers.removeIds(features);
+          removeIds(features);
           expect(features).to.have.length(1);
           expect(features).to.eql(gitAddFeature);
         })
@@ -65,7 +65,7 @@ describe('Feature', function () {
     context('with a command query', function () {
       it('finds all matching features', function () {
         return Feature.search('git ADD').then(function (features) {
-          helpers.removeIds(features);
+          removeIds(features);
           expect(features).to.have.length(1);
           expect(features).to.eql(gitAddFeature);
         });
