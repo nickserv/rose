@@ -48,7 +48,11 @@ describe('Feature', function () {
 
     context('with a feature query', function () {
       it('finds all matching features', function () {
-        return expect(Feature.search('add files')).to.eventually.eql(gitAddFeature);
+        return Feature.search('add files').then(function (features) {
+          removeIds(features);
+          expect(features).to.have.length(1);
+          expect(features).to.eql(gitAddFeature);
+        })
       });
     });
 
@@ -60,7 +64,11 @@ describe('Feature', function () {
 
     context('with a command query', function () {
       it('finds all matching features', function () {
-        return expect(Feature.search('git ADD')).to.eventually.eql(gitAddFeature);
+        return Feature.search('git ADD').then(function (features) {
+          removeIds(features);
+          expect(features).to.have.length(1);
+          expect(features).to.eql(gitAddFeature);
+        });
       });
     });
 

@@ -14,7 +14,17 @@ global.scraper = require('../lib/scraper');
 global.seedData = require('./seedData');
 global.seeds = require('../lib/seeds');
 
-// Mocks
+// Helpers
+
 global.mockedSeeds = function () {
 	seeds(seedData);
+};
+
+global.removeIds = function (features) {
+	features.forEach(function (feature) {
+		delete feature._id;
+		feature.examples.forEach(function (example) {
+			delete example._id;
+		});
+	});
 };
