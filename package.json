@@ -6,7 +6,7 @@
     "postinstall": "bower install",
     "prestart": "node ./bin/seed",
     "start": "node ./bin/www",
-    "test": "mocha spec --reporter spec"
+    "test": "mocha __tests__ --reporter spec"
   },
   "engines": {
     "node": ">=5"
