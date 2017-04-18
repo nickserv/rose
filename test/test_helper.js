@@ -16,5 +16,5 @@ global.seeds = require('../lib/seeds');
 
 // Mocks
 global.mockedSeeds = function () {
-	seeds(seedData);
+  return seeds(seedData);
 };
