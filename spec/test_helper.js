@@ -1,5 +1,5 @@
 // Testing libraries
-var chai = require('chai');
+const chai = require('chai');
 chai.use(require('chai-as-promised'));
 global.cheerio = require('cheerio');
 global.expect = chai.expect;
@@ -16,5 +16,5 @@ global.seeds = require('../lib/seeds');
 
 // Mocks
 global.mockedSeeds = function () {
-	seeds(seedData);
+  return seeds(seedData);
 };

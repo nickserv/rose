@@ -1,4 +1,4 @@
-angular.module('rose', ['infinite-scroll'])
+angular.module('rose', ['hljs', 'infinite-scroll'])
   .value('count', 10)
   .controller('SearchController', function ($scope, features) {
     $scope.features = [];
@@ -6,9 +6,7 @@ angular.module('rose', ['infinite-scroll'])
 
     $scope.fetchFeatures = function () {
       features.get($scope.query, $scope.page, function (newFeatures) {
-        newFeatures.forEach(function (feature) {
-          $scope.features.push(feature);
-        });
+        $scope.features = $scope.features.concat(newFeatures)
         $scope.page += 1;
       });
     };
