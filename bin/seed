@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 var mongoose = require('mongoose');
+mongoose.Promise = Promise
 var scraper = require('../lib/scraper');
 var seeds = require('../lib/seeds');
 
