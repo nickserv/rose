@@ -3,6 +3,4 @@ var mongoose = require('mongoose');
 var scraper = require('../lib/scraper');
 var seeds = require('../lib/seeds');
 
-seeds(scraper.scrape()).then(function () {
-  mongoose.disconnect();
-});
+seeds(scraper.scrape()).then(() => mongoose.disconnect());
