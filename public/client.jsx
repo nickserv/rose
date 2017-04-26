@@ -1,10 +1,10 @@
 class Snippet extends React.Component {
-  componentDidMount () {
-    hljs.highlightBlock(this.code)
+  highlight(element) {
+    if (element) hljs.highlightBlock(element)
   }
 
-  render () {
-    return <pre><code ref={code => this.code = code}>{this.props.snippet}</code></pre>
+  render() {
+    return <pre><code ref={this.highlight}>{this.props.snippet}</code></pre>
   }
 }
 
