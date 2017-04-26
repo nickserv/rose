@@ -1,9 +1,19 @@
+class Snippet extends React.Component {
+  componentDidMount () {
+    hljs.highlightBlock(ReactDOM.findDOMNode(this.refs.code))
+  }
+
+  render () {
+    return <pre><code ref="code">{this.props.snippet}</code></pre>
+  }
+}
+
 function Example (props) {
   return <tr>
     <td>{props.technology}</td>
     <td>
       {props.snippets.map(snippet =>
-        <pre key={snippet}><code>{snippet}</code></pre>
+        <Snippet key={snippet} snippet={snippet}/>
       )}
     </td>
   </tr>
