@@ -16,7 +16,7 @@ function Example (props) {
         <Snippet key={snippet} snippet={snippet}/>
       )}
     </td>
-  </tr>
+    </tr>
 }
 
 function Feature (props) {
@@ -24,23 +24,23 @@ function Feature (props) {
     <h2 className="panel-title">{props.name}</h2>
 
     <div className="table-responsive">
-      <table>
-        <tbody>
-          {props.examples.map(example =>
-            <Example key={example.technology} technology={example.technology} snippets={example.snippets}/>
-          )}
-        </tbody>
-      </table>
+    <table>
+    <tbody>
+    {props.examples.map(example =>
+                        <Example key={example.technology} technology={example.technology} snippets={example.snippets}/>
+                       )}
+  </tbody>
+    </table>
     </div>
-  </li>
+    </li>
 }
 
 function SearchResults(props) {
   if (props.results.length > 0) {
     return <ol className="search-results">
       {props.results.map(result =>
-        <Feature key={JSON.stringify(result)} name={result.name} examples={result.examples}/>
-      )}
+                         <Feature key={JSON.stringify(result)} name={result.name} examples={result.examples}/>
+                        )}
     </ol>;
   } else {
     return <h2>No results</h2>;
@@ -53,7 +53,7 @@ class SearchBar extends React.Component {
   }
 
   render() {
-    return <input id="query" type="search" className="search-input" value={this.props.query} placeholder="Search for features, technologies, or code snippets" autofocus onChange={this.search.bind(this)}/>
+    return <input id="query" type="search" className="search-input" value={this.props.query} placeholder="Search for features, technologies, or code snippets" autoFocus onChange={this.search.bind(this)}/>
   }
 }
 
