@@ -1,6 +1,8 @@
 class Snippet extends React.Component {
-  highlight(element) {
-    if (element) hljs.highlightBlock(element)
+  constructor(props) {
+    super(props)
+
+    this.highlight = (element) => { if (element) hljs.highlightBlock(element) }
   }
 
   render() {
@@ -8,18 +10,18 @@ class Snippet extends React.Component {
   }
 }
 
-function Example (props) {
+function Example(props) {
   return <tr>
     <td>{props.technology}</td>
     <td>
-      {props.snippets.map(snippet =>
-        <Snippet key={snippet} snippet={snippet}/>
-      )}
-    </td>
+    {props.snippets.map(snippet =>
+                        <Snippet key={snippet} snippet={snippet}/>
+                       )}
+  </td>
     </tr>
 }
 
-function Feature (props) {
+function Feature(props) {
   return <li className="card">
     <h2 className="panel-title">{props.name}</h2>
 
@@ -35,50 +37,67 @@ function Feature (props) {
     </li>
 }
 
-function SearchResults(props) {
-  if (props.results.length > 0) {
-    return <ol className="search-results">
-      {props.results.map(result =>
-                         <Feature key={JSON.stringify(result)} name={result.name} examples={result.examples}/>
-                        )}
-    </ol>;
-  } else {
-    return <h2>No results</h2>;
+class SearchResults extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = { results: [] };
+
+    this.search = query => {
+      if (query === undefined) query = ''
+      fetch('/index.json?query=' + query + '&index=0&count=10')
+        .then(response => response.json())
+        .then(results => this.setState({ results }))
+    }
+  }
+
+  componentDidMount() {
+    this.search();
+  }
+
+  componentDidUpdate(props) {
+    if (props.query !== this.props.query) this.search(this.props.query);
+  }
+
+  render() {
+    if (this.state.results.length) {
+      return <ol className="search-results">
+        {this.state.results.map(result =>
+                                <Feature key={JSON.stringify(result)} name={result.name} examples={result.examples}/>
+                               )}
+      </ol>;
+    } else {
+      return <h2>No results</h2>;
+    }
   }
 }
 
 class SearchBar extends React.Component {
-  search(event) {
-    this.props.search(event.target.value);
+  constructor(props) {
+    super(props)
+
+    this.handleChange = event => this.props.onChange(event.target.value)
   }
 
   render() {
-    return <input id="query" type="search" className="search-input" value={this.props.query} placeholder="Search for features, technologies, or code snippets" autoFocus onChange={this.search.bind(this)}/>
+    return <input id="query" type="search" className="search-input" value={this.props.query} placeholder="Search for features, technologies, or code snippets" autoFocus onChange={this.handleChange}/>
   }
 }
 
 class Searchable extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { results: [] };
-  }
 
-  componentDidMount() {
-    this.search(this.props.query);
-  }
+    this.state = { query: '' };
 
-  search(query) {
-    if (query === undefined) query = ''
-    fetch('/index.json?query=' + query + '&index=0&count=10')
-      .then(response => response.json())
-      .then(results => this.setState({ results }))
+    this.onChange = query => this.setState({ query });
   }
 
   render() {
     return <div>
-      <SearchBar search={this.search.bind(this)}/>
-      <SearchResults results={this.state.results}/>
-    </div>
+      <SearchBar onChange={this.onChange}/>
+      <SearchResults query={this.state.query}/>
+      </div>
   }
 }
 
