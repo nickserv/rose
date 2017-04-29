@@ -82,4 +82,4 @@ class Searchable extends React.Component {
   }
 }
 
-ReactDOM.render(<Searchable/>, searchable);
+ReactDOM.render(<Searchable/>, document.querySelector('main'));
