@@ -4,4 +4,6 @@ mongoose.Promise = Promise
 var scraper = require('../lib/scraper');
 var seeds = require('../lib/seeds');
 
-seeds(scraper.scrape()).then(() => mongoose.disconnect());
+scraper.scrape()
+  .then(seeds)
+  .then(mongoose.disconnect);
