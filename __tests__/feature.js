@@ -1,7 +1,7 @@
 describe('Feature', () => {
   describe('schema', () => {
-    it('creates a valid Feature', done => {
-      Feature.create({
+    it('creates a valid Feature', () => {
+      return Feature.create({
         name: 'map over elements',
         examples: [
           { technology: 'Common Lisp', snippets: 'map' },
@@ -10,19 +10,11 @@ describe('Feature', () => {
           { technology: 'Python', snippets: 'map' },
           { technology: 'Ruby', snippets: ['Enumerable#map', 'Enumerable#collect'] }
         ]
-      }, err => {
-        expect(err).to.not.exist;
-        done();
       });
     });
 
-    it('does not create an invalid Feature', done => {
-      Feature.create({
-        name: 'no examples here'
-      }, err => {
-        expect(err).to.exist;
-        done();
-      });
+    it('does not create an invalid Feature', () => {
+      return expect(Feature.create({ name: 'no examples here' })).to.be.rejected
     });
   });
 

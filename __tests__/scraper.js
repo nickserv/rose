@@ -62,17 +62,14 @@ describe('scraper', function () {
   });
 
   describe('.getPages()', function () {
-    it('gets a list of all Rosetta Stone pages from http://hyperpolyglot.org/', function (done) {
-      scraper.getPages().then(function (pages) {
+    it('gets a list of all Rosetta Stone pages from http://hyperpolyglot.org/', function () {
+      return scraper.getPages().then(function (pages) {
         expect(pages.length).to.be.above(0);
         pages.forEach(function (page) {
           var pageURL = url.parse(page);
           expect(pageURL.host).to.equal('hyperpolyglot.org');
           expect(pageURL.pathname).to.match(/[a-z-]+/);
         });
-        done();
-      }).catch(function (err) {
-        done(err);
       });
     });
   })
@@ -80,28 +77,25 @@ describe('scraper', function () {
   describe('.requestPromise()', function () {
     describe('after a successful request', function () {
       it('wraps request() and returns a Promise that will be resolved', function () {
-        expect(scraper.requestPromise('http://www.google.com/')).to.be.fulfilled;
+        return expect(scraper.requestPromise('http://www.google.com/')).to.be.fulfilled;
       });
     });
 
     describe('after a failed request', function () {
       it('wraps request() and returns a Promise that will be rejected', function () {
-        expect(scraper.requestPromise('http://www.google.com/404')).to.be.rejected;
+        return expect(scraper.requestPromise('http://www.google.com/404')).to.be.rejected;
       });
     });
   });
 
   describe('.scrape()', function () {
-    it('scrapes features from the Hyperpolyglot website', function (done) {
-      scraper.scrape().then(function (seeds) {
+    it('scrapes features from the Hyperpolyglot website', function () {
+      return scraper.scrape().then(function (seeds) {
         seeds.forEach(function (seed) {
           (new Feature(seed)).validate(function (err) {
-            if (err) {
-              done(err);
-            }
+            if (err) throw err;
           });
         });
-        done();
       });
     });
   });
