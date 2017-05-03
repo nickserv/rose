@@ -1,5 +1,3 @@
-require('./test_helper');
-
 describe('Feature', () => {
   describe('schema', () => {
     it('creates a valid Feature', done => {

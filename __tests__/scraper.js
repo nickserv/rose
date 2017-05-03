@@ -1,5 +1,3 @@
-require('./test_helper');
-
 describe('scraper', function () {
   const tableHTML = fs.readFileSync(__dirname + '/pages/table.html', 'utf8');
   const $ = cheerio.load(tableHTML);

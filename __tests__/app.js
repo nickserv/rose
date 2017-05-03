@@ -1,5 +1,3 @@
-require('./test_helper');
-
 describe('app', () => {
   beforeAll(mockedSeeds);
 
