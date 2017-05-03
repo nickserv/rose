@@ -19,20 +19,20 @@ describe('scraper', function () {
 
   describe('.scrapeTechnologies()', function () {
     it('scrapes all technology names from a table header row', function () {
-      expect(scraper.scrapeTechnologies($('tr').eq(0), $)).to.eql(expectedTechnologies);
+      expect(scraper.scrapeTechnologies($('tr').eq(0), $)).toEqual(expectedTechnologies);
     });
   });
 
   describe('.scrapeFeature()', function () {
     it('scrapes a feature from a table row', function () {
-      expect(scraper.scrapeFeature($('tr').eq(1), $, expectedTechnologies)).to.eql(expectedFeatures[0]);
+      expect(scraper.scrapeFeature($('tr').eq(1), $, expectedTechnologies)).toEqual(expectedFeatures[0]);
     });
   });
 
   describe('.scrapeTable()', function () {
     describe('with a table with no extra data', function () {
       it('scrapes all features from the table', function () {
-        expect(scraper.scrapeTable($('table'), $)).to.eql(expectedFeatures);
+        expect(scraper.scrapeTable($('table'), $)).toEqual(expectedFeatures);
       });
     });
 
@@ -56,7 +56,7 @@ describe('scraper', function () {
       }];
 
       it('scrapes all features from the table, ignoring extra data', function () {
-        expect(scraper.scrapeTable($('table'), $)).to.eql(expectedFeatures);
+        expect(scraper.scrapeTable($('table'), $)).toEqual(expectedFeatures);
       });
     });
   });
@@ -64,11 +64,11 @@ describe('scraper', function () {
   describe('.getPages()', function () {
     it('gets a list of all Rosetta Stone pages from http://hyperpolyglot.org/', function () {
       return scraper.getPages().then(function (pages) {
-        expect(pages.length).to.be.above(0);
+        expect(pages.length).toBeGreaterThan(0);
         pages.forEach(function (page) {
           var pageURL = url.parse(page);
-          expect(pageURL.host).to.equal('hyperpolyglot.org');
-          expect(pageURL.pathname).to.match(/[a-z-]+/);
+          expect(pageURL.host).toBe('hyperpolyglot.org');
+          expect(pageURL.pathname).toMatch(/[a-z-]+/);
         });
       });
     });
@@ -77,13 +77,15 @@ describe('scraper', function () {
   describe('.requestPromise()', function () {
     describe('after a successful request', function () {
       it('wraps request() and returns a Promise that will be resolved', function () {
-        return expect(scraper.requestPromise('http://www.google.com/')).to.be.fulfilled;
+        return scraper.requestPromise('http://www.google.com/')
       });
     });
 
     describe('after a failed request', function () {
-      it('wraps request() and returns a Promise that will be rejected', function () {
-        return expect(scraper.requestPromise('http://www.google.com/404')).to.be.rejected;
+      it('wraps request() and returns a Promise that will be rejected', function (done) {
+        scraper.requestPromise('http://www.google.com/404')
+          .then(() => done(true))
+          .catch(() => done());
       });
     });
   });

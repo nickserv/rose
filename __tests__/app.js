@@ -15,9 +15,7 @@ describe('app', () => {
         .get('/index.json')
         .expect(200)
         .expect('Content-Type', /json/)
-        .expect(res => {
-          expect(res.body).to.have.length.above(0);
-        });
+        .expect(res => expect(res.body).not.toHaveLength(0));
     });
   });
 

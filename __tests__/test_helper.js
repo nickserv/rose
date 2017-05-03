@@ -1,8 +1,5 @@
 // Testing libraries
-const chai = require('chai');
-chai.use(require('chai-as-promised'));
 global.cheerio = require('cheerio');
-global.expect = chai.expect;
 global.fs = require('fs');
 global.request = require('supertest');
 global.url = require('url');

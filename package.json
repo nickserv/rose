@@ -23,8 +23,6 @@
     "serve-favicon": "^2.1.6"
   },
   "devDependencies": {
-    "chai": "^3.3.0",
-    "chai-as-promised": "^6.0.0",
     "jest": "^19.0.2",
     "supertest": "^3.0.0"
   },

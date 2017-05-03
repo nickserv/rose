@@ -13,8 +13,12 @@ describe('Feature', () => {
       });
     });
 
-    it('does not create an invalid Feature', () => {
-      return expect(Feature.create({ name: 'no examples here' })).to.be.rejected
+    it('does not create an invalid Feature', done => {
+      Feature.create({
+        name: 'no examples here'
+      })
+        .then(() => done(true))
+        .catch(() => done());
     });
   });
 
@@ -32,31 +36,36 @@ describe('Feature', () => {
 
     describe('with an empty query', () => {
       it('finds all features', () => {
-        return expect(Feature.search('')).to.eventually.have.length(7);
+        return Feature.search('')
+          .then(features => expect(features).toHaveLength(7));
       });
     });
 
     describe('with a feature query', () => {
       it('finds all matching features', () => {
-        return expect(Feature.search('add files')).to.eventually.eql(gitAddFeature);
+        return Feature.search('add files')
+          .then(features => expect(features).toEqual(gitAddFeature));
       });
     });
 
     describe('with a technology query', () => {
       it('finds all matching features', () => {
-        return expect(Feature.search('git')).to.eventually.have.length(6);
+        return Feature.search('git')
+          .then(features => expect(features).toHaveLength(6));
       });
     });
 
     describe('with a command query', () => {
       it('finds all matching features', () => {
-        return expect(Feature.search('git ADD')).to.eventually.eql(gitAddFeature);
+        return Feature.search('git ADD')
+          .then(features => expect(features).toEqual(gitAddFeature));
       });
     });
 
     describe('with a command query for a command that does not exist', () => {
       it('finds no features', () => {
-        return expect(Feature.search('git yolo')).to.eventually.have.length(0);
+        return Feature.search('git yolo')
+          .then(features => expect(features).toHaveLength(0));
       });
     });
   });
