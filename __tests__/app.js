@@ -1,7 +1,7 @@
 require('./test_helper');
 
 describe('app', () => {
-  before(mockedSeeds);
+  beforeAll(mockedSeeds);
 
   describe('GET /', () => {
     it('responds with success', done => {

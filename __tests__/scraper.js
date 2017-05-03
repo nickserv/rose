@@ -1,75 +1,69 @@
 require('./test_helper');
 
-var SECOND = 1000;
-
 describe('scraper', function () {
-  before(function () {
-    var tableHTML = fs.readFileSync(__dirname + '/pages/table.html', 'utf8');
-    this.$ = cheerio.load(tableHTML);
+  const tableHTML = fs.readFileSync(__dirname + '/pages/table.html', 'utf8');
+  const $ = cheerio.load(tableHTML);
 
-    this.expectedTechnologies = ['git', 'mercurial'];
-    this.expectedFeatures = [{
-      name: 'add files',
-      examples: [
-        { technology: 'git', snippets: 'git add' },
-        { technology: 'mercurial', snippets: 'hg add' }
-      ]
-    }, {
-      name: 'show revision information line by line',
-      examples: [
-        { technology: 'git', snippets: 'git blame' },
-        { technology: 'mercurial', snippets: 'hg annotate' }
-      ]
-    }];
-  });
+  const expectedTechnologies = ['git', 'mercurial'];
+  const expectedFeatures = [{
+    name: 'add files',
+    examples: [
+      { technology: 'git', snippets: 'git add' },
+      { technology: 'mercurial', snippets: 'hg add' }
+    ]
+  }, {
+    name: 'show revision information line by line',
+    examples: [
+      { technology: 'git', snippets: 'git blame' },
+      { technology: 'mercurial', snippets: 'hg annotate' }
+    ]
+  }];
 
-  context('.scrapeTechnologies()', function () {
+  describe('.scrapeTechnologies()', function () {
     it('scrapes all technology names from a table header row', function () {
-      expect(scraper.scrapeTechnologies(this.$('tr').eq(0), this.$)).to.eql(this.expectedTechnologies);
+      expect(scraper.scrapeTechnologies($('tr').eq(0), $)).to.eql(expectedTechnologies);
     });
   });
 
-  context('.scrapeFeature()', function () {
+  describe('.scrapeFeature()', function () {
     it('scrapes a feature from a table row', function () {
-      expect(scraper.scrapeFeature(this.$('tr').eq(1), this.$, this.expectedTechnologies)).to.eql(this.expectedFeatures[0]);
+      expect(scraper.scrapeFeature($('tr').eq(1), $, expectedTechnologies)).to.eql(expectedFeatures[0]);
     });
   });
 
-  context('.scrapeTable()', function () {
-    context('with a table with no extra data', function () {
+  describe('.scrapeTable()', function () {
+    describe('with a table with no extra data', function () {
       it('scrapes all features from the table', function () {
-        expect(scraper.scrapeTable(this.$('table'), this.$)).to.eql(this.expectedFeatures);
+        expect(scraper.scrapeTable($('table'), $)).to.eql(expectedFeatures);
       });
     });
 
-    context('with a table with extra data', function () {
-      before(function () {
-        var tableHTML = fs.readFileSync(__dirname + '/pages/table_extra.html', 'utf8');
-        this.$ = cheerio.load(tableHTML);
+    describe('with a table with extra data', function () {
+      const tableHTML = fs.readFileSync(__dirname + '/pages/table_extra.html', 'utf8');
+      const $ = cheerio.load(tableHTML);
 
-        this.expectedFeatures = [{
-          name: 'add files',
-          examples: [
-            { technology: 'git', snippets: 'git add' },
-            { technology: 'mercurial', snippets: 'hg add' }
-          ]
-        }, {
-          name: 'show revision information line by line',
-          examples: [
-            { technology: 'git', snippets: 'git blame' },
-            { technology: 'mercurial', snippets: 'hg annotate' },
-            { technology: 'svn', snippets: 'svn blame' }
-          ]
-        }];
-      });
+      const expectedFeatures = [{
+        name: 'add files',
+        examples: [
+          { technology: 'git', snippets: 'git add' },
+          { technology: 'mercurial', snippets: 'hg add' }
+        ]
+      }, {
+        name: 'show revision information line by line',
+        examples: [
+          { technology: 'git', snippets: 'git blame' },
+          { technology: 'mercurial', snippets: 'hg annotate' },
+          { technology: 'svn', snippets: 'svn blame' }
+        ]
+      }];
 
       it('scrapes all features from the table, ignoring extra data', function () {
-        expect(scraper.scrapeTable(this.$('table'), this.$)).to.eql(this.expectedFeatures);
+        expect(scraper.scrapeTable($('table'), $)).to.eql(expectedFeatures);
       });
     });
   });
 
-  context('.getPages()', function () {
+  describe('.getPages()', function () {
     it('gets a list of all Rosetta Stone pages from http://hyperpolyglot.org/', function (done) {
       scraper.getPages().then(function (pages) {
         expect(pages.length).to.be.above(0);
@@ -85,23 +79,22 @@ describe('scraper', function () {
     });
   })
 
-  context('.requestPromise()', function () {
-    context('after a successful request', function () {
+  describe('.requestPromise()', function () {
+    describe('after a successful request', function () {
       it('wraps request() and returns a Promise that will be resolved', function () {
         expect(scraper.requestPromise('http://www.google.com/')).to.be.fulfilled;
       });
     });
 
-    context('after a failed request', function () {
+    describe('after a failed request', function () {
       it('wraps request() and returns a Promise that will be rejected', function () {
         expect(scraper.requestPromise('http://www.google.com/404')).to.be.rejected;
       });
     });
   });
 
-  context('.scrape()', function () {
+  describe('.scrape()', function () {
     it('scrapes features from the Hyperpolyglot website', function (done) {
-      this.timeout(60 * SECOND);
       scraper.scrape().then(function (seeds) {
         seeds.forEach(function (seed) {
           (new Feature(seed)).validate(function (err) {

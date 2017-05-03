@@ -38,33 +38,33 @@ describe('Feature', () => {
       ]
     }];
 
-    before(mockedSeeds);
+    beforeAll(mockedSeeds);
 
-    context('with an empty query', () => {
+    describe('with an empty query', () => {
       it('finds all features', () => {
         return expect(Feature.search('')).to.eventually.have.length(7);
       });
     });
 
-    context('with a feature query', () => {
+    describe('with a feature query', () => {
       it('finds all matching features', () => {
         return expect(Feature.search('add files')).to.eventually.eql(gitAddFeature);
       });
     });
 
-    context('with a technology query', () => {
+    describe('with a technology query', () => {
       it('finds all matching features', () => {
         return expect(Feature.search('git')).to.eventually.have.length(6);
       });
     });
 
-    context('with a command query', () => {
+    describe('with a command query', () => {
       it('finds all matching features', () => {
         return expect(Feature.search('git ADD')).to.eventually.eql(gitAddFeature);
       });
     });
 
-    context('with a command query for a command that does not exist', () => {
+    describe('with a command query for a command that does not exist', () => {
       it('finds no features', () => {
         return expect(Feature.search('git yolo')).to.eventually.have.length(0);
       });
