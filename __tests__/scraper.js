@@ -1,4 +1,4 @@
-describe('scraper', function () {
+describe('scraper', () => {
   const tableHTML = fs.readFileSync(__dirname + '/pages/table.html', 'utf8');
   const $ = cheerio.load(tableHTML);
 
@@ -17,26 +17,26 @@ describe('scraper', function () {
     ]
   }];
 
-  describe('.scrapeTechnologies()', function () {
-    it('scrapes all technology names from a table header row', function () {
+  describe('.scrapeTechnologies()', () => {
+    it('scrapes all technology names from a table header row', () => {
       expect(scraper.scrapeTechnologies($('tr').eq(0), $)).toEqual(expectedTechnologies);
     });
   });
 
-  describe('.scrapeFeature()', function () {
-    it('scrapes a feature from a table row', function () {
+  describe('.scrapeFeature()', () => {
+    it('scrapes a feature from a table row', () => {
       expect(scraper.scrapeFeature($('tr').eq(1), $, expectedTechnologies)).toEqual(expectedFeatures[0]);
     });
   });
 
-  describe('.scrapeTable()', function () {
-    describe('with a table with no extra data', function () {
-      it('scrapes all features from the table', function () {
+  describe('.scrapeTable()', () => {
+    describe('with a table with no extra data', () => {
+      it('scrapes all features from the table', () => {
         expect(scraper.scrapeTable($('table'), $)).toEqual(expectedFeatures);
       });
     });
 
-    describe('with a table with extra data', function () {
+    describe('with a table with extra data', () => {
       const tableHTML = fs.readFileSync(__dirname + '/pages/table_extra.html', 'utf8');
       const $ = cheerio.load(tableHTML);
 
@@ -55,17 +55,17 @@ describe('scraper', function () {
         ]
       }];
 
-      it('scrapes all features from the table, ignoring extra data', function () {
+      it('scrapes all features from the table, ignoring extra data', () => {
         expect(scraper.scrapeTable($('table'), $)).toEqual(expectedFeatures);
       });
     });
   });
 
-  describe('.getPages()', function () {
-    it('gets a list of all Rosetta Stone pages from http://hyperpolyglot.org/', function () {
-      return scraper.getPages().then(function (pages) {
+  describe('.getPages()', () => {
+    it('gets a list of all Rosetta Stone pages from http://hyperpolyglot.org/', () => {
+      return scraper.getPages().then((pages) => {
         expect(pages.length).toBeGreaterThan(0);
-        pages.forEach(function (page) {
+        pages.forEach(page => {
           var pageURL = url.parse(page);
           expect(pageURL.host).toBe('hyperpolyglot.org');
           expect(pageURL.pathname).toMatch(/[a-z-]+/);
@@ -74,15 +74,15 @@ describe('scraper', function () {
     });
   })
 
-  describe('.requestPromise()', function () {
-    describe('after a successful request', function () {
-      it('wraps request() and returns a Promise that will be resolved', function () {
+  describe('.requestPromise()', () => {
+    describe('after a successful request', () => {
+      it('wraps request() and returns a Promise that will be resolved', () => {
         return scraper.requestPromise('http://www.google.com/')
       });
     });
 
-    describe('after a failed request', function () {
-      it('wraps request() and returns a Promise that will be rejected', function (done) {
+    describe('after a failed request', () => {
+      it('wraps request() and returns a Promise that will be rejected', done => {
         scraper.requestPromise('http://www.google.com/404')
           .then(() => done(true))
           .catch(() => done());
@@ -90,13 +90,11 @@ describe('scraper', function () {
     });
   });
 
-  describe('.scrape()', function () {
-    it('scrapes features from the Hyperpolyglot website', function () {
-      return scraper.scrape().then(function (seeds) {
-        seeds.forEach(function (seed) {
-          (new Feature(seed)).validate(function (err) {
-            if (err) throw err;
-          });
+  describe('.scrape()', () => {
+    it('scrapes features from the Hyperpolyglot website', () => {
+      return scraper.scrape().then(seeds => {
+        seeds.forEach(seed => {
+          (new Feature(seed)).validate(err => { if (err) throw err });
         });
       });
     });
