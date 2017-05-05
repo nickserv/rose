@@ -83,6 +83,7 @@ describe('scraper', () => {
   describe('.scrape()', () => {
     it('scrapes features from the Hyperpolyglot website', () => {
       return scraper.scrape().then(seeds => {
+        expect(seeds.length).toBeGreaterThan(0);
         seeds.forEach(seed => {
           (new Feature(seed)).validate(err => { if (err) throw err });
         });
