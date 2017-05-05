@@ -1,5 +1,5 @@
 const app = require('../app');
-const request = require('request');
+const requestPromise = require('../lib/scraper').requestPromise;
 const seeds = require('../lib/seeds');
 const seedData = require('./seedData');
 
@@ -8,35 +8,28 @@ describe('app', () => {
   beforeAll(done => app.listen(3000, done));
 
   describe('GET /', () => {
-    it('responds with success', done => {
-      request('http://localhost:3000/', (error, response) => {
-        expect(error).toBeNull();
-        expect(response.statusCode).toBe(200);
-        done();
-      });
+    it('responds with success', () => {
+      return requestPromise('http://localhost:3000/');
     });
   });
 
   describe('GET /index.json', () => {
-    it('responds with features', done => {
-      request('http://localhost:3000/index.json', {
+    it('responds with features', () => {
+      return requestPromise('http://localhost:3000/index.json', {
         headers: { 'Content-Type': /json/ }
-      }, (error, response, body) => {
-        expect(error).toBeNull();
-        expect(response.statusCode).toBe(200);
-        expect(body.length).toBeGreaterThan(0);
-        done();
-      });
+      }).then(body => expect(body.length).toBeGreaterThan(0));
     });
   });
 
   describe('GET /404', () => {
     it('responds with a 404 error', done => {
-      request('http://localhost:3000/404', (error, response) => {
-        expect(error).toBeNull();
-        expect(response.statusCode).toBe(404);
-        done();
-      });
+      requestPromise('http://localhost:3000/404')
+        .then(() => done(true))
+        .catch(error => {
+          expect(error).toBeNull();
+          done()
+        })
+        .catch(() => done(true));
     });
   });
 });
