@@ -80,22 +80,6 @@ describe('scraper', () => {
     });
   })
 
-  describe('.requestPromise()', () => {
-    describe('after a successful request', () => {
-      it('wraps request() and returns a Promise that will be resolved', () => {
-        return scraper.requestPromise('http://www.google.com/')
-      });
-    });
-
-    describe('after a failed request', () => {
-      it('wraps request() and returns a Promise that will be rejected', done => {
-        scraper.requestPromise('http://www.google.com/404')
-          .then(() => done(true))
-          .catch(() => done());
-      });
-    });
-  });
-
   describe('.scrape()', () => {
     it('scrapes features from the Hyperpolyglot website', () => {
       return scraper.scrape().then(seeds => {

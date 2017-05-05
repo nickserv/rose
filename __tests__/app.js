@@ -1,5 +1,5 @@
 const app = require('../app');
-const requestPromise = require('../lib/scraper').requestPromise;
+const request = require('request-promise-native');
 const seeds = require('../lib/seeds');
 const seedData = require('./seedData');
 
@@ -9,27 +9,24 @@ describe('app', () => {
 
   describe('GET /', () => {
     it('responds with success', () => {
-      return requestPromise('http://localhost:3000/');
+      return request('http://localhost:3000/');
     });
   });
 
   describe('GET /index.json', () => {
     it('responds with features', () => {
-      return requestPromise('http://localhost:3000/index.json', {
+      return request('http://localhost:3000/index.json', {
         headers: { 'Content-Type': /json/ }
-      }).then(body => expect(body.length).toBeGreaterThan(0));
+      }).then(response => expect(response.length).toBeGreaterThan(0));
     });
   });
 
   describe('GET /404', () => {
-    it('responds with a 404 error', done => {
-      requestPromise('http://localhost:3000/404')
-        .then(() => done(true))
-        .catch(error => {
-          expect(error).toBeNull();
-          done()
-        })
-        .catch(() => done(true));
+    it('responds with a 404 error', () => {
+      return request('http://localhost:3000/404', {
+        resolveWithFullResponse: true,
+        simple: false
+      }).then(response => expect(response.statusCode).toBe(404));
     });
   });
 });
