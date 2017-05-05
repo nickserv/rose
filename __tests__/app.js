@@ -1,5 +1,10 @@
+const app = require('../app');
+const request = require('supertest');
+const seeds = require('../lib/seeds');
+const seedData = require('./seedData');
+
 describe('app', () => {
-  beforeAll(mockedSeeds);
+  beforeAll(() => seeds(seedData));
 
   describe('GET /', () => {
     it('responds with success', () => {

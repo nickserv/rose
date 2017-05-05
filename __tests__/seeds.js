@@ -1,3 +1,7 @@
+const Feature = require('../lib/feature');
+const seedData = require('./seedData');
+const seeds = require('../lib/seeds');
+
 describe('seeds', () => {
   function compare(feature1, feature2) {
     if (feature1.name < feature2.name) return -1;

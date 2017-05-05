@@ -1,3 +1,9 @@
+const cheerio = require('cheerio');
+const Feature = require('../lib/feature');
+const fs = require('fs');
+const scraper = require('../lib/scraper');
+const url = require('url');
+
 describe('scraper', () => {
   const tableHTML = fs.readFileSync(__dirname + '/pages/table.html', 'utf8');
   const $ = cheerio.load(tableHTML);

@@ -27,11 +27,6 @@
     "supertest": "^3.0.0"
   },
   "jest": {
-    "setupTestFrameworkScriptFile": "./__tests__/test_helper",
-    "testEnvironment": "node",
-    "testPathIgnorePatterns": [
-      "/node_modules/",
-      "test_helper"
-    ]
+    "testEnvironment": "node"
   }
 }

@@ -1,3 +1,7 @@
+const Feature = require('../lib/feature');
+const seeds = require('../lib/seeds');
+const seedData = require('./seedData');
+
 describe('Feature', () => {
   describe('schema', () => {
     it('creates a valid Feature', () => {
@@ -32,7 +36,7 @@ describe('Feature', () => {
       ]
     }];
 
-    beforeAll(mockedSeeds);
+    beforeAll(() => seeds(seedData));
 
     describe('with an empty query', () => {
       it('finds all features', () => {
