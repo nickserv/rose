@@ -13,7 +13,7 @@ describe('app', () => {
 
   describe('GET /', () => {
     it('responds with success', () => {
-      return fetch('/').then(response => expect(response.status).toBe(200));
+      return expect(fetch('/')).resolves.toHaveProperty('status', 200);
     });
   });
 
@@ -23,14 +23,14 @@ describe('app', () => {
         headers: { 'Content-Type': /json/ }
       }).then(response => {
         expect(response.status).toBe(200);
-        return response.json();
-      }).then(response => expect(response.length).toBeGreaterThan(0));
+        return expect(response.json()).resolves.not.toHaveLength(0);
+      });
     });
   });
 
   describe('GET /404', () => {
     it('responds with a 404 error', () => {
-      return fetch('/404').then(response => expect(response.status).toBe(404));
+      return expect(fetch('/404')).resolves.toHaveProperty('status', 404);
     });
   });
 });
