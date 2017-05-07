@@ -1,5 +1,5 @@
 const cheerio = require('cheerio');
-const Feature = require('../lib/feature');
+const features = require('../lib/features');
 const fs = require('fs');
 const scraper = require('../lib/scraper');
 const url = require('url');
@@ -69,8 +69,8 @@ describe('scraper', () => {
 
   describe('.getPages()', () => {
     it('gets a list of all Rosetta Stone pages from http://hyperpolyglot.org/', () => {
-      return scraper.getPages().then((pages) => {
-        expect(pages.length).toBeGreaterThan(0);
+      return scraper.getPages().then(pages => {
+        expect(pages).not.toHaveLength(0)
         pages.forEach(page => {
           var pageURL = url.parse(page);
           expect(pageURL.host).toBe('hyperpolyglot.org');
@@ -82,12 +82,7 @@ describe('scraper', () => {
 
   describe('.scrape()', () => {
     it('scrapes features from the Hyperpolyglot website', () => {
-      return scraper.scrape().then(seeds => {
-        expect(seeds.length).toBeGreaterThan(0);
-        seeds.forEach(seed => {
-          (new Feature(seed)).validate(err => { if (err) throw err });
-        });
-      });
+      return expect(scraper.scrape()).resolves.not.toHaveLength(0);
     });
   });
 });

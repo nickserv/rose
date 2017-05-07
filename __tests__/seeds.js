@@ -1,4 +1,4 @@
-const Feature = require('../lib/feature');
+const features = require('../lib/features');
 const seedData = require('./seedData');
 const seeds = require('../lib/seeds');
 
@@ -14,13 +14,13 @@ describe('seeds', () => {
   }
 
   beforeAll(() => {
-    return Feature.remove()
-      .then(() => Feature.create(seedData[0]));
+    return features.remove()
+      .then(() => features.create(seedData[0]));
   });
 
   it('clears and seeds the features collection', () => {
     return seeds(seedData)
-      .then(() => Feature.find().select('-__v -_id -examples._id').lean())
+      .then(() => features.find().select('-__v -_id -examples._id').lean())
       .then(features => expect(sort(features)).toEqual(sort(seedData)));
   });
 });
