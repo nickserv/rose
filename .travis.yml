@@ -16,7 +16,7 @@ script: npm test
 deploy:
   provider: heroku
   api_key:
-    secure: xRofDBoZpKyQbBfhhLWBWTWT9ocY4cFMnHmWDyDnnJtFfO6cplD8iIsK/wzfb4K/qvZcm7Ethf19J2t8kvOWzIcLQAPrViQBFpatC2xfv4wjA+ic8YIAzihakNRsMokbXhFnbbiwMwjG9SpTJKLuYpN/yoSp+3qAU5QAvpXlU9Q=
+    secure: o9Vp4MYPOnWWRwfMM0GmJvHO90wnWlgC15anBPZVWTweVWqZoIxVlxae6KcuYNbSUeaFqoevlkLFYizNATIocB6sZuY11Lo86QVyEdnX+aU+pHtdbZzuoZQhJUZHgiclqcDZPGHAeML+9X7L9FQ7bIk7hoPRyWIA2x0PAoUv4Dk=
   app: rosesearch
   on:
     repo: nickmccurdy/rose
