@@ -1,0 +1,56 @@
+[
+  {
+    "name": "add files",
+    "examples": [
+      { "technology": "Git", "snippet": "git add" },
+      { "technology": "Mercurial", "snippet": "hg add" },
+      { "technology": "Subversion", "snippet": "svn add" }
+    ]
+  }, {
+    "name": "show revision information line by line",
+    "examples": [
+      { "technology": "Git", "snippet": "git blame" },
+      { "technology": "Mercurial", "snippet": "hg annotate" },
+      { "technology": "Subversion", "snippet": "svn blame" }
+    ]
+  }, {
+    "name": "manage branches",
+    "examples": [
+      { "technology": "Git", "snippet": "git branch" },
+      { "technology": "Mercurial", "snippet": "hg branch" },
+      { "technology": "Subversion", "snippet": "svn copy" }
+    ]
+  }, {
+    "name": "switch revisions",
+    "examples": [
+      { "technology": "Git", "snippet": "git checkout" },
+      { "technology": "Mercurial", "snippet": "hg update" },
+      { "technology": "Subversion", "snippet": "svn update" }
+    ]
+  }, {
+    "name": "download a repository/checkout",
+    "examples": [
+      { "technology": "Git", "snippet": "git clone" },
+      { "technology": "Mercurial", "snippet": "hg clone" },
+      { "technology": "Subversion", "snippet": "svn checkout" }
+    ]
+  }, {
+    "name": "make a commit",
+    "examples": [
+      { "technology": "Git", "snippet": "git commit" },
+      { "technology": "Mercurial", "snippet": "hg commit" },
+      { "technology": "Subversion", "snippet": "svn commit" }
+    ]
+  },
+
+  {
+    "name": "map over elements",
+    "examples": [
+      { "technology": "Common Lisp", "snippet": "map" },
+      { "technology": "Haskell", "snippet": "map" },
+      { "technology": "JavaScript", "snippet": "Array#map" },
+      { "technology": "Python", "snippet": "map" },
+      { "technology": "Ruby", "snippet": "Enumerable#map" }
+    ]
+  }
+]

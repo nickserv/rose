@@ -4,8 +4,10 @@
   "private": true,
   "scripts": {
     "postinstall": "bower install",
-    "prestart": "node ./bin/seed",
+    "prestart": "npm run seed",
+    "seed": "node ./bin/seed",
     "start": "node ./bin/www",
+    "pretest": "npm run seed",
     "test": "jest"
   },
   "engines": {
@@ -17,9 +19,9 @@
     "debug": "^2.1.0",
     "express": "^4.0.0",
     "less-middleware": "^2.0.1",
-    "mongoose": "^4.1.9",
     "morgan": "^1.0.1",
     "node-fetch": "^1.6.3",
+    "mz": "^2.6.0",
     "serve-favicon": "^2.1.6"
   },
   "devDependencies": {

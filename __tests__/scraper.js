@@ -1,5 +1,4 @@
 const cheerio = require('cheerio');
-const features = require('../lib/features');
 const fs = require('fs');
 const scraper = require('../lib/scraper');
 const url = require('url');
@@ -12,14 +11,14 @@ describe('scraper', () => {
   const expectedFeatures = [{
     name: 'add files',
     examples: [
-      { technology: 'git', snippets: 'git add' },
-      { technology: 'mercurial', snippets: 'hg add' }
+      { technology: 'git', snippet: 'git add' },
+      { technology: 'mercurial', snippet: 'hg add' }
     ]
   }, {
     name: 'show revision information line by line',
     examples: [
-      { technology: 'git', snippets: 'git blame' },
-      { technology: 'mercurial', snippets: 'hg annotate' }
+      { technology: 'git', snippet: 'git blame' },
+      { technology: 'mercurial', snippet: 'hg annotate' }
     ]
   }];
 
@@ -49,15 +48,15 @@ describe('scraper', () => {
       const expectedFeatures = [{
         name: 'add files',
         examples: [
-          { technology: 'git', snippets: 'git add' },
-          { technology: 'mercurial', snippets: 'hg add' }
+          { technology: 'git', snippet: 'git add' },
+          { technology: 'mercurial', snippet: 'hg add' }
         ]
       }, {
         name: 'show revision information line by line',
         examples: [
-          { technology: 'git', snippets: 'git blame' },
-          { technology: 'mercurial', snippets: 'hg annotate' },
-          { technology: 'svn', snippets: 'svn blame' }
+          { technology: 'git', snippet: 'git blame' },
+          { technology: 'mercurial', snippet: 'hg annotate' },
+          { technology: 'svn', snippet: 'svn blame' }
         ]
       }];
 

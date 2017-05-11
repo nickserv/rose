@@ -1,14 +1,12 @@
 const app = require('../app');
+const features = require('./features');
 const nodeFetch = require('node-fetch');
-const seeds = require('../lib/seeds');
-const seedData = require('./seedData');
 
 describe('app', () => {
   function fetch(path, init) {
     return nodeFetch(`http://localhost:3000${path}`, init);
   }
 
-  beforeAll(() => seeds(seedData));
   beforeAll(done => app.listen(3000, done));
 
   describe('GET /', () => {

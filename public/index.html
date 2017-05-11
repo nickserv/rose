@@ -30,8 +30,8 @@
             <tr ng-repeat="example in feature.examples">
               <td ng-bind-html="example.technology | highlight:query"></td>
               <td>
-                <pre ng-if="query" ng-repeat="snippet in example.snippets"><code ng-bind-html="snippet | highlight:query"></code></pre>
-                <pre ng-if="!query" ng-repeat="snippet in example.snippets"><code hljs hljs-source="snippet"></code></pre>
+                <pre ng-if="query"><code ng-bind-html="example.snippet | highlight:query"></code></pre>
+                <pre ng-if="!query"><code hljs hljs-source="example.snippet"></code></pre>
               </td>
             </tr>
           </table>
