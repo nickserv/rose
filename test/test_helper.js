@@ -9,6 +9,6 @@ global.url = require('url');
 
 // Rose modules
 global.app = require('../app');
-global.feature = require('../lib/feature');
+global.engine = require('../lib/engine');
+global.features = require('./features');
 global.scraper = require('../lib/scraper');
-global.seedData = require('./seedData');
