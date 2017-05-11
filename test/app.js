@@ -1,8 +1,6 @@
 require('./test_helper');
 
 describe('app', () => {
-  before(mockedSeeds);
-
   describe('GET /', () => {
     it('responds with success', done => {
       request(app)
