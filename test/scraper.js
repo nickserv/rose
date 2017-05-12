@@ -11,14 +11,14 @@ describe('scraper', function () {
     this.expectedFeatures = [{
       name: 'add files',
       examples: [
-        { technology: 'git', snippets: 'git add' },
-        { technology: 'mercurial', snippets: 'hg add' }
+        { technology: 'git', snippet: 'git add' },
+        { technology: 'mercurial', snippet: 'hg add' }
       ]
     }, {
       name: 'show revision information line by line',
       examples: [
-        { technology: 'git', snippets: 'git blame' },
-        { technology: 'mercurial', snippets: 'hg annotate' }
+        { technology: 'git', snippet: 'git blame' },
+        { technology: 'mercurial', snippet: 'hg annotate' }
       ]
     }];
   });
@@ -50,15 +50,15 @@ describe('scraper', function () {
         this.expectedFeatures = [{
           name: 'add files',
           examples: [
-            { technology: 'git', snippets: 'git add' },
-            { technology: 'mercurial', snippets: 'hg add' }
+            { technology: 'git', snippet: 'git add' },
+            { technology: 'mercurial', snippet: 'hg add' }
           ]
         }, {
           name: 'show revision information line by line',
           examples: [
-            { technology: 'git', snippets: 'git blame' },
-            { technology: 'mercurial', snippets: 'hg annotate' },
-            { technology: 'svn', snippets: 'svn blame' }
+            { technology: 'git', snippet: 'git blame' },
+            { technology: 'mercurial', snippet: 'hg annotate' },
+            { technology: 'svn', snippet: 'svn blame' }
           ]
         }];
       });
@@ -88,30 +88,21 @@ describe('scraper', function () {
   context('.requestPromise()', function () {
     context('after a successful request', function () {
       it('wraps request() and returns a Promise that will be resolved', function () {
-        expect(scraper.requestPromise('http://www.google.com/')).to.be.fulfilled;
+        return expect(scraper.requestPromise('http://www.google.com/')).to.be.fulfilled;
       });
     });
 
     context('after a failed request', function () {
       it('wraps request() and returns a Promise that will be rejected', function () {
-        expect(scraper.requestPromise('http://www.google.com/404')).to.be.rejected;
+        return expect(scraper.requestPromise('http://www.google.com/404')).to.be.rejected;
       });
     });
   });
 
   context('.scrape()', function () {
-    it('scrapes features from the Hyperpolyglot website', function (done) {
+    it('scrapes features from the Hyperpolyglot website', function () {
       this.timeout(60 * SECOND);
-      scraper.scrape().then(function (seeds) {
-        seeds.forEach(function (seed) {
-          (new Feature(seed)).validate(function (err) {
-            if (err) {
-              done(err);
-            }
-          });
-        });
-        done();
-      });
+      return expect(scraper.scrape()).to.eventually.have.length.above(0);
     });
   });
 });
