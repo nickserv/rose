@@ -3,7 +3,6 @@ sudo: false
 
 # Installation
 node_js: 5.0.0
-services: mongodb
 cache:
   directories:
     - node_modules
