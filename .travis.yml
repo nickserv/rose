@@ -11,6 +11,11 @@ cache:
 # Testing
 script: npm test
 
+# Analysis
+env:
+  CODECLIMATE_REPO_TOKEN: 1251f2891d75a12f4529fd596ba0f99aec3e7858cb3db486ecc3e2bc0721367c
+after_script: npm run upload-coverage
+
 # Deploying
 deploy:
   provider: heroku

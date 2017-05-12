@@ -16,7 +16,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 /* GET JSON API. */
 app.get('/index.json', (req, res) => {
-  const results = engine.search(features, req.query.query);
+ const results = engine.search(features, req.query.query);
   const skip = parseInt(req.query.index, 10) || 0;
   const limit = parseInt(req.query.count, 10) || undefined;
 
