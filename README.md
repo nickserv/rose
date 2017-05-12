@@ -1,7 +1,7 @@
 # [Rose](http://rosesearch.herokuapp.com/)
-[![Build Status](https://travis-ci.org/nicolasmccurdy/rose.svg?branch=master)](https://travis-ci.org/nicolasmccurdy/rose)
+[![Build Status](https://travis-ci.org/nickmccurdy/rose.svg?branch=master)](https://travis-ci.org/nickmccurdy/rose)
 [![Test Coverage](https://codeclimate.com/github/nicolasmccurdy/rose/badges/coverage.svg)](https://codeclimate.com/github/nicolasmccurdy/rose)
-[![Dependency Status](https://gemnasium.com/nicolasmccurdy/rose.svg)](https://gemnasium.com/nicolasmccurdy/rose)
+[![Dependency Status](https://gemnasium.com/nickmccurdy/rose.svg)](https://gemnasium.com/nickmccurdy/rose)
 [![Code Climate](https://codeclimate.com/github/nicolasmccurdy/rose/badges/gpa.svg)](https://codeclimate.com/github/nicolasmccurdy/rose)
 
 An interactive, technical, and openly editable [Rosetta
