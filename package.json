@@ -4,9 +4,12 @@
   "private": true,
   "scripts": {
     "postinstall": "bower install",
-    "prestart": "node ./bin/seed",
+    "prestart": "npm run seed",
+    "seed": "node ./bin/seed",
     "start": "node ./bin/www",
-    "test": "mocha --reporter spec"
+    "pretest": "npm run seed",
+    "test": "jest",
+    "upload-coverage": "codeclimate-test-reporter < coverage/lcov.info"
   },
   "engines": {
     "node": ">=5"
@@ -17,16 +20,17 @@
     "debug": "^2.1.0",
     "express": "^4.0.0",
     "less-middleware": "^2.0.1",
-    "mongoose": "^4.1.9",
     "morgan": "^1.0.1",
-    "request": "^2.34.0",
+    "node-fetch": "^1.6.3",
+    "mz": "^2.6.0",
     "serve-favicon": "^2.1.6"
   },
   "devDependencies": {
-    "chai": "^3.3.0",
-    "chai-as-promised": "^6.0.0",
-    "codeclimate-test-reporter": "0.4.1",
-    "mocha": "^3.2.0",
-    "supertest": "^3.0.0"
+    "codeclimate-test-reporter": "^0.4.1",
+    "jest": "^20.0.0"
+  },
+  "jest": {
+    "collectCoverage": true,
+    "testEnvironment": "node"
   }
 }

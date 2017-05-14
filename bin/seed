@@ -1,7 +1,10 @@
 #!/usr/bin/env node
-var mongoose = require('mongoose');
-mongoose.Promise = Promise
+var fs = require('mz/fs');
 var scraper = require('../lib/scraper');
-var seeds = require('../lib/seeds');
 
-seeds(scraper.scrape()).then(() => mongoose.disconnect());
+scraper.scrape()
+  .then(values => fs.writeFile('features.json', JSON.stringify(values)))
+  .catch(error => {
+    console.error(error);
+    process.exit(1);
+  });

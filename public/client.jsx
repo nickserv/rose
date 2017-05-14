@@ -13,11 +13,7 @@ class Snippet extends React.Component {
 function Example(props) {
   return <tr>
     <td>{props.technology}</td>
-    <td>
-    {props.snippets.map(snippet =>
-                        <Snippet key={snippet} snippet={snippet}/>
-                       )}
-  </td>
+    <td><Snippet snippet={props.snippet}/></td>
     </tr>
 }
 
@@ -29,7 +25,7 @@ function Feature(props) {
     <table>
     <tbody>
     {props.examples.map(example =>
-                        <Example key={example.technology} technology={example.technology} snippets={example.snippets}/>
+                        <Example key={example.technology} technology={example.technology} snippet={example.snippet}/>
                        )}
   </tbody>
     </table>
@@ -80,7 +76,7 @@ class SearchBar extends React.Component {
   }
 
   render() {
-    return <input id="query" type="search" className="search-input" value={this.props.query} placeholder="Search for features, technologies, or code snippets" autoFocus onChange={this.handleChange}/>
+    return <input type="search" className="search-input" value={this.props.query} placeholder="Search for features, technologies, or code snippets" autoFocus onChange={this.handleChange}/>
   }
 }
 

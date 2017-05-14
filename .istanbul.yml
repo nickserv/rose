@@ -1,4 +1,0 @@
-instrumentation:
-  excludes:
-    - public/bower_components/angular/*
-  include-all-sources: true
