@@ -19,4 +19,6 @@ app.get('/index.json', (req, res) => {
   res.json(results.slice(skip, limit && skip + limit));
 });
 
+if (!module.parent) app.listen(process.env.PORT || 3000);
+
 module.exports = app;

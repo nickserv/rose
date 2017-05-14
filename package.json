@@ -4,10 +4,10 @@
   "private": true,
   "scripts": {
     "prepare": "webpack",
-    "prestart": "npm run seed",
-    "seed": "node ./bin/seed",
-    "start": "node ./bin/www",
-    "pretest": "npm run seed",
+    "scrape": "node lib/scraper",
+    "prestart": "npm run scrape",
+    "start": "node app",
+    "pretest": "npm run scrape",
     "test": "jest",
     "upload-coverage": "codeclimate-test-reporter < coverage/lcov.info"
   },
