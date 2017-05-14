@@ -1,6 +1,5 @@
-bower_components
 coverage
 node_modules
 
 /features.json
-public/*.css
+/public/bundle.js

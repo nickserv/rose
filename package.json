@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "postinstall": "bower install",
+    "prepare": "webpack",
     "prestart": "npm run seed",
     "seed": "node ./bin/seed",
     "start": "node ./bin/www",
@@ -15,18 +15,23 @@
     "node": ">=5"
   },
   "dependencies": {
-    "bower": "^1.3.12",
     "cheerio": "^0.22.0",
     "debug": "^2.1.0",
     "express": "^4.0.0",
-    "less-middleware": "^2.0.1",
     "morgan": "^1.0.1",
     "mz": "^2.6.0",
     "node-fetch": "^1.6.3"
   },
   "devDependencies": {
+    "angular-highlightjs": "^0.7.1",
     "codeclimate-test-reporter": "^0.4.1",
-    "jest": "^20.0.0"
+    "css-loader": "^0.28.1",
+    "jest": "^20.0.0",
+    "less": "^2.7.2",
+    "less-loader": "^4.0.3",
+    "ng-infinite-scroll": "^1.3.0",
+    "style-loader": "^0.17.0",
+    "webpack": "^2.5.1"
   },
   "jest": {
     "collectCoverage": true,

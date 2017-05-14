@@ -8,7 +8,6 @@ const features = require('./features');
 const app = express();
 
 app.use(logger('dev'));
-app.use(require('less-middleware')(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 
 /* GET JSON API. */

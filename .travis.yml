@@ -6,7 +6,6 @@ node_js: 5.0.0
 cache:
   directories:
     - node_modules
-    - public/bower_components
 
 # Testing
 script: npm test

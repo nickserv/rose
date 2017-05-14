@@ -1,3 +1,7 @@
+import './client.less';
+import 'angular-highlightjs';
+import 'ng-infinite-scroll';
+
 angular.module('rose', ['hljs', 'infinite-scroll'])
   .value('count', 10)
   .controller('SearchController', function ($scope, features) {
