@@ -4,7 +4,7 @@ import 'ng-infinite-scroll';
 
 angular.module('rose', ['hljs', 'infinite-scroll'])
   .value('count', 10)
-  .controller('SearchController', function ($scope, features) {
+  .controller('SearchController', ['$scope', 'features', function ($scope, features) {
     $scope.features = [];
     $scope.page = 0;
 
@@ -22,8 +22,8 @@ angular.module('rose', ['hljs', 'infinite-scroll'])
     };
 
     $scope.fetchFeatures();
-  })
-  .factory('features', function ($http, count) {
+  }])
+  .factory('features', ['$http', 'count', function ($http, count) {
     return {
       get: function(query, page, success) {
         $http.get('/index.json', {
@@ -37,11 +37,11 @@ angular.module('rose', ['hljs', 'infinite-scroll'])
         });
       }
     };
-  })
-  .filter('highlight', function ($sce) {
+  }])
+  .filter('highlight', ['$sce', function ($sce) {
     return function (string, query) {
       var matchString = '<mark>$&</mark>';
       var result = query ? string.replace(new RegExp(query, 'gi'), matchString) : string;
       return $sce.trustAsHtml(result);
     };
-  });
+  }]);
