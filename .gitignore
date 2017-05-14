@@ -2,4 +2,4 @@ coverage
 node_modules
 
 /features.json
-/public/bundle.js
+/public/bundle.*
