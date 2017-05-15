@@ -1,13 +1,13 @@
-const app = require('../app');
 const features = require('./features');
 const nodeFetch = require('node-fetch');
+const server = require('../server');
 
-describe('app', () => {
+describe('server', () => {
   function fetch(path, init) {
     return nodeFetch(`http://localhost:3000${path}`, init);
   }
 
-  beforeAll(done => app.listen(3000, done));
+  beforeAll(done => server.listen(3000, done));
 
   describe('GET /', () => {
     it('responds with success', () => {

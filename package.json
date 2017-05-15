@@ -3,11 +3,11 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
+    "load": "node server/loader",
     "prepare": "webpack",
-    "scrape": "node lib/scraper",
-    "prestart": "npm run scrape",
-    "start": "node app",
-    "pretest": "npm run scrape",
+    "prestart": "npm run load",
+    "start": "node server",
+    "pretest": "npm run load",
     "test": "jest",
     "upload-coverage": "codeclimate-test-reporter < coverage/lcov.info"
   },

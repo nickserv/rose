@@ -110,7 +110,7 @@ module.exports = {
 
   load: function () {
     return module.exports.scrape()
-      .then(values => fs.writeFile('../features.json', JSON.stringify(values)))
+      .then(values => fs.writeFile('dist/features.json', JSON.stringify(values)))
       .catch(error => {
         console.error(error);
         process.exit(1);

@@ -2,13 +2,14 @@ const express = require('express');
 const path = require('path');
 const logger = require('morgan');
 
-const engine = require('./lib/engine');
-const features = require('./features');
+const engine = require('./engine');
+const features = require('../dist/features');
 
 const app = express();
 
 app.use(logger('dev'));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static('client'));
+app.use(express.static('dist'));
 
 /* GET JSON API. */
 app.get('/index.json', (req, res) => {

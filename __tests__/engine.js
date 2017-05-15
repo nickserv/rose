@@ -1,4 +1,4 @@
-const engine = require('../lib/engine');
+const engine = require('../server/engine');
 const features = require('./features');
 
 describe('engine', () => {

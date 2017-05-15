@@ -1,4 +1,4 @@
-import './client.less';
+import './index.less';
 import 'angular-highlightjs';
 import 'ng-infinite-scroll';
 
