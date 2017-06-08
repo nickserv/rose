@@ -4,15 +4,15 @@ export function matchSnippet(snippet, query) {
 
 export function matchExample(example, query) {
   return example.technology.match(query) ||
-    this.matchSnippet(example.snippet, query);
+    matchSnippet(example.snippet, query);
 }
 
 export function matchFeature(feature, query) {
   return feature.name.match(query) ||
-    feature.examples.some(example => this.matchExample(example, query));
+    feature.examples.some(example => matchExample(example, query));
 }
 
 export function search(features, query) {
   const queryRegExp = new RegExp(query, 'i');
-  return features.filter(feature => this.matchFeature(feature, queryRegExp));
+  return features.filter(feature => matchFeature(feature, queryRegExp));
 }
