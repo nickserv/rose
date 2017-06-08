@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "prepare": "webpack && node dist/loader",
+    "prepare": "node -r babel-register ./node_modules/.bin/webpack && node dist/loader",
     "start": "node dist/server",
     "test": "jest",
     "upload-coverage": "codeclimate-test-reporter < coverage/lcov.info"
