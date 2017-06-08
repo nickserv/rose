@@ -9,6 +9,7 @@ export default [
       path: path.resolve('dist'),
       filename: 'client.js'
     },
+    devtool: 'cheap-source-map',
     module: {
       rules: [
         {
@@ -33,6 +34,7 @@ export default [
       path: path.resolve('dist'),
       filename: '[name].js'
     },
+    devtool: 'cheap-source-map',
     target: 'node',
     externals: externals()
   }
