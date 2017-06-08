@@ -1,10 +1,10 @@
-const engine = require('./engine');
-const express = require('express');
-const features = require('../dist/features');
-const logger = require('morgan');
-const webpack = require('webpack');
-const webpackConfig = require('../webpack.config');
-const webpackMiddleware = require('webpack-dev-middleware');
+import * as engine from './engine';
+import express from 'express';
+import features from '../dist/features';
+import logger from 'morgan';
+import webpack from 'webpack';
+import webpackConfig from '../webpack.config';
+import webpackMiddleware from 'webpack-dev-middleware';
 
 const app = express();
 
@@ -25,4 +25,4 @@ app.get('/index.json', (req, res) => {
 
 if (!module.parent) app.listen(process.env.PORT || 3000);
 
-module.exports = app;
+export default app;

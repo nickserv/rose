@@ -1,11 +1,13 @@
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const externals = require('webpack-node-externals');
 const path = require('path');
 
-module.exports = {
-  entry: './client/index.js',
+module.exports = [
+  {
+    entry: './client',
   output: {
     path: path.resolve('dist'),
-    filename: '[name].js'
+      filename: 'client.js'
   },
   module: {
     rules: [
@@ -19,6 +21,19 @@ module.exports = {
     ]
   },
   plugins: [
-    new ExtractTextPlugin('[name].css')
+      new ExtractTextPlugin('client.css')
   ]
-};
+  },
+  {
+    entry: {
+      server: './server',
+      loader: './server/loader'
+    },
+    output: {
+      path: path.resolve('dist'),
+      filename: '[name].js'
+    },
+    target: 'node',
+    externals: externals()
+  }
+];

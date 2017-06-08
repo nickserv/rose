@@ -1,5 +1,5 @@
-const nodeFetch = require('node-fetch');
-const server = require('../server');
+import nodeFetch from 'node-fetch';
+import server from '../server';
 
 describe('server', () => {
   function fetch(path, init) {

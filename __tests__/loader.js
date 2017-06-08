@@ -1,7 +1,7 @@
-const cheerio = require('cheerio');
-const fs = require('fs');
-const loader = require('../server/loader');
-const url = require('url');
+import cheerio from 'cheerio';
+import fs from 'fs';
+import * as loader from '../server/loader';
+import url from 'url';
 
 describe('loader', () => {
   const tableHTML = fs.readFileSync('__tests__/pages/table.html', 'utf8');
