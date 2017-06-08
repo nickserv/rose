@@ -1,12 +1,12 @@
 import * as engine from './engine';
 import express from 'express';
-import features from '../dist/features';
 import logger from 'morgan';
 import webpack from 'webpack';
 import webpackConfig from '../webpack.config';
 import webpackMiddleware from 'webpack-dev-middleware';
 
 const app = express();
+const features = JSON.parse(fs.readFileSync('dist/features.json'));
 
 app.use(logger('dev'));
 app.use(express.static('client'));
