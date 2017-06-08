@@ -1,4 +1,3 @@
-const features = require('./features');
 const nodeFetch = require('node-fetch');
 const server = require('../server');
 
