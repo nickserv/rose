@@ -1,8 +1,0 @@
-{
-  "name": "rose",
-  "private": true,
-  "dependencies": {
-    "highlightjs": "^9.0.0",
-    "react": "^15.5.4"
-  }
-}

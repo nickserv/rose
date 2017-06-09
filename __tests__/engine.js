@@ -1,5 +1,5 @@
-const engine = require('../lib/engine');
-const features = require('./features');
+import * as engine from '../server/engine';
+import features from './features';
 
 describe('engine', () => {
   describe('.search()', () => {

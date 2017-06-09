@@ -3,11 +3,8 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "postinstall": "bower install",
-    "prestart": "npm run seed",
-    "seed": "node ./bin/seed",
-    "start": "node ./bin/www",
-    "pretest": "npm run seed",
+    "postinstall": "webpack && node dist/loader",
+    "start": "node dist/server",
     "test": "jest",
     "upload-coverage": "codeclimate-test-reporter < coverage/lcov.info"
   },
@@ -15,19 +12,30 @@
     "node": ">=5"
   },
   "dependencies": {
-    "bower": "^1.3.12",
     "cheerio": "^0.22.0",
-    "debug": "^2.1.0",
-    "express": "^4.0.0",
-    "less-middleware": "^2.0.1",
-    "morgan": "^1.0.1",
+    "debug": "^2.6.8",
+    "express": "^4.15.3",
+    "morgan": "^1.8.2",
     "mz": "^2.6.0",
-    "node-fetch": "^1.6.3",
-    "serve-favicon": "^2.1.6"
+    "node-fetch": "^1.7.1"
   },
   "devDependencies": {
-    "codeclimate-test-reporter": "^0.4.1",
-    "jest": "^20.0.0"
+    "angular-highlightjs": "^0.7.1",
+    "babel-core": "^6.25.0",
+    "babel-loader": "^7.0.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "codeclimate-test-reporter": "^0.5.0",
+    "css-loader": "^0.28.1",
+    "extract-text-webpack-plugin": "^2.1.0",
+    "jest": "^20.0.0",
+    "less": "^2.7.2",
+    "less-loader": "^4.0.3",
+    "ng-infinite-scroll": "^1.3.0",
+    "style-loader": "^0.18.1",
+    "webpack": "^2.5.1",
+    "webpack-dev-middleware": "^1.10.2",
+    "webpack-node-externals": "^1.6.0"
   },
   "jest": {
     "collectCoverage": true,
