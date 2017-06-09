@@ -7,7 +7,7 @@ import webpackConfig from '../webpack.config';
 import webpackMiddleware from 'webpack-dev-middleware';
 
 const app = express();
-const features = JSON.parse(fs.readFileSync('dist/features.json'));
+const features = JSON.parse(fs.readFileSync(`${__dirname}/features.json`));
 
 app.use(logger('dev'));
 app.use(express.static('client'));

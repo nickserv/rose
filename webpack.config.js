@@ -36,6 +36,9 @@ export default [
     },
     devtool: 'cheap-source-map',
     target: 'node',
-    externals: externals()
+    externals: externals(),
+    node: {
+      __dirname: false
+    }
   }
 ];
