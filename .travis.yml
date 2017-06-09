@@ -17,7 +17,6 @@ env:
 after_script: npm run upload-coverage
 
 # Deploying
-before_deploy: export NPM_CONFIG_PRODUCTION=false
 deploy:
   provider: heroku
   api_key:
