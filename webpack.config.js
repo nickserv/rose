@@ -1,8 +1,8 @@
-import ExtractTextPlugin from "extract-text-webpack-plugin";
-import externals from 'webpack-node-externals';
-import path from  'path';
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const externals = require('webpack-node-externals');
+const path = require('path');
 
-export default [
+module.exports = [
   {
     entry: './client',
     output: {

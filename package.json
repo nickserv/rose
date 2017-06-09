@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "postinstall": "node -r babel-register node_modules/.bin/webpack && node dist/loader",
+    "postinstall": "webpack && node dist/loader",
     "start": "node dist/server",
     "test": "jest",
     "upload-coverage": "codeclimate-test-reporter < coverage/lcov.info"
@@ -22,7 +22,6 @@
   "devDependencies": {
     "angular-highlightjs": "^0.7.1",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.24.1",
-    "babel-register": "^6.24.1",
     "codeclimate-test-reporter": "^0.5.0",
     "css-loader": "^0.28.1",
     "extract-text-webpack-plugin": "^2.1.0",
