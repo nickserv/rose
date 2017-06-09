@@ -12,7 +12,6 @@
     "node": ">=5"
   },
   "dependencies": {
-    "babel-register": "^6.24.1",
     "cheerio": "^0.22.0",
     "debug": "^2.1.0",
     "express": "^4.0.0",
@@ -23,6 +22,7 @@
   "devDependencies": {
     "angular-highlightjs": "^0.7.1",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.24.1",
+    "babel-register": "^6.24.1",
     "codeclimate-test-reporter": "^0.4.1",
     "css-loader": "^0.28.1",
     "extract-text-webpack-plugin": "^2.1.0",
