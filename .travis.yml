@@ -7,10 +7,6 @@ before_install: npm install -g npm
 cache:
   directories:
     - node_modules
-    - public/bower_components
-
-# Testing
-script: npm test
 
 # Analysis
 env:
