@@ -18,8 +18,6 @@ deploy:
   provider: heroku
   api_key:
     secure: GZ+jojxiLHXzAuWG+2o+dFV4YsPDNTq6IFCyKmVFTovhVbCJcmMgwrgJgbkq7lit0VFyKYN974xDnefZLJzlzil/bO45sugyEs6ORl1Qe5OwPzoZOdbAupUTGeI+7aT4RSr16pLRCbFnYnswSuesRsMvggM3BjBt+n73AAkijwU=
-  app:
-    master: rosesearch
-    use-webpack: rosestaging
+  app: rosesearch
   on:
     repo: nickmccurdy/rose
