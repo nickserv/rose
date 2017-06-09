@@ -8,9 +8,6 @@ cache:
   directories:
     - node_modules
 
-# Testing
-script: npm test
-
 # Analysis
 env:
   CODECLIMATE_REPO_TOKEN: 1251f2891d75a12f4529fd596ba0f99aec3e7858cb3db486ecc3e2bc0721367c
@@ -26,4 +23,3 @@ deploy:
     use-webpack: rosestaging
   on:
     repo: nickmccurdy/rose
-  skip_cleanup: true
