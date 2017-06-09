@@ -26,3 +26,4 @@ deploy:
     use-webpack: rosestaging
   on:
     repo: nickmccurdy/rose
+  skip_cleanup: true
