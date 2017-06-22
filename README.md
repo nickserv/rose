@@ -1,4 +1,6 @@
 # [Rose](http://rosesearch.herokuapp.com/)
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/nickmccurdy/rose.svg)](https://greenkeeper.io/)
 [![Build Status](https://travis-ci.org/nickmccurdy/rose.svg?branch=master)](https://travis-ci.org/nickmccurdy/rose)
 [![Test Coverage](https://codeclimate.com/github/nicolasmccurdy/rose/badges/coverage.svg)](https://codeclimate.com/github/nicolasmccurdy/rose)
 [![Dependency Status](https://gemnasium.com/nickmccurdy/rose.svg)](https://gemnasium.com/nickmccurdy/rose)
