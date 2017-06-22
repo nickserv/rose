@@ -2,8 +2,6 @@ language: node_js
 sudo: false
 
 # Installation
-node_js: 5.0.0
-before_install: npm install -g npm
 cache:
   directories:
     - node_modules
