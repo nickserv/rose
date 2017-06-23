@@ -1,3 +1,8 @@
+import './index.less';
+import hljs from 'highlight.js';
+import React from 'react';
+import ReactDOM from 'react-dom';
+
 class Snippet extends React.Component {
   constructor(props) {
     super(props)

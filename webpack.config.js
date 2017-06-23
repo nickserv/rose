@@ -44,8 +44,6 @@ module.exports = [
     devtool: 'cheap-source-map',
     target: 'node',
     externals: externals(),
-    node: {
-      __dirname: false
-    }
+    node: false
   }
 ];
