@@ -22,7 +22,7 @@
   "devDependencies": {
     "angular-highlightjs": "^0.7.1",
     "babel-core": "^6.25.0",
-    "babel-loader": "^7.0.0",
+    "babel-loader": "^7.1.0",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "codeclimate-test-reporter": "^0.5.0",
