@@ -40,6 +40,14 @@
     "webpack-dev-middleware": "^1.11.0",
     "webpack-node-externals": "^1.6.0"
   },
+  "babel": {
+    "presets": "react",
+    "env": {
+      "test": {
+        "plugins": "transform-es2015-modules-commonjs"
+      }
+    }
+  },
   "jest": {
     "collectCoverage": true,
     "testEnvironment": "node"
