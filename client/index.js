@@ -1,48 +1,48 @@
-import './index.less';
-import hljs from 'highlight.js';
-import React from 'react';
-import ReactDOM from 'react-dom';
+import './index.less'
+import hljs from 'highlight.js'
+import React from 'react'
+import ReactDOM from 'react-dom'
 
 class Snippet extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
 
     this.highlight = (element) => { if (element) hljs.highlightBlock(element) }
   }
 
-  render() {
+  render () {
     return <pre><code ref={this.highlight}>{this.props.snippet}</code></pre>
   }
 }
 
-function Example(props) {
+function Example (props) {
   return <tr>
     <td>{props.technology}</td>
     <td><Snippet snippet={props.snippet}/></td>
-    </tr>
+  </tr>
 }
 
-function Feature(props) {
+function Feature (props) {
   return <li className="card">
     <h2 className="panel-title">{props.name}</h2>
 
     <div className="table-responsive">
-    <table>
-    <tbody>
-    {props.examples.map(example =>
-                        <Example key={example.technology} technology={example.technology} snippet={example.snippet}/>
-                       )}
-  </tbody>
-    </table>
+      <table>
+        <tbody>
+          {props.examples.map(example =>
+            <Example key={example.technology} technology={example.technology} snippet={example.snippet}/>
+          )}
+        </tbody>
+      </table>
     </div>
-    </li>
+  </li>
 }
 
 class SearchResults extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor (props) {
+    super(props)
 
-    this.state = { results: [] };
+    this.state = { results: [] }
 
     this.search = query => {
       if (query === undefined) query = ''
@@ -52,54 +52,54 @@ class SearchResults extends React.Component {
     }
   }
 
-  componentDidMount() {
-    this.search();
+  componentDidMount () {
+    this.search()
   }
 
-  componentDidUpdate(props) {
-    if (props.query !== this.props.query) this.search(this.props.query);
+  componentDidUpdate (props) {
+    if (props.query !== this.props.query) this.search(this.props.query)
   }
 
-  render() {
+  render () {
     if (this.state.results.length) {
       return <ol className="search-results">
         {this.state.results.map(result =>
-                                <Feature key={JSON.stringify(result)} name={result.name} examples={result.examples}/>
-                               )}
-      </ol>;
+          <Feature key={JSON.stringify(result)} name={result.name} examples={result.examples}/>
+        )}
+      </ol>
     } else {
-      return <h2>No results</h2>;
+      return <h2>No results</h2>
     }
   }
 }
 
 class SearchBar extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
 
     this.handleChange = event => this.props.onChange(event.target.value)
   }
 
-  render() {
+  render () {
     return <input type="search" className="search-input" value={this.props.query} placeholder="Search for features, technologies, or code snippets" autoFocus onChange={this.handleChange}/>
   }
 }
 
 class Searchable extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor (props) {
+    super(props)
 
-    this.state = { query: '' };
+    this.state = { query: '' }
 
-    this.onChange = query => this.setState({ query });
+    this.onChange = query => this.setState({ query })
   }
 
-  render() {
+  render () {
     return <div>
       <SearchBar onChange={this.onChange}/>
       <SearchResults query={this.state.query}/>
-      </div>
+    </div>
   }
 }
 
-ReactDOM.render(<Searchable/>, document.querySelector('main'));
+ReactDOM.render(<Searchable/>, document.querySelector('main'))
