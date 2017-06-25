@@ -1,6 +1,6 @@
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
-const externals = require('webpack-node-externals');
-const path = require('path');
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const externals = require('webpack-node-externals')
+const path = require('path')
 
 module.exports = [
   {
@@ -39,4 +39,4 @@ module.exports = [
     externals: externals(),
     node: false
   }
-];
+]

@@ -1,5 +1,5 @@
-import * as engine from '../server/engine';
-import features from './features';
+import * as engine from '../server/engine'
+import features from './features'
 
 describe('engine', () => {
   describe('.search()', () => {
@@ -10,36 +10,36 @@ describe('engine', () => {
         { technology: 'Mercurial', snippet: 'hg add' },
         { technology: 'Subversion', snippet: 'svn add' }
       ]
-    }];
+    }]
 
     describe('with an empty query', () => {
       it('finds all features', () => {
-        return expect(engine.search(features, '')).toHaveLength(7);
-      });
-    });
+        return expect(engine.search(features, '')).toHaveLength(7)
+      })
+    })
 
     describe('with a feature query', () => {
       it('finds all matching features', () => {
-        return expect(engine.search(features, 'add files')).toEqual(gitAddFeature);
-      });
-    });
+        return expect(engine.search(features, 'add files')).toEqual(gitAddFeature)
+      })
+    })
 
     describe('with a technology query', () => {
       it('finds all matching features', () => {
-        return expect(engine.search(features, 'git')).toHaveLength(6);
-      });
-    });
+        return expect(engine.search(features, 'git')).toHaveLength(6)
+      })
+    })
 
     describe('with a command query', () => {
       it('finds all matching features', () => {
-        return expect(engine.search(features, 'git ADD')).toEqual(gitAddFeature);
-      });
-    });
+        return expect(engine.search(features, 'git ADD')).toEqual(gitAddFeature)
+      })
+    })
 
     describe('with a command query for a command that does not exist', () => {
       it('finds no features', () => {
-        return expect(engine.search(features, 'git yolo')).toHaveLength(0);
-      });
-    });
-  });
-});
+        return expect(engine.search(features, 'git yolo')).toHaveLength(0)
+      })
+    })
+  })
+})
