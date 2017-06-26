@@ -1,5 +1,6 @@
 import './index.less'
 import hljs from 'highlight.js'
+import PropTypes from 'prop-types'
 import React from 'react'
 import ReactDOM from 'react-dom'
 
@@ -15,11 +16,20 @@ class Snippet extends React.Component {
   }
 }
 
+Snippet.propTypes = {
+  snippet: PropTypes.string.isRequired
+}
+
 function Example (props) {
   return <tr>
     <td>{props.technology}</td>
     <td><Snippet snippet={props.snippet}/></td>
   </tr>
+}
+
+Example.propTypes = {
+  technology: PropTypes.string.isRequired,
+  snippet: PropTypes.string.isRequired
 }
 
 function Feature (props) {
@@ -36,6 +46,16 @@ function Feature (props) {
       </table>
     </div>
   </li>
+}
+
+Feature.propTypes = {
+  name: PropTypes.string.isRequired,
+  examples: PropTypes.arrayOf(
+    PropTypes.shape({
+      technology: PropTypes.string.isRequired,
+      snippet: PropTypes.string.isRequired
+    }).isRequired
+  ).isRequired
 }
 
 class SearchResults extends React.Component {
@@ -73,6 +93,10 @@ class SearchResults extends React.Component {
   }
 }
 
+SearchResults.propTypes = {
+  query: PropTypes.string.isRequired
+}
+
 class SearchBar extends React.Component {
   constructor (props) {
     super(props)
@@ -83,6 +107,11 @@ class SearchBar extends React.Component {
   render () {
     return <input type="search" className="search-input" value={this.props.query} placeholder="Search for features, technologies, or code snippets" autoFocus onChange={this.handleChange}/>
   }
+}
+
+SearchBar.propTypes = {
+  onChange: PropTypes.func.isRequired,
+  query: PropTypes.string.isRequired
 }
 
 class Searchable extends React.Component {
@@ -96,7 +125,7 @@ class Searchable extends React.Component {
 
   render () {
     return <div>
-      <SearchBar onChange={this.onChange}/>
+      <SearchBar query={this.state.query} onChange={this.onChange}/>
       <SearchResults query={this.state.query}/>
     </div>
   }
