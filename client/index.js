@@ -27,10 +27,9 @@ function Example (props) {
   </tr>
 }
 
-Example.propTypes = {
-  technology: PropTypes.string.isRequired,
-  snippet: PropTypes.string.isRequired
-}
+Example.propTypes = Object.assign({
+  technology: PropTypes.string.isRequired
+}, Snippet.propTypes)
 
 function Feature (props) {
   return <li className="card">
@@ -51,10 +50,7 @@ function Feature (props) {
 Feature.propTypes = {
   name: PropTypes.string.isRequired,
   examples: PropTypes.arrayOf(
-    PropTypes.shape({
-      technology: PropTypes.string.isRequired,
-      snippet: PropTypes.string.isRequired
-    }).isRequired
+    PropTypes.shape(Example.propTypes).isRequired
   ).isRequired
 }
 
@@ -109,10 +105,9 @@ class SearchBar extends React.Component {
   }
 }
 
-SearchBar.propTypes = {
-  onChange: PropTypes.func.isRequired,
-  query: PropTypes.string.isRequired
-}
+SearchBar.propTypes = Object.assign({
+  onChange: PropTypes.func.isRequired
+}, SearchResults.propTypes)
 
 class Searchable extends React.Component {
   constructor (props) {
