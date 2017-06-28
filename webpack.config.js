@@ -18,14 +18,14 @@ module.exports = [
     devtool: 'cheap-source-map',
     module: {
       rules: [
-        eslintRule,
         {
           test: /\.less$/,
           use: ExtractTextPlugin.extract({
             fallback: 'style-loader',
             use: ['css-loader', 'less-loader']
           })
-        }
+        },
+        eslintRule
       ]
     },
     plugins: [
