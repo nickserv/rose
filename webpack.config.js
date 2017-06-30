@@ -2,12 +2,6 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const externals = require('webpack-node-externals')
 const path = require('path')
 
-const eslintRule = {
-  test: /\.js$/,
-  exclude: /node_modules/,
-  loader: 'eslint-loader'
-}
-
 module.exports = [
   {
     entry: './client',
@@ -18,7 +12,6 @@ module.exports = [
     devtool: 'cheap-source-map',
     module: {
       rules: [
-        eslintRule,
         {
           test: /\.less$/,
           use: ExtractTextPlugin.extract({
@@ -42,11 +35,6 @@ module.exports = [
       filename: '[name].js'
     },
     devtool: 'cheap-source-map',
-    module: {
-      rules: [
-        eslintRule
-      ]
-    },
     target: 'node',
     externals: externals(),
     node: false
