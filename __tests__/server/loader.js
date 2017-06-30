@@ -1,10 +1,10 @@
 import cheerio from 'cheerio'
 import fs from 'fs'
-import * as loader from '../server/loader'
+import * as loader from '../../server/loader'
 import url from 'url'
 
 describe('loader', () => {
-  const tableHTML = fs.readFileSync('__tests__/pages/table.html', 'utf8')
+  const tableHTML = fs.readFileSync('__tests__/server/pages/table.html', 'utf8')
   const $ = cheerio.load(tableHTML)
 
   const expectedTechnologies = ['git', 'mercurial']
@@ -42,7 +42,7 @@ describe('loader', () => {
     })
 
     describe('with a table with extra data', () => {
-      const tableHTML = fs.readFileSync('__tests__/pages/table_extra.html', 'utf8')
+      const tableHTML = fs.readFileSync('__tests__/server/pages/table_extra.html', 'utf8')
       const $ = cheerio.load(tableHTML)
 
       const expectedFeatures = [{
