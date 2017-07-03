@@ -1,11 +1,11 @@
-import cheerio from 'cheerio'
-import fs from 'fs'
+import { load } from 'cheerio'
+import { readFileSync } from 'fs'
 import * as loader from '../server/loader'
-import url from 'url'
+import { parse } from 'url'
 
 describe('loader', () => {
-  const tableHTML = fs.readFileSync('__tests__/pages/table.html', 'utf8')
-  const $ = cheerio.load(tableHTML)
+  const tableHTML = readFileSync('__tests__/pages/table.html', 'utf8')
+  const $ = load(tableHTML)
 
   const expectedTechnologies = ['git', 'mercurial']
   const expectedFeatures = [{
@@ -42,8 +42,8 @@ describe('loader', () => {
     })
 
     describe('with a table with extra data', () => {
-      const tableHTML = fs.readFileSync('__tests__/pages/table_extra.html', 'utf8')
-      const $ = cheerio.load(tableHTML)
+      const tableHTML = readFileSync('__tests__/pages/table_extra.html', 'utf8')
+      const $ = load(tableHTML)
 
       const expectedFeatures = [{
         name: 'add files',
@@ -71,7 +71,7 @@ describe('loader', () => {
       return loader.getPages().then(pages => {
         expect(pages).not.toHaveLength(0)
         pages.forEach(page => {
-          var pageURL = url.parse(page)
+          var pageURL = parse(page)
           expect(pageURL.host).toBe('hyperpolyglot.org')
           expect(pageURL.pathname).toMatch(/[a-z-]+/)
         })

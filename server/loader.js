@@ -1,7 +1,7 @@
 import cheerio from 'cheerio'
 import fetch from 'node-fetch'
-import fs from 'mz/fs'
-import url from 'url'
+import { writeFile } from 'mz/fs'
+import { parse, resolve } from 'url'
 
 // Scrape all technology names from a table header row.
 export function scrapeTechnologies ($tr, $) {
@@ -72,9 +72,9 @@ export function getPages () {
       var $ = cheerio.load(body)
       $('a').each(function () {
         var currentHREF = $(this).attr('href')
-        var currentURL = url.parse(currentHREF)
+        var currentURL = parse(currentHREF)
         if (!currentURL.host && currentURL.path !== '/') {
-          links.push(url.resolve('http://hyperpolyglot.org/', currentHREF))
+          links.push(resolve('http://hyperpolyglot.org/', currentHREF))
         }
       })
       return links
@@ -108,7 +108,7 @@ export function scrape () {
 
 export function load () {
   return scrape()
-    .then(values => fs.writeFile('dist/features.json', JSON.stringify(values)))
+    .then(values => writeFile('dist/features.json', JSON.stringify(values)))
     .catch(error => {
       console.error(error)
       process.exit(1)
