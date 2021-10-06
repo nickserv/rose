@@ -8,6 +8,8 @@ describe('server', () => {
 
   beforeAll(done => server.listen(3000, done))
 
+  afterAll(done => server.close(done))
+
   describe('GET /', () => {
     it('responds with success', () => {
       return expect(fetch('/')).resolves.toHaveProperty('status', 200)
