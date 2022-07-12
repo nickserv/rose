@@ -9,9 +9,6 @@
     "test": "jest",
     "upload-coverage": "codeclimate-test-reporter < coverage/lcov.info"
   },
-  "engines": {
-    "node": ">=5"
-  },
   "dependencies": {
     "cheerio": "^0.22.0",
     "debug": "^2.6.8",
