@@ -1,12 +1,16 @@
 import nodeFetch from 'node-fetch'
-import server from '../server'
+import app from '../server'
 
 describe('server', () => {
   function fetch (path, init) {
     return nodeFetch(`http://localhost:3000${path}`, init)
   }
 
-  beforeAll(done => server.listen(3000, done))
+  let server
+
+  beforeAll(done => {
+    server = app.listen(3000, done)
+  })
 
   afterAll(done => server.close(done))
 

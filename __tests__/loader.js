@@ -80,10 +80,8 @@ describe('loader', () => {
   })
 
   describe('.scrape()', () => {
-    jasmine.DEFAULT_TIMEOUT_INTERVAL = 60 * 1000
-
     it('scrapes features from the Hyperpolyglot website', () => {
       return expect(loader.scrape()).resolves.not.toHaveLength(0)
-    })
+    }, 60 * 1000)
   })
 })
