@@ -26,7 +26,9 @@ module.exports = [
       ]
     },
     plugins: [
-      new MiniCssExtractPlugin()
+      new MiniCssExtractPlugin({
+        filename: 'client.css'
+      })
     ]
   },
   {
