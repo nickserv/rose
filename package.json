@@ -6,8 +6,7 @@
     "postinstall": "webpack && node dist/loader",
     "start": "node dist/server",
     "pretest": "eslint .",
-    "test": "jest",
-    "upload-coverage": "codeclimate-test-reporter < coverage/lcov.info"
+    "test": "jest"
   },
   "dependencies": {
     "cheerio": "^0.22.0",
@@ -21,7 +20,6 @@
     "angular": "^1.6.4",
     "angular-highlightjs": "^0.7.1",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.24.1",
-    "codeclimate-test-reporter": "^0.5.0",
     "css-loader": "^0.28.1",
     "eslint": "^4.1.0",
     "eslint-config-standard": "^10.2.1",

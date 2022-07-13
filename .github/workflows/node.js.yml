@@ -18,6 +18,6 @@ jobs:
         cache: 'npm'
     - run: npm ci
     - run: npm test
-    - run: npm run upload-coverage
+    - uses: paambaati/codeclimate-action@v3.0.0
       env:
-        CODECLIMATE_REPO_TOKEN: 1251f2891d75a12f4529fd596ba0f99aec3e7858cb3db486ecc3e2bc0721367c
+       CC_TEST_REPORTER_ID: 1251f2891d75a12f4529fd596ba0f99aec3e7858cb3db486ecc3e2bc0721367c
