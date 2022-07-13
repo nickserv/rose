@@ -12,7 +12,9 @@ describe('server', () => {
     server = app.listen(3000, done)
   })
 
-  afterAll(done => server.close(done))
+  afterAll(done => {
+    server.close(done)
+  })
 
   describe('GET /', () => {
     it('responds with success', () => {
