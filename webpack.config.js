@@ -1,9 +1,12 @@
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const externals = require('webpack-node-externals')
 const path = require('path')
 
+const devMode = process.env.NODE_ENV !== 'production'
+
 module.exports = [
   {
+    mode: devMode ? 'development' : 'production',
     entry: './client',
     output: {
       path: path.resolve('dist'),
@@ -14,18 +17,20 @@ module.exports = [
       rules: [
         {
           test: /\.less$/,
-          use: ExtractTextPlugin.extract({
-            fallback: 'style-loader',
-            use: ['css-loader', 'less-loader']
-          })
+          use: [
+            devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
+            'css-loader',
+            'less-loader'
+          ]
         }
       ]
     },
     plugins: [
-      new ExtractTextPlugin('client.css')
+      new MiniCssExtractPlugin()
     ]
   },
   {
+    mode: devMode ? 'development' : 'production',
     entry: {
       server: './server',
       loader: './server/loader'
