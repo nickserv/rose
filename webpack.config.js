@@ -1,6 +1,5 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const externals = require('webpack-node-externals')
-const path = require('path')
 
 const devMode = process.env.NODE_ENV !== 'production'
 
@@ -9,7 +8,6 @@ module.exports = [
     mode: devMode ? 'development' : 'production',
     entry: './client',
     output: {
-      path: path.resolve('dist'),
       filename: 'client.js'
     },
     devtool: 'cheap-source-map',
@@ -26,9 +24,7 @@ module.exports = [
       ]
     },
     plugins: [
-      new MiniCssExtractPlugin({
-        filename: 'client.css'
-      })
+      new MiniCssExtractPlugin()
     ]
   },
   {
@@ -36,10 +32,6 @@ module.exports = [
     entry: {
       server: './server',
       loader: './server/loader'
-    },
-    output: {
-      path: path.resolve('dist'),
-      filename: '[name].js'
     },
     devtool: 'cheap-source-map',
     target: 'node',
