@@ -1,5 +1,5 @@
 # [Rose](https://rosesearch.herokuapp.com/)
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/nickmccurdy/rose/build)
+![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/nickmccurdy/rose/node.js.yml)
 [![Test Coverage](https://codeclimate.com/github/nicolasmccurdy/rose/badges/coverage.svg)](https://codeclimate.com/github/nicolasmccurdy/rose)
 [![Code Climate](https://codeclimate.com/github/nicolasmccurdy/rose/badges/gpa.svg)](https://codeclimate.com/github/nicolasmccurdy/rose)
 
